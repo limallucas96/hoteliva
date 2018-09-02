@@ -2,4 +2,6 @@
     <string name="app_name">deliva</string>
     <string name="user_password">Senha</string>
     <string name="user_email">Usuário</string>
+    <string name="login_empty_password">O campo senha não pode ser vazio</string>
+    <string name="login_empty_username">O campo usuário não pode ser vazio</string>
 </resources>

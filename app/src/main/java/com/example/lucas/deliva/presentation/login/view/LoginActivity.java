@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.lucas.deliva.R;
+import com.example.lucas.deliva.presentation.base.view.BaseActivity;
 import com.example.lucas.deliva.presentation.login.presenter.LoginActivityView;
 import com.example.lucas.deliva.presentation.order.view.OrderActivity;
 
@@ -17,7 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LoginActivity extends Activity implements LoginActivityView {
+public class LoginActivity extends BaseActivity implements LoginActivityView {
 
     @BindView(R.id.login_text_input_layout)
     protected TextInputLayout mTextInputLayoutLogin;
@@ -32,10 +33,13 @@ public class LoginActivity extends Activity implements LoginActivityView {
     protected TextInputEditText mPassword;
 
     @Override
+    public int getLayoutId() {
+        return R.layout.activity_login;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        ButterKnife.bind(this);
     }
 
 
@@ -48,13 +52,13 @@ public class LoginActivity extends Activity implements LoginActivityView {
     private void verifyFields(){
         String email = mEmail.getText().toString();
         if(email.isEmpty()){
-            mTextInputLayoutLogin.setError("teste");
+            mTextInputLayoutLogin.setError(getString(R.string.login_empty_username));
             return;
         }
 
         String password = mPassword.getText().toString();
         if(password.isEmpty()){
-            mTextInputLayoutPassword.setError("pass invalid");
+            mTextInputLayoutPassword.setError(getString(R.string.login_empty_password));
             return;
         }
 

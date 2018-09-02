@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
@@ -33,16 +34,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:theme="@style/LightEditText">
+                android:theme="@style/LightEditText"
+                app:errorTextAppearance="@style/error_appearance">
 
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/login_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:ellipsize="end"
-                    android:singleLine="true"
                     android:hint="@string/user_email"
                     android:maxLines="1"
+                    android:singleLine="true"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp" />
 
@@ -53,7 +55,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:theme="@style/LightEditText">
+                android:theme="@style/LightEditText"
+                app:errorTextAppearance="@style/error_appearance">
 
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/password_edit_text"
@@ -62,9 +65,9 @@
                     android:ellipsize="end"
                     android:hint="@string/user_password"
                     android:maxLines="1"
+                    android:singleLine="true"
                     android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    android:singleLine="true"/>
+                    android:textSize="14sp" />
 
             </android.support.design.widget.TextInputLayout>
 
