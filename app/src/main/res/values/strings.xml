@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">deliva</string>
+    <string name="user_password">Senha</string>
+    <string name="user_email">Usuário</string>
 </resources>

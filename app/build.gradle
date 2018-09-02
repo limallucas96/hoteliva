@@ -25,4 +25,21 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // Component to mask editText
+    implementation 'com.github.reinaldoarrosi:maskededittext:1.1.0'
+
+    // Picasso, used to sync images on background and load automatically
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
+    // Component to use image view circular
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
+    // Component to use TextInputEditText
+    implementation 'com.android.support:design:27.1.1'
+
+    // Component to use butterknife
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
 }
