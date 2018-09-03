@@ -1,21 +1,16 @@
 package com.example.lucas.deliva.presentation.login.view;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
-import com.example.lucas.deliva.presentation.login.presenter.LoginActivityView;
 import com.example.lucas.deliva.presentation.order.view.OrderActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class LoginActivity extends BaseActivity implements LoginActivityView {
@@ -78,5 +73,6 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
     public void showLoginError() {
 
     }
+
 
 }
