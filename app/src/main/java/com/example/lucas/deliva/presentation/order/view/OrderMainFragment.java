@@ -9,8 +9,6 @@ import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
 import com.example.lucas.deliva.presentation.base.view.BaseFragment;
 
-import org.w3c.dom.Text;
-
 import butterknife.BindView;
 
 public class OrderMainFragment extends BaseFragment<BasePresenter> {
