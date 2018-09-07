@@ -22,7 +22,7 @@ public abstract class BaseFragment<Presenter extends BasePresenter> extends Frag
     @NonNull
     protected abstract Presenter createPresenter(@NonNull final Context context);
 
-    public abstract int getLAyoutId();
+    public abstract int getLayoutId();
 
     @NonNull
 
@@ -30,7 +30,7 @@ public abstract class BaseFragment<Presenter extends BasePresenter> extends Frag
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(getLAyoutId(), container, false);
+        View view = inflater.inflate(getLayoutId(), container, false);
         ButterKnife.bind(this, view);
         return view;
     }
