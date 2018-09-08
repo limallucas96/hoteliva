@@ -42,7 +42,7 @@ public abstract class OrderTabsViewPagerAdapter extends FragmentPagerAdapter {
     }
 
     @NonNull
-    public Fragment getFragmnet(final int position) {
+    public Fragment getFragment(final int position) {
         if (position >= 0 && position < mRegisteredFragments.size()) {
             return mRegisteredFragments.get(position);
         } else {
@@ -82,6 +82,11 @@ public abstract class OrderTabsViewPagerAdapter extends FragmentPagerAdapter {
                 return null;
         }
         return null;
+    }
+
+    @Override
+    public int getCount() {
+        return 0;
     }
 
     protected abstract void onFragmentsCreated();
