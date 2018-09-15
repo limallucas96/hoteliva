@@ -1,12 +1,15 @@
 package com.example.lucas.deliva.presentation.login.view;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.view.View;
 
 import com.example.lucas.deliva.R;
+import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
 import com.example.lucas.deliva.presentation.order.view.OrderActivity;
 
@@ -26,6 +29,12 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
 
     @BindView(R.id.password_edit_text)
     protected TextInputEditText mPassword;
+
+    @NonNull
+    @Override
+    protected BasePresenter createPresenter(@NonNull Context context) {
+        return null;
+    }
 
     @Override
     public int getLayoutId() {
