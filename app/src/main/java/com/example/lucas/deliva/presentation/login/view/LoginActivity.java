@@ -55,16 +55,16 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
 
     private void verifyFields(){
         String email = mEmail.getText().toString();
-        if(email.isEmpty()){
-            mTextInputLayoutLogin.setError(getString(R.string.login_empty_username));
-            return;
-        }
-
-        String password = mPassword.getText().toString();
-        if(password.isEmpty()){
-            mTextInputLayoutPassword.setError(getString(R.string.login_empty_password));
-            return;
-        }
+//        if(email.isEmpty()){
+//            mTextInputLayoutLogin.setError(getString(R.string.login_empty_username));
+//            return;
+//        }
+//
+//        String password = mPassword.getText().toString();
+//        if(password.isEmpty()){
+//            mTextInputLayoutPassword.setError(getString(R.string.login_empty_password));
+//            return;
+//        }
 
         checkUser();
     }

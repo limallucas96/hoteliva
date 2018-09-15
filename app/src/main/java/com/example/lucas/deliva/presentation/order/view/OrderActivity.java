@@ -45,9 +45,15 @@ public class OrderActivity extends BaseActivity<OrderActivityPresenter> implemen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setToolbar();
     }
 
     private void setToolbar(){
-
+        if (mToolbar != null) {
+            setSupportActionBar(mToolbar);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            mTextView.setText("home");
+        }
     }
 }
