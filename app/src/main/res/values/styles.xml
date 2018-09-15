@@ -2,7 +2,7 @@
 
     <!--APP THEME BASE-->
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="android:windowBackground">@color/colorControlNormal</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorPrimary</item>
@@ -52,6 +52,11 @@
     <style name="error_appearance" parent="@android:style/TextAppearance">
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">12sp</item>
+    </style>
+
+    <!--THEME FOR PROGRESS BAR-->
+    <style name="AppTheme.WhiteAccent">
+        <item name="colorAccent">@android:color/white</item> <!-- Whatever color you want-->
     </style>
 
 </resources>
