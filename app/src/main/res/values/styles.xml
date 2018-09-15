@@ -1,23 +1,31 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <!--APP THEME BASE-->
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/colorBackground</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="background">@color/colorControlNormal</item>
+    </style>
+
+    <!-- NORMAL APPLICATION THEME-->
+    <style name="AppTheme" parent="AppTheme.Base" />
+    <style name="AppTheme.Splash" parent="AppTheme.Base">
+        <item name="android:windowBackground">@android:color/black</item>
     </style>
 
     <!--TOOLBAR STYLES-->
     <!-- Toolbar Style -->
-    <style name="AppToolbar" parent="@style/ThemeOverlay.AppCompat.ActionBar"/>
+    <style name="AppToolbar" parent="@style/ThemeOverlay.AppCompat.ActionBar" />
 
     <style name="AppToolbar.Dark">
         <item name="android:titleTextColor" tools:targetApi="m">@android:color/white</item>
         <item name="titleTextColor">@android:color/white</item>
     </style>
+
     <style name="AppToolbar.Dark.Back">
-        <item name="colorControlNormal" >@android:color/white</item>
+        <item name="colorControlNormal">@android:color/white</item>
     </style>
 
     <style name="AppActionBar.Default" parent="@style/ThemeOverlay.AppCompat.ActionBar">

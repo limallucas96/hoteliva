@@ -9,7 +9,7 @@
     <!--LOGIN ACTIVITY-->
     <color name="colorEditTextHint">#7f7f7f</color>
     <color name="colorTextInput">#ffffff</color>
-
+    <color name="colorControlNormal">#FFFFFF</color>
 
 
 </resources>
