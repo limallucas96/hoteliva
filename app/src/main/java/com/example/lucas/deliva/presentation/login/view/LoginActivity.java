@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.UserReturn;
@@ -48,7 +49,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     }
 
 
-    private void checkUser() {
+    private void startOrderActivity() {
         Intent intent = new Intent(this, OrderActivity.class);
         startActivity(intent);
         finish();
@@ -56,19 +57,18 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     private void verifyFields() {
         String email = mEmail.getText().toString();
-        if(email.isEmpty()){
+        if (email.isEmpty()) {
             mTextInputLayoutLogin.setError(getString(R.string.login_empty_username));
             return;
         }
 
         String password = mPassword.getText().toString();
-        if(password.isEmpty()){
+        if (password.isEmpty()) {
             mTextInputLayoutPassword.setError(getString(R.string.login_empty_password));
             return;
         }
 
         mPresenter.login(email, password);
-        checkUser();
     }
 
     @OnClick(R.id.login_enter)
@@ -78,12 +78,12 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     public void showLoginSuccess(@NonNull UserReturn user) {
-
+        startOrderActivity();
     }
 
     @Override
     public void showLoginError() {
-
+        Toast.makeText(this, "Não foi possivel fazer login", Toast.LENGTH_LONG).show();
     }
 
 

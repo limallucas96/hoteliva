@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class WebServiceClient {
 
     private WebService mService;
-    static final String BASE_URL = "http://localhost:5000/";
+    static final String BASE_URL = "http://127.0.0.1:5000/";
 
 
     public WebServiceClient() {
