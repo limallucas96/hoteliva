@@ -2,6 +2,7 @@ package com.example.lucas.deliva.data.dao.user;
 
 import android.support.annotation.NonNull;
 
+import com.example.lucas.deliva.data.dao.PersistenceException;
 import com.example.lucas.deliva.data.model.User;
 import com.example.lucas.deliva.data.model.UserReturn;
 import com.example.lucas.deliva.data.remote.WebService;
@@ -19,26 +20,26 @@ public class UserDAO {
 
     public UserDAO() {
         mWebService = new WebServiceClient().getService();
-
     }
 
-    private UserReturn login(@NonNull final String username, @NonNull final String password) {
+    private UserReturn login(@NonNull final String username, @NonNull final String password) throws PersistenceException {
 
         User user = new User(username, password);
-        try{
+        try {
             WebService webService = new WebServiceClient().getService();
             Call<UserReturn> wsCall = webService.login(user);
             Response<UserReturn> response = wsCall.execute();
 
-            if(response.isSuccessful()){
+            if (response.isSuccessful()) {
                 return response.body();
+            } else {
+                String errorMessage = "Webservice Error";
+                throw new PersistenceException(errorMessage);
             }
 
-        }catch (IOException e){
+        } catch (IOException e) {
             String errorMessage = "IOException could not login " + e.getMessage();
             throw new PersistenceException(errorMessage);
         }
-
     }
-
 }
