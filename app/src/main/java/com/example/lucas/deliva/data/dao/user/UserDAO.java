@@ -22,7 +22,7 @@ public class UserDAO {
         mWebService = new WebServiceClient().getService();
     }
 
-    private UserReturn login(@NonNull final String username, @NonNull final String password) throws PersistenceException {
+    public UserReturn login(@NonNull final String username, @NonNull final String password) throws PersistenceException {
 
         User user = new User(username, password);
         try {

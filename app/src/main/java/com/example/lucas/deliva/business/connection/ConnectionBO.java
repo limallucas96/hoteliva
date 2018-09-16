@@ -6,7 +6,7 @@ import android.util.Log;
 import com.example.lucas.deliva.business.BusinessErrorCode;
 import com.example.lucas.deliva.business.BusinessException;
 import com.example.lucas.deliva.mechanism.connection.NetworkUtils;
-import com.example.lucas.deliva.presentation.AppApplication;
+import com.example.lucas.deliva.AppApplication;
 
 public class ConnectionBO {
 
@@ -15,7 +15,7 @@ public class ConnectionBO {
     public void assertInternetConnection() throws BusinessException {
 
         // Retrieve application context and ensure context retrieve is valid
-        Context applicationContext = AppApplication.getContext();
+        Context applicationContext = AppApplication.getAppContext();
         if (applicationContext == null) {
             String errorMessage = "Received invalid application context";
             Log.e(TAG, errorMessage);

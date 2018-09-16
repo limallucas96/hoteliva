@@ -6,21 +6,21 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 
-import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
 
 import com.example.lucas.deliva.presentation.login.view.LoginActivity;
 import com.example.lucas.deliva.R;
+import com.example.lucas.deliva.presentation.splash.presenter.SplashPresenter;
 
 
-public class SplashActivity extends BaseActivity implements SplashActivityView {
+public class SplashActivity extends BaseActivity<SplashPresenter> implements SplashActivityView {
 
     private static int SPLASH_TIME_OUT = 3000;
 
     @NonNull
     @Override
-    protected BasePresenter createPresenter(@NonNull Context context) {
-        return null;
+    protected SplashPresenter createPresenter(@NonNull Context context) {
+        return new SplashPresenter();
     }
 
     @Override

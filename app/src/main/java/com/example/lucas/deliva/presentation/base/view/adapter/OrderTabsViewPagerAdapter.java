@@ -10,7 +10,7 @@ import android.util.SparseArray;
 import android.view.ViewGroup;
 
 import com.example.lucas.deliva.R;
-import com.example.lucas.deliva.presentation.AppApplication;
+import com.example.lucas.deliva.AppApplication;
 
 public abstract class OrderTabsViewPagerAdapter extends FragmentPagerAdapter {
 
@@ -95,11 +95,11 @@ public abstract class OrderTabsViewPagerAdapter extends FragmentPagerAdapter {
 
         INVALID(-1, "INVALID"),
 
-        PROFILE_FRAGMENT(0, AppApplication.getContext().getString(R.string.profile_fragment_title)),
+        PROFILE_FRAGMENT(0, AppApplication.getAppContext().getString(R.string.profile_fragment_title)),
 
-        ORDERS_FRAGMENT(1, AppApplication.getContext().getString(R.string.orders_fragment_title)),
+        ORDERS_FRAGMENT(1, AppApplication.getAppContext().getString(R.string.orders_fragment_title)),
 
-        STATUS_FRAGMENT(2, AppApplication.getContext().getString(R.string.status_fragment_title));
+        STATUS_FRAGMENT(2, AppApplication.getAppContext().getString(R.string.status_fragment_title));
 
         private final int value;
         private final String name;

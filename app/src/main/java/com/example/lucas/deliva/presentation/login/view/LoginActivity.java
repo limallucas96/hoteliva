@@ -9,14 +9,15 @@ import android.support.design.widget.TextInputLayout;
 import android.view.View;
 
 import com.example.lucas.deliva.R;
-import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
+import com.example.lucas.deliva.data.model.UserReturn;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
+import com.example.lucas.deliva.presentation.login.presenter.LoginPresenter;
 import com.example.lucas.deliva.presentation.order.view.OrderActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class LoginActivity extends BaseActivity implements LoginActivityView {
+public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginView {
 
     @BindView(R.id.login_text_input_layout)
     protected TextInputLayout mTextInputLayoutLogin;
@@ -32,8 +33,8 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
 
     @NonNull
     @Override
-    protected BasePresenter createPresenter(@NonNull Context context) {
-        return null;
+    protected LoginPresenter createPresenter(@NonNull Context context) {
+        return new LoginPresenter(this);
     }
 
     @Override
@@ -47,34 +48,36 @@ public class LoginActivity extends BaseActivity implements LoginActivityView {
     }
 
 
-    private void checkUser(){
+    private void checkUser() {
         Intent intent = new Intent(this, OrderActivity.class);
         startActivity(intent);
         finish();
     }
 
-    private void verifyFields(){
+    private void verifyFields() {
         String email = mEmail.getText().toString();
-//        if(email.isEmpty()){
-//            mTextInputLayoutLogin.setError(getString(R.string.login_empty_username));
-//            return;
-//        }
-//
-//        String password = mPassword.getText().toString();
-//        if(password.isEmpty()){
-//            mTextInputLayoutPassword.setError(getString(R.string.login_empty_password));
-//            return;
-//        }
+        if(email.isEmpty()){
+            mTextInputLayoutLogin.setError(getString(R.string.login_empty_username));
+            return;
+        }
 
+        String password = mPassword.getText().toString();
+        if(password.isEmpty()){
+            mTextInputLayoutPassword.setError(getString(R.string.login_empty_password));
+            return;
+        }
+
+        mPresenter.login(email, password);
         checkUser();
     }
 
-    @OnClick(R.id.login_enter) public void onLoginClick(View view){
+    @OnClick(R.id.login_enter)
+    public void onLoginClick(View view) {
         verifyFields();
     }
 
     @Override
-    public void showLoginSuccess() {
+    public void showLoginSuccess(@NonNull UserReturn user) {
 
     }
 
