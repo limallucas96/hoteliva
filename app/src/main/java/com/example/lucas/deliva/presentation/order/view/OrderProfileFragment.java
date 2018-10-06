@@ -15,17 +15,7 @@ import com.example.lucas.deliva.presentation.base.view.AdapterAwareFragment;
 
 import butterknife.BindView;
 
-public class OrderProfileFragment extends BaseFragment<BasePresenter> implements AdapterAwareFragment<OrderActivity> {
-
-
-    @BindView(R.id.tab_layout)
-    protected TabLayout mTabLayout;
-
-    @BindView(R.id.view_pager)
-    protected ViewPager mViewPager;
-    private OrderTabsViewPagerAdapter mViewPagerAdapter;
-    private int mCurrentFragmentPosition;
-
+public class OrderProfileFragment extends BaseFragment<BasePresenter> {
 
     @NonNull
     @Override
@@ -41,58 +31,6 @@ public class OrderProfileFragment extends BaseFragment<BasePresenter> implements
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        setupViewPager();
     }
 
-
-    private void setupViewPager() {
-        mCurrentFragmentPosition = OrderTabsViewPagerAdapter.FragmentType.PROFILE_FRAGMENT.getValue();
-        mViewPagerAdapter = new OrderTabsViewPagerAdapter(getChildFragmentManager(), getActivity()) {
-
-            @Override
-            protected void onFragmentsCreated() {
-                sendAdapterAwareFragmentsCallbacks(0);
-            }
-        };
-
-        mViewPager.setOffscreenPageLimit(mViewPagerAdapter.getCount());
-        mViewPager.setAdapter(mViewPagerAdapter);
-
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            @Override
-            public void onPageScrolled(final int position, final float positionOffset, final int positionOffsetPixels) {
-            }
-
-            @Override
-            public void onPageSelected(final int position) {
-                mCurrentFragmentPosition = position;
-                sendAdapterAwareFragmentsCallbacks(position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(final int state) {
-            }
-        });
-
-        mTabLayout.setupWithViewPager(mViewPager);
-    }
-
-    public void sendAdapterAwareFragmentsCallbacks(final int position) {
-        int totalPages = mViewPagerAdapter.getCount();
-        for (int i = 0; i < totalPages; i++) {
-            final Fragment fragment = mViewPagerAdapter.getFragment(i);
-            if (fragment instanceof AdapterAwareFragment) {
-                AdapterAwareFragment adapterAwareFragment = (AdapterAwareFragment) fragment;
-                if (i == position) {
-                    adapterAwareFragment.onAdapterChangedToThisFragment(getActivity());
-                }
-            }
-        }
-    }
-
-    @Override
-    public void onAdapterChangedToThisFragment(@NonNull OrderActivity activity) {
-
-    }
 }

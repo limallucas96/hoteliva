@@ -2,17 +2,12 @@ package com.example.lucas.deliva.presentation.order.view;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.Toolbar;
-import android.widget.TextView;
 
 import com.example.lucas.deliva.R;
-import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
 import com.example.lucas.deliva.presentation.base.view.BaseFragment;
-import com.example.lucas.deliva.presentation.order.presenter.OrderMainFragmentPresenter;
+import com.example.lucas.deliva.presentation.order.presenter.OrderStatusFragmentPresenter;
 
-import butterknife.BindView;
-
-public class OrderMainFragment extends BaseFragment<OrderMainFragmentPresenter>{
+public class OrderStatusFragment extends BaseFragment<OrderStatusFragmentPresenter>{
 
 //    @BindView(R.id.toolbar)
 //    protected Toolbar mToolbar;
@@ -25,8 +20,8 @@ public class OrderMainFragment extends BaseFragment<OrderMainFragmentPresenter>{
 
     @NonNull
     @Override
-    protected OrderMainFragmentPresenter createPresenter(@NonNull Context context) {
-        return new OrderMainFragmentPresenter(this);
+    protected OrderStatusFragmentPresenter createPresenter(@NonNull Context context) {
+        return new OrderStatusFragmentPresenter(this);
     }
 
     @Override
