@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <LinearLayout
@@ -11,31 +9,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tab_layout"
+        <TextView
+            android:layout_marginTop="200dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:targetApi="lollipop"
-            android:background="@android:color/white"
-            android:elevation="6dp"
-            app:tabBackground="@color/colorPrimary"
-            app:tabTextColor="@android:color/white"
-            app:tabSelectedTextColor="@android:color/white"
-            app:tabIndicatorColor="@android:color/white"
-            app:tabMode="fixed"
-            app:tabGravity="fill"/>
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/view_pager"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <android.support.v4.widget.SwipeRefreshLayout
-            android:id="@+id/list_swipe_refresh"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp"/>
-
+            android:layout_gravity="center"
+            android:text="sadadsadsadsadsadsadsadsadsadasdasd" />
     </LinearLayout>
 
 </FrameLayout>

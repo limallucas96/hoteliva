@@ -6,15 +6,17 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.app.Fragment;
+
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
 import com.example.lucas.deliva.presentation.base.view.AdapterAwareFragment;
 import com.example.lucas.deliva.presentation.base.view.BaseFragment;
 import com.example.lucas.deliva.presentation.base.view.adapter.OrderTabsViewPagerAdapter;
+import com.example.lucas.deliva.presentation.order.presenter.OrdersFragmentPresenter;
 
 import butterknife.BindView;
 
-public class OrdersFragment extends BaseFragment<BasePresenter> implements AdapterAwareFragment<OrderActivity> {
+public class OrdersFragment extends BaseFragment<OrdersFragmentPresenter> implements AdapterAwareFragment<OrderActivity> {
 
 
     @BindView(R.id.tab_layout)
@@ -28,8 +30,8 @@ public class OrdersFragment extends BaseFragment<BasePresenter> implements Adapt
 
     @NonNull
     @Override
-    protected BasePresenter createPresenter(@NonNull Context context) {
-        return BasePresenter.nullPresenter(context);
+    protected OrdersFragmentPresenter createPresenter(@NonNull Context context) {
+        return new OrdersFragmentPresenter(this);
     }
 
     @Override
@@ -50,7 +52,7 @@ public class OrdersFragment extends BaseFragment<BasePresenter> implements Adapt
 
             @Override
             protected void onFragmentsCreated() {
-                sendAdapterAwareFragmentsCallbacks(1);
+                sendAdapterAwareFragmentsCallbacks(0);
             }
         };
 

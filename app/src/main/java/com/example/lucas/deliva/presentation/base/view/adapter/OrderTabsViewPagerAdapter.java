@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.AppApplication;
+import com.example.lucas.deliva.presentation.order.view.OrderMainFragment;
+import com.example.lucas.deliva.presentation.order.view.OrderProfileFragment;
+import com.example.lucas.deliva.presentation.order.view.OrdersFragment;
 
 public abstract class OrderTabsViewPagerAdapter extends FragmentPagerAdapter {
 
@@ -75,18 +78,18 @@ public abstract class OrderTabsViewPagerAdapter extends FragmentPagerAdapter {
         FragmentType fragmentType = FragmentType.fromInt(position);
         switch (fragmentType) {
             case PROFILE_FRAGMENT:
-                return null;
+                return new OrderMainFragment();
             case ORDERS_FRAGMENT:
-                return null;
+                return new OrderMainFragment();
             case STATUS_FRAGMENT:
-                return null;
+                return new OrderMainFragment();
         }
         return null;
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return NUMBER_OF_PAGES;
     }
 
     protected abstract void onFragmentsCreated();

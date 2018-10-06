@@ -84,6 +84,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @Override
     public void showLoginError() {
         Toast.makeText(this, "Não foi possivel fazer login", Toast.LENGTH_LONG).show();
+        startOrderActivity(); // TODO - Remove later
     }
 
 

@@ -8,24 +8,25 @@ import android.widget.TextView;
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
 import com.example.lucas.deliva.presentation.base.view.BaseFragment;
+import com.example.lucas.deliva.presentation.order.presenter.OrderMainFragmentPresenter;
 
 import butterknife.BindView;
 
-public class OrderMainFragment extends BaseFragment<BasePresenter> {
+public class OrderMainFragment extends BaseFragment<OrderMainFragmentPresenter>{
 
-    @BindView(R.id.toolbar)
-    protected Toolbar mToolbar;
-
-    @BindView(R.id.title)
-    protected TextView mTitle;
+//    @BindView(R.id.toolbar)
+//    protected Toolbar mToolbar;
+//
+//    @BindView(R.id.title)
+//    protected TextView mTitle;
 
 
 
 
     @NonNull
     @Override
-    protected BasePresenter createPresenter(@NonNull Context context) {
-        return null;
+    protected OrderMainFragmentPresenter createPresenter(@NonNull Context context) {
+        return new OrderMainFragmentPresenter(this);
     }
 
     @Override

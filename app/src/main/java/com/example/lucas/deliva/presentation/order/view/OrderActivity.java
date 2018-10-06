@@ -1,13 +1,15 @@
 package com.example.lucas.deliva.presentation.order.view;
 
-import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.lucas.deliva.R;
@@ -30,6 +32,13 @@ public class OrderActivity extends BaseActivity<OrderActivityPresenter> implemen
     @BindView(R.id.title)
     protected TextView mTextView;
 
+    @BindView(R.id.fragments)
+    protected FrameLayout mFrameFragment;
+
+    private OrdersFragment mOrdersFragment;
+    private OrderProfileFragment mOrderProfileFragment;
+
+
 
     @NonNull
     @Override
@@ -46,6 +55,7 @@ public class OrderActivity extends BaseActivity<OrderActivityPresenter> implemen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setToolbar();
+        setupFirstFragment();
     }
 
     private void setToolbar(){
@@ -53,7 +63,30 @@ public class OrderActivity extends BaseActivity<OrderActivityPresenter> implemen
             setSupportActionBar(mToolbar);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-            mTextView.setText("home");
+            mTextView.setText("QUARTO 7");
         }
     }
+
+    private void setupFirstFragment(){
+        clearFragmentBackStack();
+        changeFragmentAddToStack("QUARTO 7", mOrdersFragment == null ?
+                mOrdersFragment = new OrdersFragment() : mOrdersFragment);
+    }
+
+
+    private void clearFragmentBackStack() {
+        FragmentManager fm = getSupportFragmentManager();
+        for (int i = 0; i < fm.getBackStackEntryCount(); ++i) {
+            fm.popBackStack();
+        }
+    }
+
+    public void changeFragmentAddToStack(@NonNull final String title, @NonNull final Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.add(R.id.fragments, fragment);
+        transaction.addToBackStack(fragment.getClass().getSimpleName());
+        transaction.commit();
+        mTextView.setText(title);
+    }
+
 }
