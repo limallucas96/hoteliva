@@ -1,6 +1,7 @@
 package com.example.lucas.deliva.presentation.order.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -22,7 +23,11 @@ import java.util.List;
 
 import butterknife.BindView;
 
+import static com.example.lucas.deliva.presentation.order.view.OrderDetailsActivity.EXTRA_KEY_MENU;
+
 public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> {
+
+    private static final int REQUEST_CODE_CONCLUDED = 1000;
 
     @BindView(R.id.recycler_view)
     protected RecyclerView mRecycleView;
@@ -58,18 +63,14 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
 
         mRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecycleView.setAdapter(mMenuAdapter);
-        mMenuAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<Menu>() {
-            @Override
-            public void onItemClickListener(@NonNull View view, @NonNull Menu item) {
-
-            }
-        });
         mMenuAdapter.setData(mMenuList);
 
         mMenuAdapter.setOnItemClickListener(new OrderMenuRecycleAdapter.OnItemClickListener() {
             @Override
             public void onItemCLlickListener(@NonNull Menu menu, @NonNull int position) {
-                Toast.makeText(getContext(), menu.getTitle(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), OrderDetailsActivity.class);
+                intent.putExtra(EXTRA_KEY_MENU, menu);
+                startActivityForResult(intent, REQUEST_CODE_CONCLUDED);
             }
         });
     }
