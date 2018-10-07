@@ -9,6 +9,13 @@ public class Menu implements Serializable {
     private Double price;
     private String imageUrl;
 
+    public Menu(String title, String description, Double price, String imageUrl) {
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.imageUrl = imageUrl;
+    }
+
     public String getTitle() {
         return title;
     }

@@ -1,20 +1,39 @@
 package com.example.lucas.deliva.presentation.order.view;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.lucas.deliva.R;
+import com.example.lucas.deliva.data.model.mock.Menu;
 import com.example.lucas.deliva.presentation.base.view.BaseFragment;
+import com.example.lucas.deliva.presentation.base.view.adapter.BaseRecyclerAdapter;
+import com.example.lucas.deliva.presentation.order.adapter.OrderMenuRecycleAdapter;
 import com.example.lucas.deliva.presentation.order.presenter.OrderMenuFragmentPresenter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
 
 public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> {
 
-//    @BindView(R.id.toolbar)
-//    protected Toolbar mToolbar;
-//
-//    @BindView(R.id.title)
-//    protected TextView mTitle;
+    @BindView(R.id.recycler_view)
+    protected RecyclerView mRecycleView;
 
+    @BindView(R.id.swipe_refresh_layout)
+    protected SwipeRefreshLayout mSwipeRefreshLayout;
+
+    private OrderMenuRecycleAdapter mMenuAdapter;
+
+    //TODO - Mock. Remove later
+    private List<Menu> mMenuList = new ArrayList<>();
 
     @NonNull
     @Override
@@ -23,8 +42,44 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
     }
 
     @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        setRecycleMockData();
+        setupRecycle();
+    }
+
+    @Override
     public int getLayoutId() {
         return R.layout.fragment_order_menu;
+    }
+
+    private void setupRecycle() {
+        mMenuAdapter = new OrderMenuRecycleAdapter();
+
+        mRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecycleView.setAdapter(mMenuAdapter);
+        mMenuAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener<Menu>() {
+            @Override
+            public void onItemClickListener(@NonNull View view, @NonNull Menu item) {
+
+            }
+        });
+        mMenuAdapter.setData(mMenuList);
+
+        mMenuAdapter.setOnItemClickListener(new OrderMenuRecycleAdapter.OnItemClickListener() {
+            @Override
+            public void onItemCLlickListener(@NonNull Menu menu, @NonNull int position) {
+                Toast.makeText(getContext(), menu.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void setRecycleMockData() {
+        mMenuList.add(new Menu("Diogo", "Silva", 00.00, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
+        mMenuList.add(new Menu("Lucas", "Lima", 19.99,"https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
+        mMenuList.add(new Menu("Bruno", "Silva", 9.99,"https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
+        mMenuList.add(new Menu("Sergio", "Furgeri", 10.00,"https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
+        mMenuList.add(new Menu("ADS", "6 Semestre", 6.66, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
     }
 }
 
