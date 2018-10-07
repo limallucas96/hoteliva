@@ -10,7 +10,9 @@ import android.support.v7.widget.Toolbar;
 
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.mock.Menu;
+import com.example.lucas.deliva.data.model.mock.OrderDetailImage;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
+import com.example.lucas.deliva.presentation.order.adapter.OrderDetailImageReycleAdapter;
 import com.example.lucas.deliva.presentation.order.adapter.OrderMenuRecycleAdapter;
 import com.example.lucas.deliva.presentation.order.presenter.OrderDetailsActivityPresenter;
 
@@ -29,10 +31,10 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
     @BindView(R.id.recycler_view)
     protected RecyclerView mRecycleView;
 
-    private OrderMenuRecycleAdapter mMenuAdapter;
+    private OrderDetailImageReycleAdapter mImageAdapter;
 
     //TODO - Mock. Remove later
-    private List<Menu> mMenuList = new ArrayList<>();
+    private List<OrderDetailImage> mImageList = new ArrayList<>();
 
     @NonNull
     @Override
@@ -63,18 +65,18 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
     }
 
     private void setupRecycle() {
-        mMenuAdapter = new OrderMenuRecycleAdapter();
+        mImageAdapter = new OrderDetailImageReycleAdapter();
 
         mRecycleView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true));
-        mRecycleView.setAdapter(mMenuAdapter);
-        mMenuAdapter.setData(mMenuList);
+        mRecycleView.setAdapter(mImageAdapter);
+        mImageAdapter.setData(mImageList);
     }
 
     private void setRecycleMockData() {
-        mMenuList.add(new Menu("Diogo", "Silva", 00.00, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
-        mMenuList.add(new Menu("Lucas", "Lima", 19.99, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
-        mMenuList.add(new Menu("Bruno", "Silva", 9.99, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
-        mMenuList.add(new Menu("Sergio", "Furgeri", 10.00, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
-        mMenuList.add(new Menu("ADS", "6 Semestre", 6.66, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
+        mImageList.add(new OrderDetailImage("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
+        mImageList.add(new OrderDetailImage("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
+        mImageList.add(new OrderDetailImage("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
+        mImageList.add(new OrderDetailImage("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
+        mImageList.add(new OrderDetailImage("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
     }
 }
