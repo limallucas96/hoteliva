@@ -21,13 +21,6 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
             <!--expandedtitletextapperance-->
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="350dp"
-                android:contentDescription="image view"
-                android:scaleType="centerCrop"
-                tools:srcCompat="@tools:sample/backgrounds/scenic[0]" />
-
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -35,6 +28,15 @@
                 android:title="teste title"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                tools:listitem="@layout/view_item_order_detail_pictures" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
@@ -72,10 +74,10 @@
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:elevation="5dp"
         android:src="@drawable/app_icon"
-        app:pressedTranslationZ="12dp"
+        app:elevation="5dp"
         app:layout_anchor="@id/app_bar_layout"
-        app:layout_anchorGravity="bottom|right|end"/>
+        app:layout_anchorGravity="bottom|right|end"
+        app:pressedTranslationZ="12dp" />
 
 </android.support.design.widget.CoordinatorLayout>
