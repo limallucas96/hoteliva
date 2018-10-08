@@ -15,6 +15,7 @@ import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.mock.Menu;
 import com.example.lucas.deliva.presentation.base.view.BaseFragment;
 import com.example.lucas.deliva.presentation.base.view.adapter.BaseRecyclerAdapter;
+import com.example.lucas.deliva.presentation.cart.view.CartActivity;
 import com.example.lucas.deliva.presentation.order.adapter.OrderMenuRecycleAdapter;
 import com.example.lucas.deliva.presentation.order.presenter.OrderMenuFragmentPresenter;
 
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 import static com.example.lucas.deliva.presentation.order.view.OrderDetailsActivity.EXTRA_KEY_MENU;
 
@@ -77,10 +79,17 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
 
     private void setRecycleMockData() {
         mMenuList.add(new Menu("Korean", "Barbecue", 19.90, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
-        mMenuList.add(new Menu("Lucas", "Lima", 19.99,"https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
-        mMenuList.add(new Menu("Bruno", "Silva", 9.99,"https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
-        mMenuList.add(new Menu("Sergio", "Furgeri", 10.00,"https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
+        mMenuList.add(new Menu("Lucas", "Lima", 19.99, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
+        mMenuList.add(new Menu("Bruno", "Silva", 9.99, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
+        mMenuList.add(new Menu("Sergio", "Furgeri", 10.00, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
         mMenuList.add(new Menu("ADS", "6 Semestre", 6.66, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
     }
+
+    @OnClick(R.id.cart)
+    protected void openCart() {
+        Intent intent = new Intent(getContext(), CartActivity.class);
+        startActivity(intent);
+    }
+
 }
 
