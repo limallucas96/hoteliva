@@ -76,7 +76,7 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
     }
 
     private void setRecycleMockData() {
-        mMenuList.add(new Menu("Diogo", "Silva", 00.00, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
+        mMenuList.add(new Menu("Korean", "Barbecue", 19.90, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
         mMenuList.add(new Menu("Lucas", "Lima", 19.99,"https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
         mMenuList.add(new Menu("Bruno", "Silva", 9.99,"https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
         mMenuList.add(new Menu("Sergio", "Furgeri", 10.00,"https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));

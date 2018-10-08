@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.lucas.deliva"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -58,4 +58,6 @@ dependencies {
     //CardView for layout
     implementation 'com.android.support:cardview-v7:28.0.0'
 
+    //Stepindicator for recycleview or page adapter
+    implementation 'com.ryanjeffreybrooks:indefinitepagerindicator:1.0.10'
 }

@@ -1,20 +1,28 @@
 package com.example.lucas.deliva.presentation.order.view;
 
+import android.animation.Animator;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
 
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.mock.Menu;
 import com.example.lucas.deliva.data.model.mock.OrderDetailImage;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
+import com.example.lucas.deliva.presentation.order.adapter.AppBarStateChangeListener;
 import com.example.lucas.deliva.presentation.order.adapter.OrderDetailImageReycleAdapter;
 import com.example.lucas.deliva.presentation.order.adapter.OrderMenuRecycleAdapter;
 import com.example.lucas.deliva.presentation.order.presenter.OrderDetailsActivityPresenter;
+import com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +38,12 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
 
     @BindView(R.id.recycler_view)
     protected RecyclerView mRecycleView;
+
+    @BindView(R.id.app_bar_layout)
+    protected AppBarLayout mBarLayour;
+
+    @BindView(R.id.recycler_view_indicator)
+    protected IndefinitePagerIndicator mStepIndicator;
 
     private OrderDetailImageReycleAdapter mImageAdapter;
 
@@ -53,6 +67,7 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
         setRecycleMockData();
         setupRecycle();
         setToolbar();
+        hideRecycle();
     }
 
     private void setToolbar() {
@@ -67,9 +82,13 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
     private void setupRecycle() {
         mImageAdapter = new OrderDetailImageReycleAdapter();
 
-        mRecycleView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true));
+        mRecycleView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        mStepIndicator.attachToRecyclerView(mRecycleView);
         mRecycleView.setAdapter(mImageAdapter);
         mImageAdapter.setData(mImageList);
+        SnapHelper snapHelper = new PagerSnapHelper();
+        snapHelper.attachToRecyclerView(mRecycleView);
+
     }
 
     private void setRecycleMockData() {
@@ -78,5 +97,23 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
         mImageList.add(new OrderDetailImage("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
         mImageList.add(new OrderDetailImage("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
         mImageList.add(new OrderDetailImage("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
+    }
+
+    private void hideRecycle() {
+        mBarLayour.addOnOffsetChangedListener(new AppBarStateChangeListener() {
+            @Override
+            public void onStateChanged(AppBarLayout appBarLayout, State state) {
+                switch (state) {
+                    case IDLE:
+                        mRecycleView.setVisibility(View.VISIBLE);
+                        break;
+                    case EXPANDED:
+                        mRecycleView.setVisibility(View.VISIBLE);
+                        break;
+                    case COLLAPSED:
+                        mRecycleView.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 }
