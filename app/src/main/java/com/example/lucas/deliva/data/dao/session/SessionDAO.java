@@ -32,7 +32,7 @@ public class SessionDAO {
     }
 
     @Nullable
-    public Order getValuationOnGoing() {
+    public Order getOrderOnGoing() {
         String jsonValuation = mSharedPreferences.getString(KEY_ORDER_ON_GOING, null);
         if (jsonValuation != null) {
             return mGson.fromJson(jsonValuation, Order.class);
