@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Menu implements Serializable {
 
+    private Integer menuId;
     private String title;
     private String description;
     private Double price;
@@ -46,5 +47,13 @@ public class Menu implements Serializable {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public Integer getMenuId() {
+        return menuId;
+    }
+
+    public void setMenuId(Integer menuId) {
+        this.menuId = menuId;
     }
 }
