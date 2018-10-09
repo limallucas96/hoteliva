@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.mock.Menu;
+import com.example.lucas.deliva.data.model.mock.Order;
 import com.example.lucas.deliva.presentation.base.view.BaseFragment;
 import com.example.lucas.deliva.presentation.base.view.adapter.BaseRecyclerAdapter;
 import com.example.lucas.deliva.presentation.cart.view.CartActivity;
@@ -25,11 +26,12 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-import static com.example.lucas.deliva.presentation.order.view.OrderDetailsActivity.EXTRA_KEY_MENU;
+import static android.app.Activity.RESULT_OK;
 
 public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> {
 
     private static final int REQUEST_CODE_CONCLUDED = 1000;
+    public static final String KEY_EXTRA_MENU = "KEY_EXTRA_MENU";
 
     @BindView(R.id.recycler_view)
     protected RecyclerView mRecycleView;
@@ -41,6 +43,8 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
 
     //TODO - Mock. Remove later
     private List<Menu> mMenuList = new ArrayList<>();
+    private Menu mMenu;
+    private Order mOrder;
 
     @NonNull
     @Override
@@ -71,18 +75,18 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
             @Override
             public void onItemCLlickListener(@NonNull Menu menu, @NonNull int position) {
                 Intent intent = new Intent(getContext(), OrderDetailsActivity.class);
-                intent.putExtra(EXTRA_KEY_MENU, menu);
+                intent.putExtra(KEY_EXTRA_MENU, menu);
                 startActivityForResult(intent, REQUEST_CODE_CONCLUDED);
             }
         });
     }
 
     private void setRecycleMockData() {
-        mMenuList.add(new Menu("Korean", "Barbecue", 19.90, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
-        mMenuList.add(new Menu("Lucas", "Lima", 19.99, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
-        mMenuList.add(new Menu("Bruno", "Silva", 9.99, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
-        mMenuList.add(new Menu("Sergio", "Furgeri", 10.00, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
-        mMenuList.add(new Menu("ADS", "6 Semestre", 6.66, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
+        mMenuList.add(new Menu(1, "Korean", "Barbecue", 19.90, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
+        mMenuList.add(new Menu(2, "Lucas", "Lima", 19.99, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
+        mMenuList.add(new Menu(3, "Bruno", "Silva", 9.99, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
+        mMenuList.add(new Menu(4, "Sergio", "Furgeri", 10.00, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
+        mMenuList.add(new Menu(5, "ADS", "6 Semestre", 6.66, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
     }
 
     @OnClick(R.id.cart)
@@ -91,5 +95,22 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
         startActivity(intent);
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_CONCLUDED) {
+            if (resultCode == RESULT_OK) {
+                mMenu = (Menu) data.getSerializableExtra(OrderDetailsActivity.MENU);
+                if (mOrder == null) {
+                    mOrder = new Order();
+                }
+                if (mOrder.getMenuList() == null) {
+                    mOrder.setMenuList(new ArrayList<Menu>());
+                }
+                mOrder.getMenuList().add(mMenu);
+
+            }
+        }
+    }
 }
 

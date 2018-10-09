@@ -6,10 +6,13 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.example.lucas.deliva.R;
+import com.example.lucas.deliva.data.model.mock.Order;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
 import com.example.lucas.deliva.presentation.cart.presenter.CartActivityPresenter;
 
 public class CartActivity extends BaseActivity<CartActivityPresenter> implements CartActivityView {
+
+    private Order mOrder;
 
     @NonNull
     @Override
@@ -26,5 +29,7 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mOrder = mPresenter.getOrder();
     }
 }

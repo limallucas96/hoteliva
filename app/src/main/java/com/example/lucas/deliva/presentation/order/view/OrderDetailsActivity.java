@@ -2,6 +2,7 @@ package com.example.lucas.deliva.presentation.order.view;
 
 import android.animation.Animator;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,6 +17,7 @@ import android.view.View;
 
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.mock.Menu;
+import com.example.lucas.deliva.data.model.mock.Order;
 import com.example.lucas.deliva.data.model.mock.OrderDetailImage;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
 import com.example.lucas.deliva.presentation.order.adapter.AppBarStateChangeListener;
@@ -28,10 +30,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
+
+import static com.example.lucas.deliva.presentation.order.view.OrderMenuFragment.KEY_EXTRA_MENU;
 
 public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPresenter> implements OrderDetailsView {
 
-    static final String EXTRA_KEY_MENU = "EXTRA_KEY_MENU";
+    public final static String MENU = "MENU";
 
     @BindView(R.id.toolbar)
     protected Toolbar mToolbar;
@@ -46,6 +51,9 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
     protected IndefinitePagerIndicator mStepIndicator;
 
     private OrderDetailImageReycleAdapter mImageAdapter;
+
+    private Menu mMenu;
+    private Order mOrder;
 
     //TODO - Mock. Remove later
     private List<OrderDetailImage> mImageList = new ArrayList<>();
@@ -64,6 +72,11 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (getIntent().getSerializableExtra(KEY_EXTRA_MENU) != null) {
+            mMenu = (Menu) getIntent().getSerializableExtra(KEY_EXTRA_MENU);
+        }
+
         setRecycleMockData();
         setupRecycle();
         setToolbar();
@@ -115,5 +128,13 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
                 }
             }
         });
+    }
+
+    @OnClick(R.id.save)
+    protected void save() {
+        Intent intent = new Intent();
+        intent.putExtra(MENU, mMenu);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 }
