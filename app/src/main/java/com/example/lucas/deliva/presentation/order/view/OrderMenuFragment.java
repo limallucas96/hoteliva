@@ -107,8 +107,9 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
                 if (mOrder.getMenuList() == null) {
                     mOrder.setMenuList(new ArrayList<Menu>());
                 }
-                mOrder.getMenuList().add(mMenu);
-
+                if (mMenu != null) {
+                    mOrder.getMenuList().add(mMenu);
+                }
             }
         }
     }
