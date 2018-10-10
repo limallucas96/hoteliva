@@ -34,4 +34,8 @@ public class SessionBO {
     public UserReturn getUser(){
        return mSessionDAO.getUser();
     }
+
+    public void logoutUser(){
+        mSessionDAO.logoutUser();
+    }
 }

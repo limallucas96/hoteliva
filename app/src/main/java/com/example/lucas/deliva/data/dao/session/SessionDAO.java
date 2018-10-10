@@ -92,6 +92,12 @@ public class SessionDAO {
         editor.putString(KEY_USER, mGson.toJson(user));
         editor.apply();
     }
+
+    public void logoutUser() {
+        final SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+    }
 //END USER DAO
 
 }
