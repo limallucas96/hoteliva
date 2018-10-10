@@ -12,12 +12,6 @@ public class User implements Serializable {
     @SerializedName("pwd")
     private String password;
 
-    @SerializedName("user_id")
-    private String userId;
-
-    @SerializedName("room_id")
-    private String roomId;
-
     public User(String user, String password) {
         this.user = user;
         this.password = password;

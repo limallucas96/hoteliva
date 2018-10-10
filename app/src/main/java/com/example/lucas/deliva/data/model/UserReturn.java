@@ -18,6 +18,14 @@ public class UserReturn implements Serializable {
     @SerializedName("is_authenticated")
     private Integer isAuthenticaded;
 
+    @SerializedName("user_id")
+    private String userId;
+
+    @SerializedName("room_id")
+    private String roomId;
+
+    private Boolean isLogged = false;
+
     public String getName() {
         return name;
     }
@@ -48,6 +56,30 @@ public class UserReturn implements Serializable {
 
     public void setIsAuthenticaded(Integer isAuthenticaded) {
         this.isAuthenticaded = isAuthenticaded;
+    }
+
+    public Boolean getLogged() {
+        return isLogged;
+    }
+
+    public void setLogged(Boolean logged) {
+        isLogged = logged;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
     }
 }
 

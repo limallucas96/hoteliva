@@ -3,8 +3,10 @@ package com.example.lucas.deliva.presentation.login.presenter;
 import android.support.annotation.NonNull;
 
 import com.example.lucas.deliva.business.BusinessException;
+import com.example.lucas.deliva.business.session.SessionBO;
 import com.example.lucas.deliva.controller.ControllerListener;
 import com.example.lucas.deliva.controller.user.UserController;
+import com.example.lucas.deliva.data.model.User;
 import com.example.lucas.deliva.data.model.UserReturn;
 import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
 import com.example.lucas.deliva.presentation.login.view.LoginView;
@@ -13,10 +15,12 @@ public class LoginPresenter extends BasePresenter {
 
     private final LoginView mView;
     private final UserController mUserController;
+    private final SessionBO mSessionBO;
 
     public LoginPresenter(LoginView view) {
         mView = view;
         mUserController = new UserController();
+        mSessionBO = new SessionBO();
     }
 
     public UserReturn login(@NonNull final String email,
@@ -36,6 +40,10 @@ public class LoginPresenter extends BasePresenter {
             }
         });
         return null;
+    }
+
+    public void setUser(UserReturn user) {
+        mSessionBO.setUser(user);
     }
 
 

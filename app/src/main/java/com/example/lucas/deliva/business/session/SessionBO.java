@@ -1,6 +1,8 @@
 package com.example.lucas.deliva.business.session;
 
 import com.example.lucas.deliva.data.dao.session.SessionDAO;
+import com.example.lucas.deliva.data.model.User;
+import com.example.lucas.deliva.data.model.UserReturn;
 import com.example.lucas.deliva.data.model.mock.Order;
 
 public class SessionBO {
@@ -23,5 +25,13 @@ public class SessionBO {
 
     public void removeOrder() {
         mSessionDAO.removeOrder();
+    }
+
+    public void setUser(UserReturn user) {
+        mSessionDAO.setUser(user);
+    }
+
+    public UserReturn getUser(){
+       return mSessionDAO.getUser();
     }
 }

@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import com.example.lucas.deliva.AppApplication;
 import com.example.lucas.deliva.BuildConfig;
 import com.example.lucas.deliva.data.model.User;
+import com.example.lucas.deliva.data.model.UserReturn;
 import com.example.lucas.deliva.data.model.mock.Order;
 import com.google.gson.Gson;
 
@@ -55,17 +56,17 @@ public class SessionDAO {
 //    END ORDER DAO
 
     //    BEGIN USER DAO
-    public void setUser(User user) {
+    public void setUser(UserReturn user) {
         final SharedPreferences.Editor editor = mSharedPreferences.edit();
         editor.putString(KEY_USER, mGson.toJson(user));
         editor.apply();
     }
 
     @Nullable
-    public User getUser() {
+    public UserReturn getUser() {
         String jsonValuation = mSharedPreferences.getString(KEY_USER, null);
         if (jsonValuation != null) {
-            return mGson.fromJson(jsonValuation, User.class);
+            return mGson.fromJson(jsonValuation, UserReturn.class);
         }
 
         return null;
@@ -77,12 +78,16 @@ public class SessionDAO {
         editor.apply();
     }
 
-    public void setLoggedUser(User user) {
+    public boolean isLogged() {
+        return mSharedPreferences.getBoolean(KEY_USER_LOGGED_IN, false);
+    }
+
+    public void setLoggedUser(UserReturn user) {
         updateUser(user);
         updateLoggedIn(true);
     }
 
-    private void updateUser(@NonNull final User user) {
+    private void updateUser(@NonNull final UserReturn user) {
         final SharedPreferences.Editor editor = mSharedPreferences.edit();
         editor.putString(KEY_USER, mGson.toJson(user));
         editor.apply();
