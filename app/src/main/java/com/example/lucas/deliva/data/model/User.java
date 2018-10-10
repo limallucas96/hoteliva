@@ -4,13 +4,19 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class User implements Serializable{
+public class User implements Serializable {
 
     @SerializedName("user")
     private String user;
 
     @SerializedName("pwd")
     private String password;
+
+    @SerializedName("user_id")
+    private String userId;
+
+    @SerializedName("room_id")
+    private String roomId;
 
     public User(String user, String password) {
         this.user = user;
