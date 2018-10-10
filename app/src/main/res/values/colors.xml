@@ -5,7 +5,7 @@
     <color name="colorAccent">#ff6434</color>
 
     <!--APP THEMES-->
-    <!--<color name="colorBackground">#dd2c00</color>-->
+    <color name="colorBackgroundActivity">#dd2c00</color>
     <!--LOGIN ACTIVITY-->
     <color name="colorEditTextHint">#7f7f7f</color>
     <color name="colorTextInput">#ffffff</color>

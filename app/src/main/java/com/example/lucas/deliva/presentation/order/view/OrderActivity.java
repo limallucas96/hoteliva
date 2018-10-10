@@ -12,10 +12,12 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.lucas.deliva.R;
+import com.example.lucas.deliva.data.model.UserReturn;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
 import com.example.lucas.deliva.presentation.login.view.LoginActivity;
 import com.example.lucas.deliva.presentation.order.presenter.OrderActivityPresenter;
@@ -43,6 +45,12 @@ public class OrderActivity extends BaseActivity<OrderActivityPresenter> implemen
     private OrdersFragment mOrdersFragment;
     private OrderProfileFragment mOrderProfileFragment;
 
+    // Navigation Menu Header
+    protected TextView mMenuName;
+    protected TextView mMenuCompany;
+
+    private UserReturn mUser;
+
     @NonNull
     @Override
     protected OrderActivityPresenter createPresenter(@NonNull Context context) {
@@ -57,20 +65,26 @@ public class OrderActivity extends BaseActivity<OrderActivityPresenter> implemen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (mPresenter.getUser() != null) {
+            mUser = mPresenter.getUser();
+        }
+
         setToolbar();
         setupFirstFragment();
+        setupHeaderDrawer();
     }
 
-    private void setToolbar(){
+    private void setToolbar() {
         if (mToolbar != null) {
             setSupportActionBar(mToolbar);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-            mTextView.setText("QUARTO 7");
+            mTextView.setText(mUser.getRoom());
         }
     }
 
-    private void setupFirstFragment(){
+    private void setupFirstFragment() {
         clearFragmentBackStack();
         changeFragmentAddToStack("QUARTO 7", mOrdersFragment == null ?
                 mOrdersFragment = new OrdersFragment() : mOrdersFragment);
@@ -95,6 +109,27 @@ public class OrderActivity extends BaseActivity<OrderActivityPresenter> implemen
     @OnClick(R.id.drawer_footer)
     protected void onExitClick() {
         showLogoutDialog();
+    }
+
+    private void setupHeaderDrawer() {
+        if (mNavigationView != null) {
+            View header = mNavigationView.getHeaderView(0);
+            mMenuName = header.findViewById(R.id.menu_profile_username);
+            mMenuCompany = header.findViewById(R.id.menu_company);
+            header.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+
+            if (mUser.getName() != null) {
+                mMenuName.setText(mUser.getName());
+            }
+            if (mUser.getRoom() != null) {
+                mMenuCompany.setText(mUser.getRoom());
+            }
+        }
     }
 
     private void showLogoutDialog() {

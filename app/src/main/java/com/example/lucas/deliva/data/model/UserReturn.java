@@ -24,6 +24,12 @@ public class UserReturn implements Serializable {
     @SerializedName("room_id")
     private String roomId;
 
+    @SerializedName("room")
+    private String room;
+
+    @SerializedName("profile_picture")
+    private String profilePicture;
+
     private Boolean isLogged = false;
 
     public String getName() {
@@ -80,6 +86,22 @@ public class UserReturn implements Serializable {
 
     public void setRoomId(String roomId) {
         this.roomId = roomId;
+    }
+
+    public String getRoom() {
+        return room;
+    }
+
+    public void setRoom(String room) {
+        this.room = room;
+    }
+
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
     }
 }
 
