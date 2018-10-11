@@ -4,15 +4,26 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.mock.Order;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
 import com.example.lucas.deliva.presentation.cart.presenter.CartActivityPresenter;
+import com.example.lucas.deliva.presentation.order.adapter.CartRecyleAdapter;
+
+import butterknife.BindView;
 
 public class CartActivity extends BaseActivity<CartActivityPresenter> implements CartActivityView {
 
+    @BindView(R.id.recycle_view)
+    protected RecyclerView mRecycleView;
+
     private Order mOrder;
+
+    private CartRecyleAdapter mCartAdapter;
+
 
     @NonNull
     @Override
@@ -31,5 +42,17 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
         super.onCreate(savedInstanceState);
 
         mOrder = mPresenter.getOrder();
+//        setupRecycle();
+    }
+
+    private void setupRecycle() {
+
+        mCartAdapter = new CartRecyleAdapter();
+
+        mRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecycleView.setAdapter(mCartAdapter);
+        if (mOrder != null) {
+//            mCartAdapter.setData(mOrder);
+        }
     }
 }
