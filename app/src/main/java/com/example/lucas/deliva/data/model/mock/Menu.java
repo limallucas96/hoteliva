@@ -9,6 +9,7 @@ public class Menu implements Serializable {
     private String description;
     private Double price;
     private String imageUrl;
+    private Integer amout;
 
     public Menu() {
     }
@@ -60,4 +61,13 @@ public class Menu implements Serializable {
     public void setMenuId(Integer menuId) {
         this.menuId = menuId;
     }
+
+    public Integer getAmout() {
+        return amout;
+    }
+
+    public void setAmout(Integer amout) {
+        this.amout = amout;
+    }
 }
+

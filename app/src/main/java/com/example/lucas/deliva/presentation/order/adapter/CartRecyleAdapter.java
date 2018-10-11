@@ -15,7 +15,7 @@ import com.example.lucas.deliva.data.model.mock.Order;
 import com.example.lucas.deliva.presentation.base.view.adapter.BaseRecyclerAdapter;
 import com.squareup.picasso.Picasso;
 
-public class CartRecyleAdapter extends BaseRecyclerAdapter<Order, CartRecyleAdapter.ViewHolder> {
+public class CartRecyleAdapter extends BaseRecyclerAdapter<Menu, CartRecyleAdapter.ViewHolder> {
     @Override
     public CartRecyleAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         return new CartRecyleAdapter.ViewHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.view_item_cart, viewGroup, false));
@@ -51,29 +51,22 @@ public class CartRecyleAdapter extends BaseRecyclerAdapter<Order, CartRecyleAdap
             mValue = itemView.findViewById(R.id.value);
         }
 
-        public void bind(@NonNull final Order order, final int position) {
+        public void bind(@NonNull final Menu menu, final int position) {
 
-            if (order != null && order.getMenuList() != null && !order.getMenuList().isEmpty()) {
-
-                for (Menu list : order.getMenuList()) {
-
-                    if (list.getTitle() != null && !list.getTitle().isEmpty()) {
-                        mTitle.setText(list.getTitle());
-                    }
-
-                    if (list.getPrice() != null) {
-                        mPrice.setText(list.getPrice().toString());
-                    }
-
-                    if (list.getImageUrl() != null && !list.getImageUrl().isEmpty()) {
-                        Picasso.with(itemView.getContext()).
-                                load(list.getImageUrl()).
-                                resize(50, 50).centerCrop().into(mImage);
-                    }
-
-
+            if (menu != null) {
+                if (menu.getTitle() != null && !menu.getTitle().isEmpty()) {
+                    mTitle.setText(menu.getTitle());
                 }
 
+                if (menu.getPrice() != null) {
+                    mPrice.setText(menu.getPrice().toString());
+                }
+
+                if (menu.getImageUrl() != null && !menu.getImageUrl().isEmpty()) {
+                    Picasso.with(itemView.getContext()).
+                            load(menu.getImageUrl()).
+                            resize(50, 50).centerCrop().into(mImage);
+                }
             }
 
         }

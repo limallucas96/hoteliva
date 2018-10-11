@@ -32,6 +32,7 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
 
     private static final int REQUEST_CODE_CONCLUDED = 1000;
     public static final String KEY_EXTRA_MENU = "KEY_EXTRA_MENU";
+    public static final String KEY_EXTRA_CART = "KEY_EXTRA_CART";
 
     @BindView(R.id.recycler_view)
     protected RecyclerView mRecycleView;
@@ -92,6 +93,7 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
     @OnClick(R.id.cart)
     protected void openCart() {
         Intent intent = new Intent(getContext(), CartActivity.class);
+        intent.putExtra(KEY_EXTRA_CART, mOrder);
         startActivity(intent);
     }
 
