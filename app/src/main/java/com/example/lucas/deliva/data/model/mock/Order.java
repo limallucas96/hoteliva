@@ -8,6 +8,7 @@ public class Order implements Serializable {
     private Integer userId;
     private Integer roomId;
     private List<Menu> menuList;
+    private Double orderCost;
 
     public Integer getUserId() {
         return userId;
@@ -31,5 +32,13 @@ public class Order implements Serializable {
 
     public void setMenuList(List<Menu> menuList) {
         this.menuList = menuList;
+    }
+
+    public Double getOrderCost() {
+        return orderCost;
+    }
+
+    public void setOrderCost(Double orderCost) {
+        this.orderCost = orderCost;
     }
 }

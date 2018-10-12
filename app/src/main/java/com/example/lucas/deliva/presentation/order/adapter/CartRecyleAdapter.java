@@ -16,6 +16,9 @@ import com.example.lucas.deliva.presentation.base.view.adapter.BaseRecyclerAdapt
 import com.squareup.picasso.Picasso;
 
 public class CartRecyleAdapter extends BaseRecyclerAdapter<Menu, CartRecyleAdapter.ViewHolder> {
+
+    private OnItemClickListener mListener;
+
     @Override
     public CartRecyleAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         return new CartRecyleAdapter.ViewHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.view_item_cart, viewGroup, false));
@@ -31,6 +34,10 @@ public class CartRecyleAdapter extends BaseRecyclerAdapter<Menu, CartRecyleAdapt
         return false;
     }
 
+    public void setOnItemClickListener(@NonNull final OnItemClickListener listener) {
+        mListener = listener;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView mImage;
@@ -39,6 +46,7 @@ public class CartRecyleAdapter extends BaseRecyclerAdapter<Menu, CartRecyleAdapt
         private Button mIncrease;
         private Button mDecrease;
         private Button mValue;
+        private Integer amount = 0;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -67,8 +75,42 @@ public class CartRecyleAdapter extends BaseRecyclerAdapter<Menu, CartRecyleAdapt
                             load(menu.getImageUrl()).
                             resize(50, 50).centerCrop().into(mImage);
                 }
-            }
 
+                mIncrease.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        amount += 1;
+                        mValue.setText(String.valueOf(amount));
+                        menu.setAmout(amount);
+                        if (mListener != null) {
+                            mListener.onInscreaseClickListener(menu);
+                        }
+                    }
+                });
+
+                mDecrease.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (amount > 0) {
+                            amount -= 1;
+                            mValue.setText(String.valueOf(amount));
+                            menu.setAmout(amount);
+
+                            if (mListener != null) {
+                                mListener.onDecreaseClickListener(menu);
+                            }
+                        }
+
+
+                    }
+                });
+            }
         }
+
+    }
+
+    public interface OnItemClickListener {
+        void onInscreaseClickListener(@NonNull final Menu menuItem);
+        void onDecreaseClickListener(@NonNull final Menu menuItem);
     }
 }
