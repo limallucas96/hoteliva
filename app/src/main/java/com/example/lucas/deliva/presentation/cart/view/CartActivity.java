@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.mock.Menu;
 import com.example.lucas.deliva.data.model.mock.Order;
+import com.example.lucas.deliva.mechanism.connection.view.Util;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
 import com.example.lucas.deliva.presentation.base.view.adapter.BaseRecyclerAdapter;
 import com.example.lucas.deliva.presentation.cart.presenter.CartActivityPresenter;
@@ -63,11 +64,11 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         if (getIntent().getSerializableExtra(KEY_EXTRA_CART) != null) {
             mOrder = (Order) getIntent().getSerializableExtra(KEY_EXTRA_CART);
+            mOrderCost = mOrder.getOrderCost();
             setupRecycle();
-            setupCartCard(mOrder.getMenuList());
+            setupCartValues();
         }
     }
 
@@ -95,29 +96,35 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
     }
 
     private void updateCartValue(List<Menu> menuList, Menu menu, boolean isInscrease) {
-        mOrderCost = Double.valueOf(mTotalValue.getText().toString());
         if (menuList != null && !menuList.isEmpty()) {
             for (Menu itemMenu : menuList) {
                 if (menu.getMenuId() != null && isInscrease) {
-                    mOrderCost += menu.getPrice();
+                    mOrderCost = menu.getPrice() + mOrder.getOrderCost();
                 } else {
-                    mOrderCost -= menu.getPrice();
+                    mOrderCost = mOrder.getOrderCost() - menu.getPrice();
                 }
                 break;
             }
         }
         if (mOrderCost < 0.1)
             mOrderCost = 0.0;
-        mCartValue.setText(String.format(String.valueOf("%.2f"), mOrderCost));
+        mOrder.setOrderCost(mOrderCost);
+        mCartValue.setText(Util.formatCurrency(mOrder.getOrderCost()));
     }
 
-    private void setupCartCard(List<Menu> menu) {
-        if (menu != null && !menu.isEmpty()) {
-            for (Menu itemMenu : menu) {
-                mOrderCost += itemMenu.getPrice();
-            }
+    private void setupCartValues() {
+        if (mOrder.getOrderCost() != null && mOrder.getOrderCost() > 0) {
+            mCartValue.setText(Util.formatCurrency(mOrder.getOrderCost()));
+        } else {
+            mTotalValue.setText(Util.formatCurrency(0.0));
+            mCartValue.setText(Util.formatCurrency(0.0));
         }
-        mCartValue.setText(String.format(String.valueOf("%.2f"), mOrderCost));
-        mCartValue.setText(String.format(String.valueOf("%.2f"), mOrderCost));
+        mServiceValue.setText("7%");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mPresenter.saveOrder(mOrder);
     }
 }

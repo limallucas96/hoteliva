@@ -93,7 +93,7 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
     @OnClick(R.id.cart)
     protected void openCart() {
         Intent intent = new Intent(getContext(), CartActivity.class);
-        intent.putExtra(KEY_EXTRA_CART, mOrder);
+        intent.putExtra(KEY_EXTRA_CART, mPresenter.getOrder());
         startActivity(intent);
     }
 
@@ -112,6 +112,7 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
                 if (mMenu != null) {
                     mOrder.getMenuList().add(mMenu);
                 }
+                mPresenter.saveOrder(mOrder);
             }
         }
     }

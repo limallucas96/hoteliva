@@ -9,7 +9,7 @@ public class Menu implements Serializable {
     private String description;
     private Double price;
     private String imageUrl;
-    private Integer amout;
+    private Integer amout = 0;
 
     public Menu() {
     }

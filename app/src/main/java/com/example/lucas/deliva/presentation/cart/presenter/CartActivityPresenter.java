@@ -18,4 +18,8 @@ public class CartActivityPresenter extends BasePresenter {
     public Order getOrder() {
         return mSessionBO.getOrder();
     }
+
+    public void saveOrder(Order order) {
+        mSessionBO.setOrderOnGoing(order);
+    }
 }

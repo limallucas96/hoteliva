@@ -8,7 +8,7 @@ public class Order implements Serializable {
     private Integer userId;
     private Integer roomId;
     private List<Menu> menuList;
-    private Double orderCost;
+    private Double orderCost = 0.0;
 
     public Integer getUserId() {
         return userId;

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.mock.Menu;
 import com.example.lucas.deliva.data.model.mock.Order;
+import com.example.lucas.deliva.mechanism.connection.view.Util;
 import com.example.lucas.deliva.presentation.base.view.adapter.BaseRecyclerAdapter;
 import com.squareup.picasso.Picasso;
 
@@ -67,7 +68,7 @@ public class CartRecyleAdapter extends BaseRecyclerAdapter<Menu, CartRecyleAdapt
                 }
 
                 if (menu.getPrice() != null) {
-                    mPrice.setText(menu.getPrice().toString());
+                    mPrice.setText(Util.formatCurrency(menu.getPrice()));
                 }
 
                 if (menu.getImageUrl() != null && !menu.getImageUrl().isEmpty()) {
@@ -76,12 +77,16 @@ public class CartRecyleAdapter extends BaseRecyclerAdapter<Menu, CartRecyleAdapt
                             resize(50, 50).centerCrop().into(mImage);
                 }
 
+                if (menu.getAmout() != null && menu.getAmout() >= 0) {
+                    mValue.setText(String.valueOf(menu.getAmout()));
+                }
+
                 mIncrease.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        amount += 1;
-                        mValue.setText(String.valueOf(amount));
+                        amount = menu.getAmout() + 1;
                         menu.setAmout(amount);
+                        mValue.setText(String.valueOf(menu.getAmout()));
                         if (mListener != null) {
                             mListener.onInscreaseClickListener(menu);
                         }
@@ -91,17 +96,14 @@ public class CartRecyleAdapter extends BaseRecyclerAdapter<Menu, CartRecyleAdapt
                 mDecrease.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if (amount > 0) {
-                            amount -= 1;
-                            mValue.setText(String.valueOf(amount));
+                        if (menu.getAmout() > 0) {
+                            amount = menu.getAmout() - 1;
                             menu.setAmout(amount);
-
+                            mValue.setText(String.valueOf(menu.getAmout()));
                             if (mListener != null) {
                                 mListener.onDecreaseClickListener(menu);
                             }
                         }
-
-
                     }
                 });
             }
@@ -111,6 +113,7 @@ public class CartRecyleAdapter extends BaseRecyclerAdapter<Menu, CartRecyleAdapt
 
     public interface OnItemClickListener {
         void onInscreaseClickListener(@NonNull final Menu menuItem);
+
         void onDecreaseClickListener(@NonNull final Menu menuItem);
     }
 }
