@@ -13,5 +13,7 @@
     <color name="view_background">#F2F5F7</color>
     <color name="colorBackground">#DFE7EC</color>
 
+    <!-- FLOATING CART BUTTON -->
+    <color name="evaluate_fab_pressed">#ff6434</color>
 
 </resources>

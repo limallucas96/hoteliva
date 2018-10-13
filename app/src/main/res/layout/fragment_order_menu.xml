@@ -28,32 +28,15 @@
         layout="@layout/include_loading"
         android:visibility="gone" />
 
-    <FrameLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/fab_new_evaluation"
+        android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_gravity="bottom"
-        android:background="@android:color/white"
-        android:gravity="center_horizontal">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/cart"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:background="@color/colorAccent"
-                android:gravity="center"
-                android:text="Abrir carrinho"
-                android:textAllCaps="true"
-                android:textColor="@android:color/white"
-                android:textSize="15sp" />
-        </LinearLayout>
-
-    </FrameLayout>
+        android:layout_gravity="bottom|center"
+        android:layout_margin="10dp"
+        android:background="@drawable/selector_circle_button_yellow"
+        android:padding="9dp"
+        android:src="@drawable/app_icon" />
 
 
 </FrameLayout>

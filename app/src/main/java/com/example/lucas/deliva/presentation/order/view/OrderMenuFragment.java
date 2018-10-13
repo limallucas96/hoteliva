@@ -90,7 +90,7 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
         mMenuList.add(new Menu(5, "ADS", "6 Semestre", 6.66, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
     }
 
-    @OnClick(R.id.cart)
+    @OnClick(R.id.fab_new_evaluation)
     protected void openCart() {
         Intent intent = new Intent(getContext(), CartActivity.class);
         intent.putExtra(KEY_EXTRA_CART, mPresenter.getOrder());
