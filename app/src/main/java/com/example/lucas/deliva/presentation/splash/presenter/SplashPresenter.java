@@ -19,4 +19,8 @@ public class SplashPresenter extends BasePresenter {
         return mSessionBO.getUser();
     }
 
+    public void removeOrder(){
+        mSessionBO.removeOrder();
+    }
+
 }

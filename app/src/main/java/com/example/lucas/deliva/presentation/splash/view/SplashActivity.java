@@ -37,6 +37,7 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                mPresenter.removeOrder();
                 if(isUserLogged()){
                     startOrderActivity();
                 }else{

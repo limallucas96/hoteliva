@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
@@ -28,6 +29,9 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
 
     @BindView(R.id.recycle_view)
     protected RecyclerView mRecycleView;
+
+    @BindView(R.id.toolbar)
+    protected Toolbar mToolbar;
 
     @BindView(R.id.cart_label)
     TextView mCartLabel;
@@ -64,12 +68,19 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setupToolbar();
         if (getIntent().getSerializableExtra(KEY_EXTRA_CART) != null) {
             mOrder = (Order) getIntent().getSerializableExtra(KEY_EXTRA_CART);
             mOrderCost = mOrder.getOrderCost();
             setupRecycle();
             setupCartValues();
         }
+    }
+
+    private void setupToolbar() {
+        mToolbar.setTitle("Carrinho");
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void setupRecycle() {
@@ -127,4 +138,5 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
         super.onStop();
         mPresenter.saveOrder(mOrder);
     }
+
 }

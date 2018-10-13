@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
+    android:background="@color/colorBackground"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
@@ -14,6 +15,7 @@
         android:background="@color/colorPrimary"
         app:theme="@style/AppToolbar.Dark.Back"
         tools:targetApi="lollipop">
+
 
     </android.support.v7.widget.Toolbar>
 
