@@ -8,4 +8,11 @@
     <string name="orders_fragment_title">Pedidos</string>
     <string name="status_fragment_title">Status</string>
     <string name="fecthing_list_data">Carregando...</string>
+
+
+
+    <!--CART DETAIL ACTIVITY -->
+    <string name="description">Descrição</string>
+
+
 </resources>
