@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/card_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
@@ -9,6 +8,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@id/card_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -22,22 +22,6 @@
             tools:srcCompat="@tools:sample/backgrounds/scenic[0]" />
 
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Korean Barbecue"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:text="Expect to find dishes like green onion salad in a spicy sauce peppers to put on the grill." />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,25 +29,44 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="3"
+                android:text="Korean Barbecue"
+                android:textStyle="bold" />
+
+            <TextView
                 android:id="@+id/price"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:text="R$: 29.90" />
+                android:layout_weight="2"
+                android:gravity="right"
+                android:paddingRight="10dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                tools:text="R$: 29.90" />
 
-            <Button
-                android:id="@+id/add"
-                android:layout_width="60dp"
-                android:layout_height="30dp"
-                android:layout_gravity="right"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/rounded_button"
-                android:text="add"
-                android:textAllCaps="true"
-                android:textColor="@android:color/white"
-                android:textSize="14sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="15dp"
+            android:text="Expect to find dishes like green onion salad in a spicy sauce peppers to put on the grill Expect to find dishes like green onion salad in a spicy sauce peppers to put on the grill" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
 
         </LinearLayout>
 

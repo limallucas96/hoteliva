@@ -1,17 +1,20 @@
 package com.example.lucas.deliva.presentation.order.adapter;
 
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.mock.Menu;
+import com.example.lucas.deliva.mechanism.connection.view.Util;
 import com.example.lucas.deliva.presentation.base.view.adapter.BaseRecyclerAdapter;
 import com.squareup.picasso.Picasso;
 
@@ -44,7 +47,7 @@ public class OrderMenuRecycleAdapter extends BaseRecyclerAdapter<Menu, OrderMenu
         private TextView mTitle;
         private TextView mDescription;
         private TextView mPrice;
-        private Button mAdd;
+        private LinearLayout mCardContainer;
 
 
         public ViewHolder(View itemView) {
@@ -54,7 +57,7 @@ public class OrderMenuRecycleAdapter extends BaseRecyclerAdapter<Menu, OrderMenu
             mTitle = itemView.findViewById(R.id.title);
             mDescription = itemView.findViewById(R.id.description);
             mPrice = itemView.findViewById(R.id.price);
-            mAdd = itemView.findViewById(R.id.add);
+            mCardContainer = itemView.findViewById(R.id.card_container);
         }
 
         private void bind(@NonNull final Menu menu, final int posistion) {
@@ -73,10 +76,10 @@ public class OrderMenuRecycleAdapter extends BaseRecyclerAdapter<Menu, OrderMenu
             }
 
             if (menu.getPrice() != null) {
-                mPrice.setText(String.valueOf(menu.getPrice()));
+                mPrice.setText(Util.formatCurrency(menu.getPrice()));
             }
 
-            mAdd.setOnClickListener(new View.OnClickListener() {
+            mCardContainer.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if(mListener != null){
