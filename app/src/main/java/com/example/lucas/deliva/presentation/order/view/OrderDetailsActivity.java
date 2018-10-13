@@ -44,9 +44,6 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
     @BindView(R.id.recycler_view)
     protected RecyclerView mRecycleView;
 
-    @BindView(R.id.app_bar_layout)
-    protected AppBarLayout mBarLayour;
-
     @BindView(R.id.recycler_view_indicator)
     protected IndefinitePagerIndicator mStepIndicator;
 
@@ -80,7 +77,6 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
         setRecycleMockData();
         setupRecycle();
         setToolbar();
-        hideRecycle();
     }
 
     private void setToolbar() {
@@ -112,29 +108,12 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
         mImageList.add(new OrderDetailImage("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
     }
 
-    private void hideRecycle() {
-        mBarLayour.addOnOffsetChangedListener(new AppBarStateChangeListener() {
-            @Override
-            public void onStateChanged(AppBarLayout appBarLayout, State state) {
-                switch (state) {
-                    case IDLE:
-                        mRecycleView.setVisibility(View.VISIBLE);
-                        break;
-                    case EXPANDED:
-                        mRecycleView.setVisibility(View.VISIBLE);
-                        break;
-                    case COLLAPSED:
-                        mRecycleView.setVisibility(View.GONE);
-                }
-            }
-        });
-    }
 
-    @OnClick(R.id.save)
-    protected void save() {
-        Intent intent = new Intent();
-        intent.putExtra(MENU, mMenu);
-        setResult(RESULT_OK, intent);
-        finish();
-    }
+//    @OnClick(R.id.save)
+//    protected void save() {
+//        Intent intent = new Intent();
+//        intent.putExtra(MENU, mMenu);
+//        setResult(RESULT_OK, intent);
+//        finish();
+//    }
 }
