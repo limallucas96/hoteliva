@@ -22,6 +22,7 @@ import com.example.lucas.deliva.presentation.order.adapter.CartRecyleAdapter;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 import static com.example.lucas.deliva.presentation.order.view.OrderMenuFragment.KEY_EXTRA_CART;
 
@@ -137,6 +138,14 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
     protected void onStop() {
         super.onStop();
         mPresenter.saveOrder(mOrder);
+    }
+
+    @OnClick(R.id.cart)
+    protected void checkout() {
+        showProgressDialog("Criando pedido, aguarde...");
+        mPresenter.saveOrder(mOrder); //Todo - mock only, remove later
+        dismissProgressDialog();
+        finish();
     }
 
 }

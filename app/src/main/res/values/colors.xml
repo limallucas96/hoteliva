@@ -16,4 +16,11 @@
     <!-- FLOATING CART BUTTON -->
     <color name="evaluate_fab_pressed">#ff6434</color>
 
+
+    <!--STEP INDICATOR COLORS-->
+    <color name="next_default">#48B43E</color>
+    <color name="step_default">#CEDBE3</color>
+    <color name="text_default">@android:color/transparent</color>
+    <color name="stroke_default">#CEDBE3</color>
+
 </resources>

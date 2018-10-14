@@ -59,4 +59,13 @@
         <item name="colorAccent">@android:color/white</item> <!-- Whatever color you want-->
     </style>
 
+    <!--CARDVIEW TITLE STYLE-->
+    <style name="CardTitleTextView" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">#818182</item>
+        <item name="android:background">@color/view_background</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingLeft">10dp</item>
+    </style>
+
 </resources>

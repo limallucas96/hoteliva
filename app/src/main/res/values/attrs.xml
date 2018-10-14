@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="StepIndicator">
+        <attr name="stepCount" format="integer" />
+        <attr name="currentStepPosition" format="integer" />
+        <attr name="textSize" format="dimension" />
+        <attr name="lineWidth" format="dimension" />
+        <attr name="nextColor" format="color" />
+
+        <attr name="radius" format="dimension" />
+        <attr name="stepColor" format="color" />
+        <attr name="strokeWidth" format="dimension" />
+        <attr name="strokeColor" format="color" />
+        <attr name="textColor" format="color" />
+
+        <attr name="currentRadius" format="dimension" />
+        <attr name="currentStepColor" format="color" />
+        <attr name="currentStrokeWidth" format="dimension" />
+        <attr name="currentStrokeColor" format="color" />
+        <attr name="currentTextColor" format="color" />
+
+        <attr name="groupDivider" format="string" />
+        <attr name="monetaryDivider" format="string" />
+        <attr name="locale" format="string" />
+        <attr name="showSymbol" format="boolean" />
+
+        <attr name="showPositionInsideText" format="boolean" />
+    </declare-styleable>
+
+</resources>

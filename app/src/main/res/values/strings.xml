@@ -11,8 +11,16 @@
 
 
 
-    <!--CART DETAIL ACTIVITY -->
+    <!--ITEM DETAIL ACTIVITY -->
     <string name="description">Descrição</string>
+
+
+    <!--CART ACTIVITY-->
+    <string name="cart_checkout">Salvar e pedir</string>
+    <string name="your_cart">Seu carrinho</string>
+    <string name="total_cart">Carrinho</string>
+    <string name="service_cost">Serviço de quarto</string>
+    <string name="cart_total">Total</string>
 
 
 </resources>
