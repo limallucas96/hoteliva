@@ -10,7 +10,6 @@
     <string name="fecthing_list_data">Carregando...</string>
 
 
-
     <!--ITEM DETAIL ACTIVITY -->
     <string name="description">Descrição</string>
 
@@ -22,5 +21,13 @@
     <string name="service_cost">Serviço de quarto</string>
     <string name="cart_total">Total</string>
 
+    <!--VIEW ITEM ORDER STATUS-->
+    <string name="order_status_title">Acompanhe o status do seu pedido</string>
+    <string name="order_status_ordered">Pedido</string>
+    <string name="order_status_on_going">Em andamento</string>
+    <string name="order_status_done">Finalizado</string>
+    <string name="order_status_id_1">Seu pedido está sendo confirmando pelo restaurante</string>
+    <string name="order_status_id_2">Seu pedido foi aprovado e está sendo preparado</string>
+    <string name="order_status_id_3">Seu pedido será entregue no quarto %s</string>
 
 </resources>
