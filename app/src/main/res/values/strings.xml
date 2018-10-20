@@ -44,5 +44,12 @@
     <string name="purchase_status_pending">Pendente</string>
     <string name="purchase_balance">Balanço da estádia</string>
 
+    <!--EMPTY STATE -->
+    <string name="empty_state_no_purchase">Ops… Parece que você não comprou nada ainda</string>
+    <string name="empty_state_swipe_right_to_shop">Arraste para direita para montar seu carrinho</string>
+    <string name="empty_state_no_menu_itens">Ops… Parece que não há nada para comprar ainda</string>
+    <string name="empty_state_no_status">Ops… Parece que você não pediu nada ainda</string>
+    <string name="empty_state_swipe_left_to_shop">Arraste para esquerda para montar seu carrinho</string>
+
 
 </resources>
