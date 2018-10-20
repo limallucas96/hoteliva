@@ -5,24 +5,31 @@ import java.util.Date;
 
 public class Purchase implements Serializable {
 
-    private String purchaseId;
-    private Date date;
+    private Integer purchaseId;
+    private String date;
     private Integer status;
     private Double cost;
 
-    public String getPurchaseId() {
+    public Purchase(Integer purchaseId, String date, Integer status, Double cost) {
+        this.purchaseId = purchaseId;
+        this.date = date;
+        this.status = status;
+        this.cost = cost;
+    }
+
+    public Integer getPurchaseId() {
         return purchaseId;
     }
 
-    public void setPurchaseId(String purchaseId) {
+    public void setPurchaseId(Integer purchaseId) {
         this.purchaseId = purchaseId;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

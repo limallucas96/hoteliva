@@ -1,12 +1,20 @@
 <resources>
+
     <string name="app_name">deliva</string>
+
+    <!--LOGIN ACTIVITY -->
     <string name="user_password">Senha</string>
     <string name="user_email">Usuário</string>
     <string name="login_empty_password">O campo senha não pode ser vazio</string>
     <string name="login_empty_username">O campo usuário não pode ser vazio</string>
+
+    <!-- SWIPE VIEW PAGER TITLES -->
     <string name="profile_fragment_title">Perfil</string>
     <string name="orders_fragment_title">Pedidos</string>
     <string name="status_fragment_title">Status</string>
+
+
+    <!--FECTHING DATA OR LOADING-->
     <string name="fecthing_list_data">Carregando...</string>
 
 
@@ -29,5 +37,12 @@
     <string name="order_status_id_1">Seu pedido está sendo confirmando pelo restaurante</string>
     <string name="order_status_id_2">Seu pedido foi aprovado e está sendo preparado</string>
     <string name="order_status_id_3">Seu pedido será entregue no quarto %s</string>
+
+    <!-- PROFILE FRAGMENT -->
+    <string name="purchase_id"># %d</string>
+    <string name="purchase_status_paid">Pago</string>
+    <string name="purchase_status_pending">Pendente</string>
+    <string name="purchase_balance">Balanço da estádia</string>
+
 
 </resources>

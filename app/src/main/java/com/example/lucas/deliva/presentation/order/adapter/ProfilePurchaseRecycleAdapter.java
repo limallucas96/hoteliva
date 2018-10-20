@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.example.lucas.deliva.AppApplication;
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.mock.Purchase;
+import com.example.lucas.deliva.data.model.type.PaymentStatusType;
+import com.example.lucas.deliva.mechanism.connection.view.Util;
 import com.example.lucas.deliva.presentation.base.view.adapter.BaseRecyclerAdapter;
 
 public class ProfilePurchaseRecycleAdapter extends BaseRecyclerAdapter<Purchase, ProfilePurchaseRecycleAdapter.ViewHolder> {
@@ -37,7 +39,6 @@ public class ProfilePurchaseRecycleAdapter extends BaseRecyclerAdapter<Purchase,
 
         public ViewHolder(View itemView) {
             super(itemView);
-
             mOrderId = itemView.findViewById(R.id.order_id);
             mDate = itemView.findViewById(R.id.date);
             mPrice = itemView.findViewById(R.id.price);
@@ -46,21 +47,32 @@ public class ProfilePurchaseRecycleAdapter extends BaseRecyclerAdapter<Purchase,
 
         public void bind(@NonNull final Purchase purchase, final int position) {
 
-            if (purchase.getPurchaseId() != null && !purchase.getPurchaseId().isEmpty()) {
-
+            if (purchase.getPurchaseId() != null) {
+                mOrderId.setText(
+                        AppApplication.getAppContext().getString(
+                                R.string.purchase_id, purchase.getPurchaseId()));
             }
 
             if (purchase.getDate() != null) {
-
+                mDate.setText(purchase.getDate().toString());
             }
 
             if (purchase.getCost() != null) {
-
+                mPrice.setText(Util.formatCurrency(purchase.getCost()));
             }
 
             if (purchase.getStatus() != null) {
+                mStatus.setText("" + purchase.getStatus());
+                PaymentStatusType paymentStatusType = PaymentStatusType.fromInt(purchase.getStatus());
 
-
+                switch (paymentStatusType) {
+                    case PAID:
+                        break;
+                    case PENDENT:
+                        break;
+                    case INVALID:
+                        break;
+                }
             }
 
         }

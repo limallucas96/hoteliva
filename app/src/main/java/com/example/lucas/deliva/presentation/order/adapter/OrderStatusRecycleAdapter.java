@@ -11,9 +11,12 @@ import android.widget.TextView;
 
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.mock.OrderStatus;
+import com.example.lucas.deliva.data.model.type.OrderStatusType;
 import com.example.lucas.deliva.mechanism.connection.view.StepIndicator;
 import com.example.lucas.deliva.presentation.base.view.adapter.BaseRecyclerAdapter;
 import com.squareup.picasso.Picasso;
+
+import static com.example.lucas.deliva.data.model.type.OrderStatusType.REQUESTED;
 
 public class OrderStatusRecycleAdapter extends BaseRecyclerAdapter<OrderStatus, OrderStatusRecycleAdapter.ViewHolder> {
 
@@ -60,25 +63,31 @@ public class OrderStatusRecycleAdapter extends BaseRecyclerAdapter<OrderStatus, 
             }
 
             if (status.getCurrentStatus() != null && status.getCurrentLabelStatus() != null) {
-                switch (status.getCurrentStatus()) {
-                    case 0:
+
+                OrderStatusType orderStatusType = OrderStatusType.fromInt(status.getCurrentStatus());
+
+                switch (orderStatusType) {
+                    case REQUESTED:
                         mOrdered.setTypeface(null, Typeface.BOLD);
                         mStatus.setText(R.string.order_status_id_1);
                         mStepIndicator.setCurrentStepPosition(0);
                         break;
-                    case 1:
+
+                    case APPROVED:
                         mOrdered.setTypeface(null, Typeface.NORMAL);
                         mOnGoing.setTypeface(null, Typeface.BOLD);
                         mStatus.setText(R.string.order_status_id_2);
                         mStepIndicator.setCurrentStepPosition(1);
                         break;
-                    case 2:
+
+                    case DONE:
                         mOrdered.setTypeface(null, Typeface.NORMAL);
                         mOnGoing.setTypeface(null, Typeface.NORMAL);
                         mDone.setTypeface(null, Typeface.BOLD);
                         mStatus.setText(R.string.order_status_id_3);
                         mStepIndicator.setCurrentStepPosition(2);
                         break;
+
                     default:
                         mOrdered.setTypeface(null, Typeface.BOLD);
                         mStepIndicator.setCurrentStepPosition(1);
