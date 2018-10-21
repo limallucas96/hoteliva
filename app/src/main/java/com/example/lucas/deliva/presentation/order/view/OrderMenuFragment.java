@@ -9,6 +9,9 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lucas.deliva.R;
@@ -28,7 +31,7 @@ import butterknife.OnClick;
 
 import static android.app.Activity.RESULT_OK;
 
-public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> {
+public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> implements OrderMenuFragmentView, SwipeRefreshLayout.OnRefreshListener {
 
     private static final int REQUEST_CODE_CONCLUDED = 1000;
     public static final String KEY_EXTRA_MENU = "KEY_EXTRA_MENU";
@@ -39,6 +42,20 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
 
     @BindView(R.id.swipe_refresh_layout)
     protected SwipeRefreshLayout mSwipeRefreshLayout;
+    @BindView(R.id.loading_view)
+    protected View mLoadingView;
+    @BindView(R.id.loading_more)
+    protected View mLoadingMore;
+    @BindView(R.id.empty_state_view)
+    protected View mEmptyStateView;
+    @BindView(R.id.empty_state_title)
+    protected TextView mEmptyStateTitle;
+    @BindView(R.id.empty_state_sub_title)
+    protected TextView mEmptySubTitle;
+    @BindView(R.id.try_again)
+    protected Button mTryAgain;
+    @BindView(R.id.swipe_right)
+    protected ImageView mSwipeRight;
 
     private OrderMenuRecycleAdapter mMenuAdapter;
 
@@ -56,8 +73,9 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        setRecycleMockData();
         setupRecycle();
+        showEmptyState();
+        mSwipeRefreshLayout.setOnRefreshListener(this);
     }
 
     @Override
@@ -70,7 +88,7 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
 
         mRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecycleView.setAdapter(mMenuAdapter);
-        mMenuAdapter.setData(mMenuList);
+
 
         mMenuAdapter.setOnItemClickListener(new OrderMenuRecycleAdapter.OnItemClickListener() {
             @Override
@@ -82,12 +100,14 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
         });
     }
 
-    private void setRecycleMockData() {
-        mMenuList.add(new Menu(1, "Korean", "Barbecue", 19.90, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
-        mMenuList.add(new Menu(2, "Lucas", "Lima", 19.99, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
-        mMenuList.add(new Menu(3, "Bruno", "Silva", 9.99, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
-        mMenuList.add(new Menu(4, "Sergio", "Furgeri", 10.00, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
-        mMenuList.add(new Menu(5, "ADS", "6 Semestre", 6.66, "https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
+    private void showEmptyState() {
+        mContainer.setVisibility(View.GONE);
+        mEmptyStateTitle.setText(getString(R.string.empty_state_no_purchase));
+        mEmptySubTitle.setText(getString(R.string.empty_state_swipe_right_to_shop));
+        mTryAgain.setVisibility(View.GONE);
+        mEmptyStateView.setVisibility(View.VISIBLE);
+        mSwipeRefreshLayout.setVisibility(View.VISIBLE);
+        mSwipeRight.setVisibility(View.VISIBLE);
     }
 
     @OnClick(R.id.fab_new_evaluation)
@@ -118,6 +138,22 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
                 mPresenter.saveOrder(mOrder);
             }
         }
+    }
+
+    @Override
+    public void onRefresh() {
+
+    }
+
+    @Override
+    public void onSuccessGetMenuList(List<Menu> result) {
+        mMenuList = result;
+        mMenuAdapter.setData(mMenuList);
+    }
+
+    @Override
+    public void onErrorGetMenuList() {
+
     }
 }
 
