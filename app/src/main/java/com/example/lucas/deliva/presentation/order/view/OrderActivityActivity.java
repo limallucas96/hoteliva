@@ -25,7 +25,7 @@ import com.example.lucas.deliva.presentation.order.presenter.OrderActivityPresen
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class OrderActivity extends BaseActivity<OrderActivityPresenter> implements OrderView {
+public class OrderActivityActivity extends BaseActivity<OrderActivityPresenter> implements OrderActivityView {
 
     @BindView(R.id.drawer_layout)
     protected DrawerLayout mDrawerLayout;
@@ -134,7 +134,7 @@ public class OrderActivity extends BaseActivity<OrderActivityPresenter> implemen
 
     private void showLogoutDialog() {
         if (!isFinishing()) {
-            new AlertDialog.Builder(OrderActivity.this)
+            new AlertDialog.Builder(OrderActivityActivity.this)
                     .setCancelable(true)
                     .setTitle("Saindo")
                     .setMessage("Saindo aplicativo")
@@ -142,7 +142,7 @@ public class OrderActivity extends BaseActivity<OrderActivityPresenter> implemen
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             mPresenter.logoutUser();
-                            Intent intent = new Intent(OrderActivity.this, LoginActivity.class);
+                            Intent intent = new Intent(OrderActivityActivity.this, LoginActivity.class);
                             startActivity(intent);
                             finish();
                         }

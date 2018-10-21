@@ -8,7 +8,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.app.Fragment;
 
 import com.example.lucas.deliva.R;
-import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
 import com.example.lucas.deliva.presentation.base.view.AdapterAwareFragment;
 import com.example.lucas.deliva.presentation.base.view.BaseFragment;
 import com.example.lucas.deliva.presentation.base.view.adapter.OrderTabsViewPagerAdapter;
@@ -16,7 +15,7 @@ import com.example.lucas.deliva.presentation.order.presenter.OrdersFragmentPrese
 
 import butterknife.BindView;
 
-public class OrdersFragment extends BaseFragment<OrdersFragmentPresenter> implements AdapterAwareFragment<OrderActivity> {
+public class OrdersFragment extends BaseFragment<OrdersFragmentPresenter> implements AdapterAwareFragment<OrderActivityActivity> {
 
 
     @BindView(R.id.tab_layout)
@@ -93,7 +92,7 @@ public class OrdersFragment extends BaseFragment<OrdersFragmentPresenter> implem
     }
 
     @Override
-    public void onAdapterChangedToThisFragment(@NonNull OrderActivity activity) {
+    public void onAdapterChangedToThisFragment(@NonNull OrderActivityActivity activity) {
 
     }
 }

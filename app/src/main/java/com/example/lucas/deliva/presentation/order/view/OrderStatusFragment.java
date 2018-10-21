@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -18,7 +19,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class OrderStatusFragment extends BaseFragment<OrderStatusFragmentPresenter> {
+public class OrderStatusFragment extends BaseFragment<OrderStatusFragmentPresenter> implements OrderStatusFragmentView, SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.recycle_view)
     protected RecyclerView mRecyclerView;
@@ -41,7 +42,6 @@ public class OrderStatusFragment extends BaseFragment<OrderStatusFragmentPresent
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        setupMockStatus();
         setupRecycle();
     }
 
@@ -50,16 +50,24 @@ public class OrderStatusFragment extends BaseFragment<OrderStatusFragmentPresent
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setData(mOrderStatus);
 
     }
 
-    private void setupMockStatus() {
-        mOrderStatus = new ArrayList<>();
 
-        mOrderStatus.add(new OrderStatus(1, null, "https://img00.deviantart.net/5c51/i/2015/225/3/e/naruto_uzumaki___minimalist_by_triasfak-d95i7r9.png", 0, "0"));
-        mOrderStatus.add(new OrderStatus(2, null, "http://s3.envato.com/files/253203724/DSC_2352111.jpg", 1, "1"));
+    @Override
+    public void onSuccessGetOrderStatusList(@NonNull List<OrderStatus> result) {
+        mOrderStatus = result;
+        mAdapter.setData(mOrderStatus);
+    }
 
+    @Override
+    public void onErrorGetOrderStatusList() {
 
+    }
+
+    @Override
+    public void onRefresh() {
+        mOrderStatus = null;
+        mPresenter.getOrderStatusList();
     }
 }

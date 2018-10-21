@@ -30,7 +30,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" />
 
-        <activity android:name=".presentation.order.view.OrderActivity" />
+        <activity android:name=".presentation.order.view.OrderActivityActivity" />
 
         <activity android:name=".presentation.order.view.OrderDetailsActivity" />
 

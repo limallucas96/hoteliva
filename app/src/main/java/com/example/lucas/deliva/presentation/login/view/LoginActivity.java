@@ -13,7 +13,7 @@ import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.UserReturn;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
 import com.example.lucas.deliva.presentation.login.presenter.LoginPresenter;
-import com.example.lucas.deliva.presentation.order.view.OrderActivity;
+import com.example.lucas.deliva.presentation.order.view.OrderActivityActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -50,7 +50,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
 
     private void startOrderActivity() {
-        Intent intent = new Intent(this, OrderActivity.class);
+        Intent intent = new Intent(this, OrderActivityActivity.class);
         startActivity(intent);
         finish();
     }
