@@ -7,6 +7,10 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.mock.OrderStatus;
@@ -23,6 +27,23 @@ public class OrderStatusFragment extends BaseFragment<OrderStatusFragmentPresent
 
     @BindView(R.id.recycle_view)
     protected RecyclerView mRecyclerView;
+
+    @BindView(R.id.swipe_refresh_layout)
+    protected SwipeRefreshLayout mSwipeRefreshLayout;
+    @BindView(R.id.loading_view)
+    protected View mLoadingView;
+    @BindView(R.id.loading_more)
+    protected View mLoadingMore;
+    @BindView(R.id.empty_state_view)
+    protected View mEmptyStateView;
+    @BindView(R.id.empty_state_title)
+    protected TextView mEmptyStateTitle;
+    @BindView(R.id.empty_state_sub_title)
+    protected TextView mEmptySubTitle;
+    @BindView(R.id.try_again)
+    protected Button mTryAgain;
+    @BindView(R.id.swipe_left)
+    protected ImageView mSwipeLeft;
 
     private OrderStatusRecycleAdapter mAdapter;
     private List<OrderStatus> mOrderStatus;
@@ -42,32 +63,58 @@ public class OrderStatusFragment extends BaseFragment<OrderStatusFragmentPresent
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        showEmptyState();
         setupRecycle();
+        mSwipeRefreshLayout.setOnRefreshListener(this);
     }
 
     private void setupRecycle() {
         mAdapter = new OrderStatusRecycleAdapter();
-
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
+    }
 
+    private void showLoading() {
+        hideContainers();
+        mLoadingView.setVisibility(View.VISIBLE);
+    }
+
+    private void hideContainers() {
+        mLoadingView.setVisibility(View.GONE);
+        mRecyclerView.setVisibility(View.GONE);
+        mEmptyStateView.setVisibility(View.GONE);
+        mSwipeRefreshLayout.setRefreshing(false);
+    }
+
+    private void showEmptyState() {
+//        mContainer.setVisibility(View.GONE);
+        mEmptyStateTitle.setText(getString(R.string.empty_state_no_status));
+        mEmptySubTitle.setText(getString(R.string.empty_state_swipe_left_to_shop));
+        mTryAgain.setVisibility(View.GONE);
+        mEmptyStateView.setVisibility(View.VISIBLE);
+        mSwipeRefreshLayout.setVisibility(View.VISIBLE);
+        mSwipeLeft.setVisibility(View.VISIBLE);
     }
 
 
     @Override
     public void onSuccessGetOrderStatusList(@NonNull List<OrderStatus> result) {
+        hideContainers();
         mOrderStatus = result;
         mAdapter.setData(mOrderStatus);
+        mRecyclerView.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onErrorGetOrderStatusList() {
-
+        hideContainers();
+        showEmptyState();
     }
 
     @Override
     public void onRefresh() {
         mOrderStatus = null;
+        showLoading();
         mPresenter.getOrderStatusList();
     }
 }
