@@ -39,6 +39,8 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
 
     @BindView(R.id.recycler_view)
     protected RecyclerView mRecycleView;
+    @BindView(R.id.fab_new_evaluation)
+    protected ImageView mOpenCart;
 
     @BindView(R.id.swipe_refresh_layout)
     protected SwipeRefreshLayout mSwipeRefreshLayout;
@@ -101,13 +103,24 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
     }
 
     private void showEmptyState() {
-        mContainer.setVisibility(View.GONE);
-        mEmptyStateTitle.setText(getString(R.string.empty_state_no_purchase));
-        mEmptySubTitle.setText(getString(R.string.empty_state_swipe_right_to_shop));
+        mEmptyStateTitle.setText(getString(R.string.empty_state_no_menu_itens));
+        mEmptySubTitle.setText(getString(R.string.empty_state_sorry));
         mTryAgain.setVisibility(View.GONE);
         mEmptyStateView.setVisibility(View.VISIBLE);
         mSwipeRefreshLayout.setVisibility(View.VISIBLE);
-        mSwipeRight.setVisibility(View.VISIBLE);
+        mOpenCart.setVisibility(View.GONE);
+    }
+
+    private void showLoading() {
+        hideContainers();
+        mLoadingView.setVisibility(View.VISIBLE);
+    }
+
+    private void hideContainers() {
+        mLoadingView.setVisibility(View.GONE);
+        mRecycleView.setVisibility(View.GONE);
+        mEmptyStateView.setVisibility(View.GONE);
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 
     @OnClick(R.id.fab_new_evaluation)
@@ -142,18 +155,24 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
 
     @Override
     public void onRefresh() {
-
+        mMenuList = null;
+        showLoading();
+        mPresenter.getMenuList();
     }
 
     @Override
     public void onSuccessGetMenuList(List<Menu> result) {
+        hideContainers();
         mMenuList = result;
         mMenuAdapter.setData(mMenuList);
+        mRecycleView.setVisibility(View.VISIBLE);
+        mOpenCart.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onErrorGetMenuList() {
-
+        hideContainers();
+        showEmptyState();
     }
 }
 

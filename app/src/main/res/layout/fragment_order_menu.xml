@@ -1,42 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipe_refresh_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:animateLayoutChanges="true"
     android:background="@color/colorBackground">
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh_layout"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp">
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/loading_more"
+            layout="@layout/view_item_loading_more"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom|center"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/loading_view"
+            layout="@layout/include_loading"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/empty_state_view"
+            layout="@layout/include_empty_state"
+            android:visibility="gone" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/view_item_order_menu" />
-    </android.support.v4.widget.SwipeRefreshLayout>
 
-    <include
-        android:id="@+id/loading_view"
-        layout="@layout/include_loading"
-        android:visibility="gone" />
+        <ImageView
+            android:id="@+id/fab_new_evaluation"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="10dp"
+            android:background="@drawable/selector_circle_button_yellow"
+            android:padding="9dp"
+            android:src="@drawable/app_icon" />
 
-    <ImageView
-        android:id="@+id/fab_new_evaluation"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="10dp"
-        android:background="@drawable/selector_circle_button_yellow"
-        android:padding="9dp"
-        android:src="@drawable/app_icon" />
+    </FrameLayout>
 
-
-</FrameLayout>
+</android.support.v4.widget.SwipeRefreshLayout>

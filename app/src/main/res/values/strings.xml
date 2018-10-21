@@ -50,6 +50,7 @@
     <string name="empty_state_no_menu_itens">Ops… Parece que não há nada para comprar ainda</string>
     <string name="empty_state_no_status">Ops… Parece que você não pediu nada ainda</string>
     <string name="empty_state_swipe_left_to_shop">Arraste para esquerda para montar seu carrinho</string>
+    <string name="empty_state_sorry">Pedimos desculpas pelo transtorno</string>
 
 
 </resources>
