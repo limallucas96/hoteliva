@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.mock.Purchase;
+import com.example.lucas.deliva.mechanism.connection.view.Util;
 import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
 import com.example.lucas.deliva.presentation.base.view.BaseFragment;
 import com.example.lucas.deliva.presentation.base.view.adapter.OrderTabsViewPagerAdapter;
@@ -77,6 +78,7 @@ public class OrderProfileFragment extends BaseFragment<OrderProfileFragmentPrese
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setupRecycle();
+        setMockProfileValues();
         showEmptyState();
         mSwipeRefreshLayout.setOnRefreshListener(this);
     }
@@ -130,5 +132,11 @@ public class OrderProfileFragment extends BaseFragment<OrderProfileFragmentPrese
     public void onErrorGetUserWallet() {
         hideContainers();
         showEmptyState();
+    }
+
+    private void setMockProfileValues() {
+        mAccomodation.setText("15/10/2018 - 20/10/2018");
+        mTotal.setText(Util.formatCurrency(180.00));
+
     }
 }
