@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.mock.OrderDetailImage;
@@ -31,11 +32,13 @@ public class OrderDetailImageReycleAdapter extends BaseRecyclerAdapter<OrderDeta
     class ViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView mImageView;
+        private TextView mPictureIndicator;
 
         ViewHolder(View itemView) {
             super(itemView);
 
             mImageView = itemView.findViewById(R.id.image_view);
+            mPictureIndicator = itemView.findViewById(R.id.pictures_indicator);
 
         }
 
@@ -43,6 +46,7 @@ public class OrderDetailImageReycleAdapter extends BaseRecyclerAdapter<OrderDeta
 
             if (menu.getImage() != null && !menu.getImage().isEmpty()) {
                 Picasso.with(itemView.getContext()).load(menu.getImage()).resize(600, 200).centerCrop().into(mImageView);
+                mPictureIndicator.setText(posistion+1 + "/" + mData.size());
             }
 
         }
