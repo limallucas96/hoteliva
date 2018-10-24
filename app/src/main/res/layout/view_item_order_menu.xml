@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp"
     android:background="@android:color/white"
     android:orientation="vertical">
 
@@ -15,12 +15,11 @@
 
         <ImageView
             android:id="@+id/image_view"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
             android:layout_margin="10dp"
             android:scaleType="fitXY"
             tools:srcCompat="@tools:sample/backgrounds/scenic[0]" />
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,9 +56,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
+            android:paddingTop="15dp"
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
-            android:paddingTop="15dp"
             android:text="Expect to find dishes like green onion salad in a spicy sauce peppers to put on the grill Expect to find dishes like green onion salad in a spicy sauce peppers to put on the grill" />
 
         <LinearLayout

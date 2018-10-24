@@ -30,11 +30,19 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" />
 
-        <activity android:name=".presentation.order.view.OrderActivityActivity" />
+        <activity
+            android:name=".presentation.order.view.OrderActivityActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".presentation.order.view.OrderDetailsActivity" />
+        <activity
+            android:name=".presentation.order.view.OrderDetailsActivity"
+            android:label=""
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".presentation.cart.view.CartActivity" />
+        <activity
+            android:name=".presentation.cart.view.CartActivity"
+            android:label=""
+            android:screenOrientation="portrait" />
 
     </application>
 </manifest>

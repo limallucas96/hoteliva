@@ -44,9 +44,6 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
     @BindView(R.id.recycler_view)
     protected RecyclerView mRecycleView;
 
-    @BindView(R.id.recycler_view_indicator)
-    protected IndefinitePagerIndicator mStepIndicator;
-
     private OrderDetailImageReycleAdapter mImageAdapter;
 
     private Menu mMenu;
@@ -92,7 +89,6 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
         mImageAdapter = new OrderDetailImageReycleAdapter();
 
         mRecycleView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        mStepIndicator.attachToRecyclerView(mRecycleView);
         mRecycleView.setAdapter(mImageAdapter);
         mImageAdapter.setData(mImageList);
         SnapHelper snapHelper = new PagerSnapHelper();
