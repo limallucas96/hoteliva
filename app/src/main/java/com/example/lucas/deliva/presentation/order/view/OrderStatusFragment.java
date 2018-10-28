@@ -72,6 +72,14 @@ public class OrderStatusFragment extends BaseFragment<OrderStatusFragmentPresent
         mAdapter = new OrderStatusRecycleAdapter();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
+
+        mAdapter.onItemClickListener(new OrderStatusRecycleAdapter.OnItemClickListener() {
+            @Override
+            public void onConfirmButtonClickLister(@NonNull OrderStatus status) {
+                mOrderStatus.remove(status);
+                mAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
     private void showLoading() {
