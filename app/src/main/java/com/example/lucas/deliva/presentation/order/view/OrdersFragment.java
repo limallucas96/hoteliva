@@ -15,7 +15,7 @@ import com.example.lucas.deliva.presentation.order.presenter.OrdersFragmentPrese
 
 import butterknife.BindView;
 
-public class OrdersFragment extends BaseFragment<OrdersFragmentPresenter> implements AdapterAwareFragment<OrderActivityActivity> {
+public class OrdersFragment extends BaseFragment<OrdersFragmentPresenter> implements AdapterAwareFragment<OrderActivity> {
 
 
     @BindView(R.id.tab_layout)
@@ -92,7 +92,7 @@ public class OrdersFragment extends BaseFragment<OrdersFragmentPresenter> implem
     }
 
     @Override
-    public void onAdapterChangedToThisFragment(@NonNull OrderActivityActivity activity) {
+    public void onAdapterChangedToThisFragment(@NonNull OrderActivity activity) {
 
     }
 }

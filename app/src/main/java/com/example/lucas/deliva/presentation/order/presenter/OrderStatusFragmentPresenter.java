@@ -23,6 +23,8 @@ public class OrderStatusFragmentPresenter extends BasePresenter {
         mOrderStatus.add(new OrderStatus(2, null, "http://s3.envato.com/files/253203724/DSC_2352111.jpg", 1, "1"));
         mOrderStatus.add(new OrderStatus(2, null, "http://s3.envato.com/files/253203724/DSC_2352111.jpg", 1, "2"));
         mOrderStatus.add(new OrderStatus(2, null, "http://s3.envato.com/files/253203724/DSC_2352111.jpg", 1, "1"));
+        mOrderStatus.add(new OrderStatus(2, null, "http://s3.envato.com/files/253203724/DSC_2352111.jpg", 2, "1"));
+        mOrderStatus.add(new OrderStatus(2, null, "http://s3.envato.com/files/253203724/DSC_2352111.jpg", 2, "2"));
 
         if (mOrderStatus != null) {
             mView.onSuccessGetOrderStatusList(mOrderStatus);

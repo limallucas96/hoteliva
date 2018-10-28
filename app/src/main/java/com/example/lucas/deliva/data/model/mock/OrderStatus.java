@@ -9,14 +9,14 @@ public class OrderStatus implements Serializable {
     private List<Menu> orderList;
     private String image;
     private Integer currentStatus;
-    private String currentLabelStatus;
+    private String roomNumber;
 
-    public OrderStatus(Integer orderId, List<Menu> orderList, String image, Integer currentStatus, String currentLabelStatus) {
+    public OrderStatus(Integer orderId, List<Menu> orderList, String image, Integer currentStatus, String roomNumber) {
         this.orderId = orderId;
         this.orderList = orderList;
         this.image = image;
         this.currentStatus = currentStatus;
-        this.currentLabelStatus = currentLabelStatus;
+        this.roomNumber = roomNumber;
     }
 
     public Integer getOrderId() {
@@ -51,11 +51,11 @@ public class OrderStatus implements Serializable {
         this.currentStatus = currentStatus;
     }
 
-    public String getCurrentLabelStatus() {
-        return currentLabelStatus;
+    public String getRoomNumber() {
+        return roomNumber;
     }
 
-    public void setCurrentLabelStatus(String currentLabelStatus) {
-        this.currentLabelStatus = currentLabelStatus;
+    public void setRoomNumber(String roomNumber) {
+        this.roomNumber = roomNumber;
     }
 }

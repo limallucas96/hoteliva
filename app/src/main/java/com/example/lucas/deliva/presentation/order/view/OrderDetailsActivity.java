@@ -14,6 +14,7 @@ import android.support.v7.widget.SnapHelper;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.mock.Menu;
@@ -40,6 +41,8 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
 
     @BindView(R.id.toolbar)
     protected Toolbar mToolbar;
+    @BindView(R.id.title)
+    protected TextView mTitle;
 
     @BindView(R.id.recycler_view)
     protected RecyclerView mRecycleView;
@@ -80,8 +83,8 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
         if (mToolbar != null) {
             setSupportActionBar(mToolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//            getSupportActionBar().setDisplayShowTitleEnabled(false);
-//            mTextView.setText("QUARTO 7");
+            if (mMenu != null && mMenu.getTitle() != null)
+                mTitle.setText(mMenu.getTitle());
         }
     }
 

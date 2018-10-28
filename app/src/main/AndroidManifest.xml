@@ -31,17 +31,21 @@
             android:windowSoftInputMode="adjustResize|stateHidden" />
 
         <activity
-            android:name=".presentation.order.view.OrderActivityActivity"
+            android:name=".presentation.order.view.OrderActivity"
+            android:label=""
+            android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <activity
             android:name=".presentation.order.view.OrderDetailsActivity"
             android:label=""
+            android:parentActivityName=".presentation.order.view.OrderActivity"
             android:screenOrientation="portrait" />
 
         <activity
             android:name=".presentation.cart.view.CartActivity"
             android:label=""
+            android:parentActivityName=".presentation.order.view.OrderActivity"
             android:screenOrientation="portrait" />
 
     </application>

@@ -25,7 +25,7 @@ import com.example.lucas.deliva.presentation.order.presenter.OrderActivityPresen
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class OrderActivityActivity extends BaseActivity<OrderActivityPresenter> implements OrderActivityView {
+public class OrderActivity extends BaseActivity<OrderActivityPresenter> implements OrderActivityView {
 
     @BindView(R.id.drawer_layout)
     protected DrawerLayout mDrawerLayout;
@@ -43,7 +43,6 @@ public class OrderActivityActivity extends BaseActivity<OrderActivityPresenter> 
     protected FrameLayout mFrameFragment;
 
     private OrdersFragment mOrdersFragment;
-    private OrderProfileFragment mOrderProfileFragment;
 
     // Navigation Menu Header
     protected TextView mMenuName;
@@ -78,9 +77,11 @@ public class OrderActivityActivity extends BaseActivity<OrderActivityPresenter> 
     private void setToolbar() {
         if (mToolbar != null) {
             setSupportActionBar(mToolbar);
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-            mTextView.setText(mUser.getRoom());
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
+            if (mUser.getRoom() != null) {
+                mTextView.setText(mUser.getRoom());
+            }
         }
     }
 
@@ -134,7 +135,7 @@ public class OrderActivityActivity extends BaseActivity<OrderActivityPresenter> 
 
     private void showLogoutDialog() {
         if (!isFinishing()) {
-            new AlertDialog.Builder(OrderActivityActivity.this)
+            new AlertDialog.Builder(OrderActivity.this)
                     .setCancelable(true)
                     .setTitle("Saindo")
                     .setMessage("Saindo aplicativo")
@@ -142,7 +143,7 @@ public class OrderActivityActivity extends BaseActivity<OrderActivityPresenter> 
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             mPresenter.logoutUser();
-                            Intent intent = new Intent(OrderActivityActivity.this, LoginActivity.class);
+                            Intent intent = new Intent(OrderActivity.this, LoginActivity.class);
                             startActivity(intent);
                             finish();
                         }

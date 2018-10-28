@@ -11,7 +11,7 @@ import com.example.lucas.deliva.presentation.base.view.BaseActivity;
 
 import com.example.lucas.deliva.presentation.login.view.LoginActivity;
 import com.example.lucas.deliva.R;
-import com.example.lucas.deliva.presentation.order.view.OrderActivityActivity;
+import com.example.lucas.deliva.presentation.order.view.OrderActivity;
 import com.example.lucas.deliva.presentation.splash.presenter.SplashPresenter;
 
 
@@ -66,7 +66,7 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
 
     private void startOrderActivity(){
         //TODO - Pass bundle data to order activity if it contains data from ws
-        Intent i = new Intent(SplashActivity.this, OrderActivityActivity.class);
+        Intent i = new Intent(SplashActivity.this, OrderActivity.class);
         startActivity(i);
         finish();
     }

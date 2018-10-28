@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <LinearLayout
@@ -15,20 +15,20 @@
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:targetApi="lollipop"
             android:background="@android:color/white"
             android:elevation="6dp"
             app:tabBackground="@color/colorPrimary"
-            app:tabTextColor="@android:color/white"
-            app:tabSelectedTextColor="@android:color/white"
+            app:tabGravity="fill"
             app:tabIndicatorColor="@android:color/white"
             app:tabMode="fixed"
-            app:tabGravity="fill" />
+            app:tabSelectedTextColor="@android:color/white"
+            app:tabTextColor="@android:color/white"
+            tools:targetApi="lollipop" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/list_swipe_refresh"
@@ -36,22 +36,6 @@
             android:layout_height="match_parent"
             android:padding="10dp">
 
-            <!--<android.support.v7.widget.RecyclerView-->
-                <!--android:id="@+id/recycler_view"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--tools:listitem="@layout/view_item_evaluation_card" />-->
         </android.support.v4.widget.SwipeRefreshLayout>
     </LinearLayout>
-
-    <!--<ImageView-->
-        <!--android:id="@+id/fab_new_evaluation"-->
-        <!--android:layout_width="50dp"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:layout_gravity="bottom|end"-->
-        <!--android:layout_margin="10dp"-->
-        <!--android:background="@drawable/selector_circle_button_yellow"-->
-        <!--android:padding="15dp"-->
-        <!--android:src="@drawable/ic_plus_white" />-->
-
 </FrameLayout>

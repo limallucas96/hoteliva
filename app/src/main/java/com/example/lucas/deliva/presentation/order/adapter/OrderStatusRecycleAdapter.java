@@ -62,7 +62,7 @@ public class OrderStatusRecycleAdapter extends BaseRecyclerAdapter<OrderStatus, 
                 Picasso.with(itemView.getContext()).load(status.getImage()).into(mImage);
             }
 
-            if (status.getCurrentStatus() != null && status.getCurrentLabelStatus() != null) {
+            if (status.getCurrentStatus() != null && status.getRoomNumber() != null) {
 
                 OrderStatusType orderStatusType = OrderStatusType.fromInt(status.getCurrentStatus());
 
