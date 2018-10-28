@@ -62,19 +62,20 @@ public class ProfilePurchaseRecycleAdapter extends BaseRecyclerAdapter<Purchase,
             }
 
             if (purchase.getStatus() != null) {
-                mStatus.setText("" + purchase.getStatus());
                 PaymentStatusType paymentStatusType = PaymentStatusType.fromInt(purchase.getStatus());
 
                 switch (paymentStatusType) {
                     case PAID:
+                        mStatus.setText("Pago");
                         break;
                     case PENDENT:
+                        mStatus.setText("Pendente");
                         break;
                     case INVALID:
+                        mStatus.setText("");
                         break;
                 }
             }
-
         }
     }
 

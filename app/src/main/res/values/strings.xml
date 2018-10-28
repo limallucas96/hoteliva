@@ -52,5 +52,12 @@
     <string name="empty_state_swipe_left_to_shop">Arraste para esquerda para montar seu carrinho</string>
     <string name="empty_state_sorry">Pedimos desculpas pelo transtorno</string>
 
+    <!--EXIT DIALOG -->
+    <string name="exit_app_dialog_title">Saindo…</string>
+    <string name="exit_app_dialog_message">Saindo aplicativo</string>
+    <string name="negative_option">Não</string>
+    <string name="positive_option">Sim</string>
+    <string name="cancel_option">Não</string>
+
 
 </resources>

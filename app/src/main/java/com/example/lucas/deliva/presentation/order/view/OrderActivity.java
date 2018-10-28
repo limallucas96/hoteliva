@@ -10,8 +10,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -32,6 +34,7 @@ public class OrderActivity extends BaseActivity<OrderActivityPresenter> implemen
 
     @BindView(R.id.navigation)
     protected NavigationView mNavigationView;
+    private ActionBarDrawerToggle mDrawerToggle;
 
     @BindView(R.id.toolbar)
     protected Toolbar mToolbar;
@@ -72,6 +75,7 @@ public class OrderActivity extends BaseActivity<OrderActivityPresenter> implemen
         setToolbar();
         setupFirstFragment();
         setupHeaderDrawer();
+        setupDrawer();
     }
 
     private void setToolbar() {
@@ -137,9 +141,9 @@ public class OrderActivity extends BaseActivity<OrderActivityPresenter> implemen
         if (!isFinishing()) {
             new AlertDialog.Builder(OrderActivity.this)
                     .setCancelable(true)
-                    .setTitle("Saindo")
-                    .setMessage("Saindo aplicativo")
-                    .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    .setTitle(R.string.exit_app_dialog_title)
+                    .setMessage(R.string.exit_app_dialog_message)
+                    .setPositiveButton(R.string.positive_option, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             mPresenter.logoutUser();
@@ -148,13 +152,20 @@ public class OrderActivity extends BaseActivity<OrderActivityPresenter> implemen
                             finish();
                         }
                     })
-                    .setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                    .setNegativeButton(R.string.negative_option, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
 
                         }
                     }).show();
         }
+    }
+
+    public void setupDrawer() {
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.negative_option, R.string.positive_option);
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
+        mDrawerToggle.syncState();
+        setupHeaderDrawer();
     }
 
 }

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
@@ -21,6 +22,7 @@ import com.example.lucas.deliva.data.model.mock.Menu;
 import com.example.lucas.deliva.data.model.mock.Order;
 import com.example.lucas.deliva.data.model.mock.OrderDetailImage;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
+import com.example.lucas.deliva.presentation.base.view.adapter.ImageViewPagerAdapter;
 import com.example.lucas.deliva.presentation.order.adapter.AppBarStateChangeListener;
 import com.example.lucas.deliva.presentation.order.adapter.OrderDetailImageReycleAdapter;
 import com.example.lucas.deliva.presentation.order.adapter.OrderMenuRecycleAdapter;
@@ -29,6 +31,7 @@ import com.rbrooks.indefinitepagerindicator.IndefinitePagerIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -44,8 +47,14 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
     @BindView(R.id.title)
     protected TextView mTitle;
 
-    @BindView(R.id.recycler_view)
-    protected RecyclerView mRecycleView;
+//    @BindView(R.id.recycler_view)
+//    protected RecyclerView mRecycleView;
+
+    @BindView(R.id.vehicle_pictures)
+    protected ViewPager mPicturesViewPager;
+    private ImageViewPagerAdapter mViewPagerAdapter;
+    @BindView(R.id.pictures_indicator)
+    protected TextView mPicturesIndicator;
 
     private OrderDetailImageReycleAdapter mImageAdapter;
 
@@ -53,7 +62,7 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
     private Order mOrder;
 
     //TODO - Mock. Remove later
-    private List<OrderDetailImage> mImageList = new ArrayList<>();
+    private List<String> mImageList = new ArrayList<>();
 
     @NonNull
     @Override
@@ -75,7 +84,8 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
         }
 
         setRecycleMockData();
-        setupRecycle();
+//        setupRecycle();
+        setupViewPager();
         setToolbar();
     }
 
@@ -88,23 +98,25 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
         }
     }
 
-    private void setupRecycle() {
-        mImageAdapter = new OrderDetailImageReycleAdapter();
-
-        mRecycleView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        mRecycleView.setAdapter(mImageAdapter);
-        mImageAdapter.setData(mImageList);
-        SnapHelper snapHelper = new PagerSnapHelper();
-        snapHelper.attachToRecyclerView(mRecycleView);
-
-    }
+//    private void setupRecycle() {
+//        mImageAdapter = new OrderDetailImageReycleAdapter();
+//
+//        mRecycleView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+//        mRecycleView.setAdapter(mImageAdapter);
+//        mImageAdapter.setData(mImageList);
+//        SnapHelper snapHelper = new PagerSnapHelper();
+//        snapHelper.attachToRecyclerView(mRecycleView);
+//
+//    }
 
     private void setRecycleMockData() {
-        mImageList.add(new OrderDetailImage("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
-        mImageList.add(new OrderDetailImage("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
-        mImageList.add(new OrderDetailImage("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
-        mImageList.add(new OrderDetailImage("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
-        mImageList.add(new OrderDetailImage("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg"));
+        mImageList.add("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg");
+        mImageList.add("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg");
+        mImageList.add("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg");
+        mImageList.add("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg");
+        mImageList.add("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg");
+        mImageList.add("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg");
+        mImageList.add("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg");
     }
 
 
@@ -114,5 +126,30 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
         intent.putExtra(MENU, mMenu);
         setResult(RESULT_OK, intent);
         finish();
+    }
+
+    private void setupViewPager() {
+        mViewPagerAdapter = new ImageViewPagerAdapter(getSupportFragmentManager());
+        mPicturesViewPager.setAdapter(mViewPagerAdapter);
+        mPicturesViewPager.setOffscreenPageLimit(mImageList.size());
+        mPicturesViewPager.setAdapter(mViewPagerAdapter);
+        mViewPagerAdapter.setData(mImageList);
+        mPicturesIndicator.setText(String.format(Locale.getDefault(), "%d/%d", 1, mImageList.size()));
+        mPicturesViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                mPicturesIndicator.setText(String.format(Locale.getDefault(), "%d/%d", position + 1, mImageList.size()));
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 }
