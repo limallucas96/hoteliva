@@ -22,13 +22,25 @@ public class UserReturn implements Serializable {
     private String userId;
 
     @SerializedName("room_id")
-    private String roomId;
+    private Integer roomId;
+
+    @SerializedName("room_number")
+    private Integer room_number;
 
     @SerializedName("room")
     private String room;
 
     @SerializedName("profile_picture")
     private String profilePicture;
+
+    @SerializedName("room_daily_value")
+    private Double roomValue;
+
+    @SerializedName("room_description")
+    private String roomDescription;
+
+    @SerializedName("room_floor")
+    private Integer roomFloor;
 
     private Boolean isLogged = false;
 
@@ -80,14 +92,6 @@ public class UserReturn implements Serializable {
         this.userId = userId;
     }
 
-    public String getRoomId() {
-        return roomId;
-    }
-
-    public void setRoomId(String roomId) {
-        this.roomId = roomId;
-    }
-
     public String getRoom() {
         return room;
     }
@@ -102,6 +106,46 @@ public class UserReturn implements Serializable {
 
     public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
+    }
+
+    public Integer getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(Integer roomId) {
+        this.roomId = roomId;
+    }
+
+    public Integer getRoom_number() {
+        return room_number;
+    }
+
+    public void setRoom_number(Integer room_number) {
+        this.room_number = room_number;
+    }
+
+    public Double getRoomValue() {
+        return roomValue;
+    }
+
+    public void setRoomValue(Double roomValue) {
+        this.roomValue = roomValue;
+    }
+
+    public String getRoomDescription() {
+        return roomDescription;
+    }
+
+    public void setRoomDescription(String roomDescription) {
+        this.roomDescription = roomDescription;
+    }
+
+    public Integer getRoomFloor() {
+        return roomFloor;
+    }
+
+    public void setRoomFloor(Integer roomFloor) {
+        this.roomFloor = roomFloor;
     }
 }
 

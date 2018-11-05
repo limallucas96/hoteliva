@@ -1,6 +1,11 @@
 package com.example.lucas.deliva.presentation.order.presenter;
 
+import android.support.annotation.NonNull;
+
+import com.example.lucas.deliva.business.BusinessException;
 import com.example.lucas.deliva.business.session.SessionBO;
+import com.example.lucas.deliva.controller.ControllerListener;
+import com.example.lucas.deliva.controller.menu.MenuController;
 import com.example.lucas.deliva.data.model.mock.Menu;
 import com.example.lucas.deliva.data.model.mock.Order;
 import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
@@ -13,10 +18,12 @@ public class OrderMenuFragmentPresenter extends BasePresenter {
 
     private final OrderMenuFragment mView;
     private final SessionBO mSessionBO;
+    private final MenuController mMenuController;
 
     public OrderMenuFragmentPresenter(OrderMenuFragment view) {
         this.mView = view;
         this.mSessionBO = new SessionBO();
+        this.mMenuController = new MenuController();
     }
 
     public Order getOrder() {
@@ -42,6 +49,20 @@ public class OrderMenuFragmentPresenter extends BasePresenter {
         } else {
             mView.onErrorGetMenuList();
         }
+    }
+
+    public void getMenuList2() {
+        mMenuController.getMenuList(new ControllerListener<List<com.example.lucas.deliva.data.model.Menu>>() {
+            @Override
+            public void onSuccess(@NonNull List<com.example.lucas.deliva.data.model.Menu> result) {
+                mView.onSuccessGetMenuList2(result);
+            }
+
+            @Override
+            public void onError(@NonNull BusinessException errorCode) {
+                mView.onErrorGetMenuList();
+            }
+        });
     }
 
 }

@@ -76,7 +76,14 @@ public class OrderStatusFragment extends BaseFragment<OrderStatusFragmentPresent
         mAdapter.onItemClickListener(new OrderStatusRecycleAdapter.OnItemClickListener() {
             @Override
             public void onConfirmButtonClickLister(@NonNull OrderStatus status) {
-                mOrderStatus.remove(status);
+                for (OrderStatus orderStatus : mOrderStatus) {
+                    if (orderStatus.getOrderId() == status.getOrderId()) {
+                        mOrderStatus.remove(status);
+                        break;
+                    }
+                }
+                mAdapter.getData().clear();
+                mAdapter.setData(mOrderStatus);
                 mAdapter.notifyDataSetChanged();
             }
         });

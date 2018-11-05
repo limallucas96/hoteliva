@@ -10,4 +10,8 @@ public interface OrderMenuFragmentView extends BaseView {
     void onSuccessGetMenuList(List<Menu> result);
 
     void onErrorGetMenuList();
+
+    void onSuccessGetMenuList2(List<com.example.lucas.deliva.data.model.Menu> result);
+
+    void onErrorGetMenuList2();
 }

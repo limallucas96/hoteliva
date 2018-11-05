@@ -65,6 +65,7 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
     private List<Menu> mMenuList = new ArrayList<>();
     private Menu mMenu;
     private Order mOrder;
+    private List<com.example.lucas.deliva.data.model.Menu> mMenu2;
 
     @NonNull
     @Override
@@ -77,6 +78,7 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
         super.onActivityCreated(savedInstanceState);
         setupRecycle();
         showEmptyState();
+        mPresenter.getMenuList2();
         mSwipeRefreshLayout.setOnRefreshListener(this);
     }
 
@@ -173,6 +175,16 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
     public void onErrorGetMenuList() {
         hideContainers();
         showEmptyState();
+    }
+
+    @Override
+    public void onSuccessGetMenuList2(List<com.example.lucas.deliva.data.model.Menu> result) {
+        mMenu2 = result;
+    }
+
+    @Override
+    public void onErrorGetMenuList2() {
+
     }
 }
 
