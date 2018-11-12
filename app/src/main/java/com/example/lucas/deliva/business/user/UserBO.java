@@ -28,7 +28,7 @@ public class UserBO {
         mConnectionBO.assertInternetConnection();
         try {
             UserReturn gson = mUserDAO.login(email, password);
-            if (gson != null) {
+            if (gson != null && gson.getIsAuthenticaded() == 1) {
                 return gson;
             } else {
                 throw new BusinessException(BusinessErrorCode.GENERIC_ERROR);

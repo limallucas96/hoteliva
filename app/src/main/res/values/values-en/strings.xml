@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">deliva</string>
+
+    <!--LOGIN ACTIVITY -->
+    <string name="user_password">Password</string>
+    <string name="user_email">User</string>
+    <string name="login_empty_password">Password cannot be empty</string>
+    <string name="login_empty_username">User cannot be empty</string>
+
+    <!-- SWIPE VIEW PAGER TITLES -->
+    <string name="profile_fragment_title">Profile</string>
+    <string name="orders_fragment_title">Orders</string>
+    <string name="status_fragment_title">Status</string>
+
+
+    <!--FECTHING DATA OR LOADING-->
+    <string name="fecthing_list_data">Loading...</string>
+
+
+    <!--ITEM DETAIL ACTIVITY -->
+    <string name="description">Description</string>
+
+
+    <!--CART ACTIVITY-->
+    <string name="cart_checkout">Save and order</string>
+    <string name="your_cart">Your cart</string>
+    <string name="total_cart">Cart</string>
+    <string name="service_cost">Room service</string>
+    <string name="cart_total">Total</string>
+
+    <!--VIEW ITEM ORDER STATUS-->
+    <string name="order_status_title">Order #ID: %s</string>
+    <string name="order_status_ordered">Order</string>
+    <string name="order_status_on_going">On going</string>
+    <string name="order_status_done">Done</string>
+    <string name="order_status_id_1">Your order is on waiting list by the restaurant</string>
+    <string name="order_status_id_2">Your order is approved and on going</string>
+    <string name="order_status_id_3">Your order will be delivered at room %s</string>
+    <string name="button_order_confirm">Confirm delivered order</string>
+
+    <!-- PROFILE FRAGMENT -->
+    <string name="purchase_id"># %d</string>
+    <string name="purchase_status_paid">Paid</string>
+    <string name="purchase_status_pending">Pendent</string>
+    <string name="purchase_balance">Your stay balance</string>
+
+    <!--EMPTY STATE -->
+    <string name="empty_state_no_purchase">Ops… Looks like you didn't buy anything yet</string>
+    <string name="empty_state_swipe_right_to_shop">Swipe right to create your cart</string>
+    <string name="empty_state_no_menu_itens">Ops… Looks like there's nothing to buy yet</string>
+    <string name="empty_state_no_status">Ops… Looks like you didn't order anything yet</string>
+    <string name="empty_state_swipe_left_to_shop">Swipe left to create your cart</string>
+    <string name="empty_state_sorry">We are sorry for the bad time</string>
+
+    <!--EXIT DIALOG -->
+    <string name="exit_app_dialog_title">Exiting…</string>
+    <string name="exit_app_dialog_message">Logout application</string>
+    <string name="negative_option">No</string>
+    <string name="positive_option">Yes</string>
+    <string name="cancel_option">No</string>
+
+
+</resources>
