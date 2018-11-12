@@ -47,6 +47,11 @@
             android:label=""
             android:parentActivityName=".presentation.order.view.OrderActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.country.view.LanguageSelectorActivity"
+            android:label=""
+            android:parentActivityName=".presentation.order.view.OrderActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 </manifest>

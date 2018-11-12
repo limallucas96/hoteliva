@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import com.example.lucas.deliva.data.model.UserReturn;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
 
+import com.example.lucas.deliva.presentation.country.view.LanguageSelectorActivity;
 import com.example.lucas.deliva.presentation.login.view.LoginActivity;
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.presentation.order.view.OrderActivity;
@@ -38,10 +39,10 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
             @Override
             public void run() {
                 mPresenter.removeOrder();
-                if(isUserLogged()){
+                if (isUserLogged()) {
                     startOrderActivity();
-                }else{
-                    startLoginActivity();
+                } else {
+                    startLanguageSelectorActivity();
                 }
             }
         }, SPLASH_TIME_OUT);
@@ -58,13 +59,18 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
         return false;
     }
 
-    private void startLoginActivity(){
+    private void startLoginActivity() {
         Intent i = new Intent(SplashActivity.this, LoginActivity.class);
         startActivity(i);
         finish();
     }
 
-    private void startOrderActivity(){
+    private void startLanguageSelectorActivity() {
+        startActivity(new Intent(SplashActivity.this, LanguageSelectorActivity.class));
+        finish();
+    }
+
+    private void startOrderActivity() {
         //TODO - Pass bundle data to order activity if it contains data from ws
         Intent i = new Intent(SplashActivity.this, OrderActivity.class);
         startActivity(i);

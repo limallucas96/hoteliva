@@ -1,4 +1,7 @@
-<resources>
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation" >
+
 
     <string name="app_name">deliva</string>
 
@@ -60,5 +63,9 @@
     <string name="positive_option">Sim</string>
     <string name="cancel_option">Não</string>
 
+    <!-- COUNTRY SELECTOR ACTIVITY -->
+    <string name="select_country">Escolha seu idioma</string>
+    <string name="brazil">PT-BR</string>
+    <string name="usa">EN-US</string>
 
 </resources>
