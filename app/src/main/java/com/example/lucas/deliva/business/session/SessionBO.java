@@ -1,5 +1,7 @@
 package com.example.lucas.deliva.business.session;
 
+import android.support.annotation.NonNull;
+
 import com.example.lucas.deliva.data.dao.session.SessionDAO;
 import com.example.lucas.deliva.data.model.User;
 import com.example.lucas.deliva.data.model.UserReturn;
@@ -37,5 +39,21 @@ public class SessionBO {
 
     public void logoutUser(){
         mSessionDAO.logoutUser();
+    }
+
+    public void setLanguage(@NonNull final String language) {
+        mSessionDAO.setLanguage(language);
+    }
+
+    public String getLanguage() {
+        return mSessionDAO.getLanguage();
+    }
+
+    public void setLocale(@NonNull final String locale) {
+        mSessionDAO.setLocale(locale);
+    }
+
+    public String getLocale() {
+        return mSessionDAO.getLocale();
     }
 }

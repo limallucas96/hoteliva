@@ -14,14 +14,11 @@
     <string name="orders_fragment_title">Orders</string>
     <string name="status_fragment_title">Status</string>
 
-
     <!--FECTHING DATA OR LOADING-->
     <string name="fecthing_list_data">Loading...</string>
 
-
     <!--ITEM DETAIL ACTIVITY -->
     <string name="description">Description</string>
-
 
     <!--CART ACTIVITY-->
     <string name="cart_checkout">Save and order</string>
@@ -60,6 +57,5 @@
     <string name="negative_option">No</string>
     <string name="positive_option">Yes</string>
     <string name="cancel_option">No</string>
-
 
 </resources>

@@ -21,6 +21,8 @@ public class SessionDAO {
     private final static String KEY_ORDER_ON_GOING = "KEY_ORDER_ON_GOING";
     private final static String KEY_USER = "KEY_USER";
     private final static String KEY_USER_LOGGED_IN = "KEY_USER_LOGGED_IN";
+    private static final String KEY_LANGUAGE = "KEY_LANGUAGE";
+    private static final String KEY_LOCALE = "KEY_LOCALE";
 
     private final SharedPreferences mSharedPreferences;
     private final Gson mGson;
@@ -53,7 +55,7 @@ public class SessionDAO {
         editor.remove(KEY_ORDER_ON_GOING);
         editor.apply();
     }
-//    END ORDER DAO
+    //    END ORDER DAO
 
     //    BEGIN USER DAO
     public void setUser(UserReturn user) {
@@ -98,6 +100,28 @@ public class SessionDAO {
         editor.clear();
         editor.apply();
     }
-//END USER DAO
+    //END USER DAO
+
+    //BEGIN LOCALE
+    public void setLanguage(@NonNull final String language) {
+        final SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putString(KEY_LANGUAGE, language);
+        editor.apply();
+    }
+
+    public String getLanguage() {
+        return mSharedPreferences.getString(KEY_LANGUAGE, "pt");
+    }
+
+    public void setLocale(@NonNull final String locale) {
+        final SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putString(KEY_LOCALE, locale);
+        editor.apply();
+    }
+
+    public String getLocale() {
+        return mSharedPreferences.getString(KEY_LOCALE, "BR");
+    }
+    //END LOCALE
 
 }

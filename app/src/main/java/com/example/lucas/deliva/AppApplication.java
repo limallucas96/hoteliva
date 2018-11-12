@@ -5,6 +5,8 @@ import android.content.res.Configuration;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
+import com.example.lucas.deliva.mechanism.connection.locale.LocaleManager;
+
 import java.lang.ref.WeakReference;
 
 public class AppApplication extends MultiDexApplication {
@@ -29,7 +31,7 @@ public class AppApplication extends MultiDexApplication {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-//        LocaleManager.setLocale(this);
+        LocaleManager.setLocale(this);
     }
 
     private void setupFabric() {
