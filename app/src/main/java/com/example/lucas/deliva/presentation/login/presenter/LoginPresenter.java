@@ -2,12 +2,16 @@ package com.example.lucas.deliva.presentation.login.presenter;
 
 import android.support.annotation.NonNull;
 
+import com.example.lucas.deliva.AppApplication;
+import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.business.BusinessException;
 import com.example.lucas.deliva.business.session.SessionBO;
 import com.example.lucas.deliva.controller.ControllerListener;
 import com.example.lucas.deliva.controller.user.UserController;
 import com.example.lucas.deliva.data.model.User;
 import com.example.lucas.deliva.data.model.UserReturn;
+import com.example.lucas.deliva.data.model.type.CountryType;
+import com.example.lucas.deliva.mechanism.connection.locale.LocaleManager;
 import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
 import com.example.lucas.deliva.presentation.login.view.LoginView;
 
@@ -44,6 +48,45 @@ public class LoginPresenter extends BasePresenter {
 
     public void setUser(UserReturn user) {
         mSessionBO.setUser(user);
+    }
+
+    public Integer getLocaleFlag() {
+        CountryType country = CountryType.fromString(LocaleManager.getLocale());
+        switch (country) {
+            case BRAZIL:
+                return R.drawable.ic_brazil;
+            case UNITED_STATES:
+                return R.drawable.ic_brazil;
+            default:
+                return R.drawable.ic_brazil;
+        }
+    }
+
+    public Integer getLocaleFlag(CountryType countryType) {
+        switch (countryType) {
+            case BRAZIL:
+                return R.drawable.ic_brazil;
+            case UNITED_STATES:
+                return R.drawable.ic_brazil;
+            default:
+                return R.drawable.ic_brazil;
+        }
+    }
+
+    public void persistLanguage(@NonNull final CountryType countryType) {
+        switch (countryType) {
+            case BRAZIL:
+                LocaleManager.persistLanguage("pt", countryType.getValue());
+                break;
+            case UNITED_STATES:
+                LocaleManager.persistLanguage("us", countryType.getValue());
+                break;
+            default:
+                LocaleManager.persistLanguage("pt", countryType.getValue());
+                break;
+        }
+        LocaleManager.setLocale(AppApplication.getAppContext());
+        mView.restartActivity();
     }
 
 

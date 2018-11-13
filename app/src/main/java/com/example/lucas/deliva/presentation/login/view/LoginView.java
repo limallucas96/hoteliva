@@ -8,6 +8,9 @@ import com.example.lucas.deliva.presentation.base.view.BaseView;
 public interface LoginView extends BaseView {
 
     void showLoginSuccess(@NonNull final UserReturn user);
+
     void showLoginError();
+
+    void restartActivity();
 
 }

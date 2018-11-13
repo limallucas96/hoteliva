@@ -67,5 +67,6 @@
     <string name="select_country">Escolha seu idioma</string>
     <string name="brazil">PT-BR</string>
     <string name="usa">EN-US</string>
+    <string name="change_country">Trocar idioma</string>
 
 </resources>

@@ -7,11 +7,14 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.UserReturn;
+import com.example.lucas.deliva.data.model.type.CountryType;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
+import com.example.lucas.deliva.presentation.login.dialog.CountrySelectorDialog;
 import com.example.lucas.deliva.presentation.login.presenter.LoginPresenter;
 import com.example.lucas.deliva.presentation.order.view.OrderActivity;
 
@@ -32,6 +35,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @BindView(R.id.password_edit_text)
     protected TextInputEditText mPassword;
 
+    @BindView(R.id.country_flag)
+    protected ImageView mCountryFlag;
+
+    private CountrySelectorDialog mCountryDialog;
+
     @NonNull
     @Override
     protected LoginPresenter createPresenter(@NonNull Context context) {
@@ -46,6 +54,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setCountryFlag(mPresenter.getLocaleFlag());
     }
 
 
@@ -95,6 +104,33 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         user.setLogged(true);
         mPresenter.setUser(user);
         startOrderActivity(); // TODO - Remove later
+    }
+
+    @OnClick(R.id.country_container)
+    protected void onCountryContainerClick() {
+        showCountrySelectorDialog();
+    }
+
+    private void showCountrySelectorDialog() {
+        mCountryDialog = new CountrySelectorDialog(this, new CountrySelectorDialog.DialogListener() {
+            @Override
+            public void onConfirmClickListener(CountryType countryType) {
+                mPresenter.persistLanguage(countryType);
+                setCountryFlag(mPresenter.getLocaleFlag(countryType));
+                mCountryDialog.dismiss();
+            }
+        });
+        mCountryDialog.show();
+    }
+
+    private void setCountryFlag(Integer countryFlag) {
+        mCountryFlag.setImageResource(countryFlag);
+    }
+
+
+    @Override
+    public void restartActivity() {
+        recreate();
     }
 
 
