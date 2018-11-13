@@ -79,7 +79,7 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
     }
 
     private void setupToolbar() {
-        mToolbar.setTitle("Carrinho");
+        mToolbar.setTitle(R.string.total_cart);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

@@ -56,7 +56,7 @@ public class LoginPresenter extends BasePresenter {
             case BRAZIL:
                 return R.drawable.ic_brazil;
             case UNITED_STATES:
-                return R.drawable.ic_brazil;
+                return R.drawable.ic_usa;
             default:
                 return R.drawable.ic_brazil;
         }
@@ -67,7 +67,7 @@ public class LoginPresenter extends BasePresenter {
             case BRAZIL:
                 return R.drawable.ic_brazil;
             case UNITED_STATES:
-                return R.drawable.ic_brazil;
+                return R.drawable.ic_usa;
             default:
                 return R.drawable.ic_brazil;
         }
@@ -79,7 +79,7 @@ public class LoginPresenter extends BasePresenter {
                 LocaleManager.persistLanguage("pt", countryType.getValue());
                 break;
             case UNITED_STATES:
-                LocaleManager.persistLanguage("us", countryType.getValue());
+                LocaleManager.persistLanguage("en", countryType.getValue());
                 break;
             default:
                 LocaleManager.persistLanguage("pt", countryType.getValue());

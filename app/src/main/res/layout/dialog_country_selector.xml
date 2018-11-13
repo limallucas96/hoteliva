@@ -62,7 +62,7 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/ic_brazil" />
+                    android:src="@drawable/ic_usa" />
 
                 <TextView
                     android:layout_width="wrap_content"

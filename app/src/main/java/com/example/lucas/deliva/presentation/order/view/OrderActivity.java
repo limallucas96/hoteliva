@@ -91,7 +91,11 @@ public class OrderActivity extends BaseActivity<OrderActivityPresenter> implemen
 
     private void setupFirstFragment() {
         clearFragmentBackStack();
-        changeFragmentAddToStack("QUARTO 7", mOrdersFragment == null ?
+        String title = "";
+        if (mUser.getRoom() != null) {
+            title = mUser.getRoom();
+        }
+        changeFragmentAddToStack(title, mOrdersFragment == null ?
                 mOrdersFragment = new OrdersFragment() : mOrdersFragment);
     }
 

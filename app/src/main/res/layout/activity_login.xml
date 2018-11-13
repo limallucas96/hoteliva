@@ -79,7 +79,7 @@
                 android:layout_marginTop="25dp"
                 android:backgroundTint="@color/colorAccent"
                 android:maxLines="1"
-                android:text="login"
+                android:text="@string/login"
                 android:textAllCaps="true"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
@@ -99,7 +99,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginStart="5dp"
                     android:gravity="center"
-                    android:text="Esquece seu login? Clique aqui"
+                    android:text="@string/forgot_password"
                     android:textColor="@android:color/white"
                     android:textSize="12sp"
                     android:textStyle="bold" />

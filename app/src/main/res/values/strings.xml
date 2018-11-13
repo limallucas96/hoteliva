@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation" >
+<resources>
 
 
     <string name="app_name">deliva</string>
@@ -68,5 +67,11 @@
     <string name="brazil">PT-BR</string>
     <string name="usa">EN-US</string>
     <string name="change_country">Trocar idioma</string>
+
+    <string name="add_to_cart">Adicionar ao carrinho</string>
+    <string name="exit">Exit</string>
+    <string name="forgot_password">Esqueceu sua senha? Clique aqui</string>
+    <string name="login">Entrar</string>
+    <string name="room">Quarto</string>
 
 </resources>

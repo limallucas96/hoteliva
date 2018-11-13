@@ -66,10 +66,10 @@ public class ProfilePurchaseRecycleAdapter extends BaseRecyclerAdapter<Purchase,
 
                 switch (paymentStatusType) {
                     case PAID:
-                        mStatus.setText("Pago");
+                        mStatus.setText(R.string.purchase_status_paid);
                         break;
                     case PENDENT:
-                        mStatus.setText("Pendente");
+                        mStatus.setText(R.string.purchase_status_pending);
                         break;
                     case INVALID:
                         mStatus.setText("");

@@ -3,6 +3,7 @@ package com.example.lucas.deliva.presentation.base.view;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
@@ -10,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.lucas.deliva.mechanism.connection.locale.LocaleManager;
 import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
 
 import butterknife.ButterKnife;
@@ -43,6 +45,17 @@ public abstract class BaseActivity<Presenter extends BasePresenter> extends AppC
     protected void onPostCreate(@Nullable final Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         mPresenter.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleManager.setLocale(base));
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        LocaleManager.setLocale(this);
     }
 
     @Override

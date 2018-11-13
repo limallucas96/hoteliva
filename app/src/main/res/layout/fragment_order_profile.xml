@@ -51,7 +51,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:gravity="center"
-                        android:text="Balanço da estadia"
+                        android:text="@string/purchase_balance"
                         android:textAllCaps="true" />
 
                     <LinearLayout
