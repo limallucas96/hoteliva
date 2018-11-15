@@ -10,7 +10,13 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
 
+import com.example.lucas.deliva.AppApplication;
+import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.mechanism.connection.locale.LocaleManager;
 import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
 
@@ -106,7 +112,7 @@ public abstract class BaseActivity<Presenter extends BasePresenter> extends AppC
 
     @Override
     public Context getContext() {
-        return null;
+        return this != null ? this : AppApplication.getAppContext();
     }
 
     @Override
@@ -120,22 +126,50 @@ public abstract class BaseActivity<Presenter extends BasePresenter> extends AppC
     }
 
     @Override
-    public void showProgress() {
-
-    }
-
-    @Override
     public void hideProgress() {
-
+        dismissProgressDialog();
     }
 
     @Override
-    public void showProgressDialog(@NonNull String message) {
+    public void showProgress() {
+        showProgressDialog(getString(R.string.alert_loading));
+    }
 
+    @Override
+    public void showProgressDialog(@NonNull final String content) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.dialog_progress, null);
+        TextView text = (TextView) view.findViewById(R.id.dialog_progress_text);
+        text.setText(content);
+
+        builder.setCancelable(false);
+        builder.setView(view);
+        mProgressDialog = builder.create();
+        mProgressDialog.show();
     }
 
     @Override
     public void dismissProgressDialog() {
-
+        try {
+            if (mProgressDialog != null) {
+                mProgressDialog.dismiss();
+            }
+        } catch (Exception ex) {
+            Log.e(TAG, "Problem dismissing dialog");
+        }
     }
+
+    @Override
+    public void changeProgressDialogMessage(@NonNull final String message) {
+        try {
+            if (mProgressDialog != null && mProgressDialog.isShowing()) {
+                mProgressDialog.setMessage(message);
+            }
+        } catch (Exception ex) {
+            Log.e(TAG, "Problem dismissing dialog");
+        }
+    }
+
 }

@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.example.lucas.deliva.AppApplication;
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.UserReturn;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
@@ -91,11 +92,11 @@ public class OrderActivity extends BaseActivity<OrderActivityPresenter> implemen
 
     private void setupFirstFragment() {
         clearFragmentBackStack();
-        String title = "";
+        String room = "";
         if (mUser.getRoom() != null) {
-            title = mUser.getRoom();
+            room = mUser.getRoom();
         }
-        changeFragmentAddToStack(title, mOrdersFragment == null ?
+        changeFragmentAddToStack(String.format("%s", getContext().getString(R.string.room)), mOrdersFragment == null ?
                 mOrdersFragment = new OrdersFragment() : mOrdersFragment);
     }
 

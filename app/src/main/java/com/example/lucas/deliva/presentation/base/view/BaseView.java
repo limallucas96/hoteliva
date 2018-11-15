@@ -15,4 +15,6 @@ public interface BaseView {
 
     void showProgressDialog(@NonNull final String message);
     void dismissProgressDialog();
+
+    void changeProgressDialogMessage(@NonNull final String message);
 }

@@ -76,10 +76,10 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
         setupRecycle();
         showEmptyState();
-        mPresenter.getMenuList2();
-        mSwipeRefreshLayout.setOnRefreshListener(this);
+//        mPresenter.getMenuList2();
     }
 
     @Override

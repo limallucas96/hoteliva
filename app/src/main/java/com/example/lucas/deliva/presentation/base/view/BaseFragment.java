@@ -3,7 +3,6 @@ package com.example.lucas.deliva.presentation.base.view;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -83,6 +82,15 @@ public abstract class BaseFragment<Presenter extends BasePresenter> extends Frag
     public void dismissProgressDialog() {
         ((BaseActivity) getActivity()).dismissProgressDialog();
     }
+
+    @Override
+    public void changeProgressDialogMessage(@NonNull final String message) {
+        if (getActivity() != null) {
+            ((BaseActivity) getActivity()).changeProgressDialogMessage(message);
+        }
+    }
+
+
 
 
 }

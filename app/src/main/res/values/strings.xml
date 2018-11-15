@@ -74,4 +74,6 @@
     <string name="login">Entrar</string>
     <string name="room">Quarto</string>
 
+    <string name="alert_loading">Carregando, aguarde…</string>
+
 </resources>

@@ -29,7 +29,7 @@ public class LoginPresenter extends BasePresenter {
 
     public UserReturn login(@NonNull final String email,
                             @NonNull final String password) {
-        mView.showProgressDialog("logando");
+        mView.showProgress();
         mUserController.login(email, password, new ControllerListener<UserReturn>() {
             @Override
             public void onSuccess(@NonNull UserReturn result) {

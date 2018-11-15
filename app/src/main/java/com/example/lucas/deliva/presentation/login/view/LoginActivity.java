@@ -97,7 +97,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         Toast.makeText(this, "Não foi possivel fazer login", Toast.LENGTH_LONG).show();
         UserReturn user = new UserReturn();
         user.setName("Lucas Lima da Silva");
-        user.setRoom(String.format("%s %s", R.string.room, "7"));
+
         user.setRoomId(7);
         user.setProfilePicture("https://cdn1.iconfinder.com/data/icons/business-charts/512/customer-512.png");
         user.setUserId("17");
