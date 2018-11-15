@@ -9,6 +9,10 @@
     <string name="user_email">Usuário</string>
     <string name="login_empty_password">O campo senha não pode ser vazio</string>
     <string name="login_empty_username">O campo usuário não pode ser vazio</string>
+    <string name="login_error">usuário ou senha inválidos</string>
+    <string name="exit">Exit</string>
+    <string name="forgot_password">Esqueceu sua senha? Clique aqui</string>
+    <string name="login">Entrar</string>
 
     <!-- SWIPE VIEW PAGER TITLES -->
     <string name="profile_fragment_title">Perfil</string>
@@ -17,7 +21,7 @@
 
 
     <!--FECTHING DATA OR LOADING-->
-    <string name="fecthing_list_data">Carregando...</string>
+    <string name="fecthing_list_data">Carregando…</string>
 
 
     <!--ITEM DETAIL ACTIVITY -->
@@ -69,11 +73,12 @@
     <string name="change_country">Trocar idioma</string>
 
     <string name="add_to_cart">Adicionar ao carrinho</string>
-    <string name="exit">Exit</string>
-    <string name="forgot_password">Esqueceu sua senha? Clique aqui</string>
-    <string name="login">Entrar</string>
-    <string name="room">Quarto</string>
+
 
     <string name="alert_loading">Carregando, aguarde…</string>
+
+    <!-- ORDER ACTIVITY -->
+    <string name="guest_name">Hóspede</string>
+    <string name="room">Quarto</string>
 
 </resources>

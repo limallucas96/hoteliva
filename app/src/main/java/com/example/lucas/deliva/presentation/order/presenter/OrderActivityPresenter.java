@@ -1,7 +1,7 @@
 package com.example.lucas.deliva.presentation.order.presenter;
 
 import com.example.lucas.deliva.business.session.SessionBO;
-import com.example.lucas.deliva.data.model.UserReturn;
+import com.example.lucas.deliva.data.model.User;
 import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
 import com.example.lucas.deliva.presentation.order.view.OrderActivity;
 
@@ -19,7 +19,7 @@ public class OrderActivityPresenter extends BasePresenter {
         mSessionBO.logoutUser();
     }
 
-    public UserReturn getUser() {
+    public User getUser() {
         return mSessionBO.getUser();
     }
 

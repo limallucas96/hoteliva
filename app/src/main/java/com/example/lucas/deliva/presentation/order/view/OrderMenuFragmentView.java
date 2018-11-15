@@ -1,17 +1,15 @@
 package com.example.lucas.deliva.presentation.order.view;
 
-import com.example.lucas.deliva.data.model.mock.Menu;
+import com.example.lucas.deliva.data.model.Menu;
 import com.example.lucas.deliva.presentation.base.view.BaseView;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface OrderMenuFragmentView extends BaseView {
 
-    void onSuccessGetMenuList(List<Menu> result);
-
     void onErrorGetMenuList();
 
-    void onSuccessGetMenuList2(List<com.example.lucas.deliva.data.model.Menu> result);
+    void onSuccessGetMenuList(List<Menu> result);
 
-    void onErrorGetMenuList2();
 }

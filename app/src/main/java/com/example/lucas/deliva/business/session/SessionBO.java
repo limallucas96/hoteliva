@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 
 import com.example.lucas.deliva.data.dao.session.SessionDAO;
 import com.example.lucas.deliva.data.model.User;
-import com.example.lucas.deliva.data.model.UserReturn;
 import com.example.lucas.deliva.data.model.mock.Order;
 
 public class SessionBO {
@@ -29,11 +28,11 @@ public class SessionBO {
         mSessionDAO.removeOrder();
     }
 
-    public void setUser(UserReturn user) {
+    public void setUser(User user) {
         mSessionDAO.setUser(user);
     }
 
-    public UserReturn getUser(){
+    public User getUser(){
        return mSessionDAO.getUser();
     }
 

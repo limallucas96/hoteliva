@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.lucas.deliva.R;
-import com.example.lucas.deliva.data.model.UserReturn;
+import com.example.lucas.deliva.data.model.User;
 import com.example.lucas.deliva.data.model.type.CountryType;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
 import com.example.lucas.deliva.presentation.login.dialog.CountrySelectorDialog;
@@ -86,7 +86,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     }
 
     @Override
-    public void showLoginSuccess(@NonNull UserReturn user) {
+    public void showLoginSuccess(@NonNull User user) {
         user.setLogged(true);
         mPresenter.setUser(user);
         startOrderActivity();
@@ -95,15 +95,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @Override
     public void showLoginError() {
         Toast.makeText(this, "Não foi possivel fazer login", Toast.LENGTH_LONG).show();
-        UserReturn user = new UserReturn();
-        user.setName("Lucas Lima da Silva");
-
-        user.setRoomId(7);
-        user.setProfilePicture("https://cdn1.iconfinder.com/data/icons/business-charts/512/customer-512.png");
-        user.setUserId("17");
-        user.setLogged(true);
-        mPresenter.setUser(user);
-        startOrderActivity(); // TODO - Remove later
     }
 
     @OnClick(R.id.country_container)

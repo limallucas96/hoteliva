@@ -13,14 +13,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
+import android.text.Html;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.example.lucas.deliva.AppApplication;
 import com.example.lucas.deliva.R;
-import com.example.lucas.deliva.data.model.UserReturn;
+import com.example.lucas.deliva.data.model.User;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
 import com.example.lucas.deliva.presentation.login.view.LoginActivity;
 import com.example.lucas.deliva.presentation.order.presenter.OrderActivityPresenter;
@@ -52,7 +51,7 @@ public class OrderActivity extends BaseActivity<OrderActivityPresenter> implemen
     protected TextView mMenuName;
     protected TextView mMenuCompany;
 
-    private UserReturn mUser;
+    private User mUser;
 
     @NonNull
     @Override
@@ -84,19 +83,19 @@ public class OrderActivity extends BaseActivity<OrderActivityPresenter> implemen
             setSupportActionBar(mToolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu);
-            if (mUser.getRoom() != null) {
-                mTextView.setText(mUser.getRoom());
+            if (mUser.getRoomNumber() != null) {
+                mTextView.setText(String.valueOf(mUser.getRoomNumber()));
             }
         }
     }
 
     private void setupFirstFragment() {
         clearFragmentBackStack();
-        String room = "";
-        if (mUser.getRoom() != null) {
-            room = mUser.getRoom();
+        int room = 0;
+        if (mUser.getRoomNumber() != null) {
+            room = mUser.getRoomNumber();
         }
-        changeFragmentAddToStack(String.format("%s", getContext().getString(R.string.room)), mOrdersFragment == null ?
+        changeFragmentAddToStack(String.format("%s %d", getContext().getString(R.string.room), room), mOrdersFragment == null ?
                 mOrdersFragment = new OrdersFragment() : mOrdersFragment);
     }
 
@@ -124,8 +123,8 @@ public class OrderActivity extends BaseActivity<OrderActivityPresenter> implemen
     private void setupHeaderDrawer() {
         if (mNavigationView != null) {
             View header = mNavigationView.getHeaderView(0);
-            mMenuName = header.findViewById(R.id.menu_profile_username);
-            mMenuCompany = header.findViewById(R.id.menu_company);
+            mMenuName = header.findViewById(R.id.drawer_header_name);
+            mMenuCompany = header.findViewById(R.id.drawer_header_room);
             header.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -134,10 +133,12 @@ public class OrderActivity extends BaseActivity<OrderActivityPresenter> implemen
             });
 
             if (mUser.getName() != null) {
-                mMenuName.setText(mUser.getName());
+                String name = String.format("<b>%s</b>: %s", getContext().getString(R.string.guest_name), mUser.getName());
+                mMenuName.setText(Html.fromHtml(name));
             }
-            if (mUser.getRoom() != null) {
-                mMenuCompany.setText(mUser.getRoom());
+            if (mUser.getRoomNumber() != null) {
+                String room = String.format("<b>%s</b>: %s", getContext().getString(R.string.room),String.valueOf(mUser.getRoomNumber()));
+                mMenuCompany.setText(Html.fromHtml(room));
             }
         }
     }

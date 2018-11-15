@@ -1,5 +1,7 @@
 package com.example.lucas.deliva.data.model.mock;
 
+import com.example.lucas.deliva.data.model.Menu;
+
 import java.io.Serializable;
 import java.util.List;
 

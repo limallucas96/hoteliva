@@ -6,11 +6,8 @@ import android.util.Log;
 import com.example.lucas.deliva.business.BusinessErrorCode;
 import com.example.lucas.deliva.business.BusinessException;
 import com.example.lucas.deliva.business.connection.ConnectionBO;
-import com.example.lucas.deliva.data.dao.PersistenceException;
 import com.example.lucas.deliva.data.dao.user.UserDAO;
-import com.example.lucas.deliva.data.model.UserReturn;
-
-import java.io.IOException;
+import com.example.lucas.deliva.data.model.User;
 
 public class UserBO {
 
@@ -24,10 +21,10 @@ public class UserBO {
         mUserDAO = new UserDAO();
     }
 
-    public UserReturn login(@NonNull final String email, @NonNull final String password) throws BusinessException {
+    public User login(@NonNull final String email, @NonNull final String password) throws BusinessException {
         mConnectionBO.assertInternetConnection();
         try {
-            UserReturn gson = mUserDAO.login(email, password);
+            User gson = mUserDAO.login(email, password);
             if (gson != null && gson.getIsAuthenticaded() == 1) {
                 return gson;
             } else {

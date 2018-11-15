@@ -1,12 +1,12 @@
 package com.example.lucas.deliva.data.dao.menu;
 
 import com.example.lucas.deliva.data.dao.PersistenceException;
-import com.example.lucas.deliva.data.model.Menu;
+import com.example.lucas.deliva.data.model.MenuReturn;
 import com.example.lucas.deliva.data.remote.WebService;
 import com.example.lucas.deliva.data.remote.WebServiceClient;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.HashMap;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -20,11 +20,11 @@ public class MenuDAO {
         mWebService = new WebServiceClient().getService();
     }
 
-    public List<Menu> getMenuList() throws PersistenceException {
+    public HashMap<String, MenuReturn> getMenuList() throws PersistenceException {
         try {
             WebService webService = new WebServiceClient().getService();
-            Call<List<Menu>> wsCall = webService.getMenuList();
-            Response<List<Menu>> response = wsCall.execute();
+            Call<HashMap<String, MenuReturn>> wsCall = webService.getMenuList();
+            Response<HashMap<String, MenuReturn>> response = wsCall.execute();
 
             if (response.isSuccessful()) {
                 return response.body();

@@ -7,15 +7,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.TextView;
 
 import com.example.lucas.deliva.R;
-import com.example.lucas.deliva.data.model.mock.Menu;
 import com.example.lucas.deliva.data.model.mock.Order;
 import com.example.lucas.deliva.mechanism.connection.view.Util;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
-import com.example.lucas.deliva.presentation.base.view.adapter.BaseRecyclerAdapter;
 import com.example.lucas.deliva.presentation.cart.presenter.CartActivityPresenter;
 import com.example.lucas.deliva.presentation.order.adapter.CartRecyleAdapter;
 
@@ -89,40 +86,40 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
 
         mRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecycleView.setAdapter(mCartAdapter);
-        if (mOrder != null) {
-            if (mOrder.getMenuList() != null && !mOrder.getMenuList().isEmpty())
-                mCartAdapter.setData(mOrder.getMenuList());
-        }
-
-        mCartAdapter.setOnItemClickListener(new CartRecyleAdapter.OnItemClickListener() {
-            @Override
-            public void onInscreaseClickListener(@NonNull Menu menuItem) {
-                updateCartValue(mOrder.getMenuList(), menuItem, true);
-            }
-
-            @Override
-            public void onDecreaseClickListener(@NonNull Menu menuItem) {
-                updateCartValue(mOrder.getMenuList(), menuItem, false);
-            }
-        });
+//        if (mOrder != null) {
+//            if (mOrder.getMenuList() != null && !mOrder.getMenuList().isEmpty())
+//                mCartAdapter.setData(mOrder.getMenuList());
+//        }
+//
+//        mCartAdapter.setOnItemClickListener(new CartRecyleAdapter.OnItemClickListener() {
+//            @Override
+//            public void onInscreaseClickListener(@NonNull Menu menuItem) {
+//                updateCartValue(mOrder.getMenuList(), menuItem, true);
+//            }
+//
+//            @Override
+//            public void onDecreaseClickListener(@NonNull Menu menuItem) {
+//                updateCartValue(mOrder.getMenuList(), menuItem, false);
+//            }
+//        });
     }
 
-    private void updateCartValue(List<Menu> menuList, Menu menu, boolean isInscrease) {
-        if (menuList != null && !menuList.isEmpty()) {
-            for (Menu itemMenu : menuList) {
-                if (menu.getMenuId() != null && isInscrease) {
-                    mOrderCost = menu.getPrice() + mOrder.getOrderCost();
-                } else {
-                    mOrderCost = mOrder.getOrderCost() - menu.getPrice();
-                }
-                break;
-            }
-        }
-        if (mOrderCost < 0.1)
-            mOrderCost = 0.0;
-        mOrder.setOrderCost(mOrderCost);
-        mCartValue.setText(Util.formatCurrency(mOrder.getOrderCost()));
-    }
+//    private void updateCartValue(List<Menu> menuList, Menu menu, boolean isInscrease) {
+//        if (menuList != null && !menuList.isEmpty()) {
+//            for (Menu itemMenu : menuList) {
+//                if (menu.getMenuId() != null && isInscrease) {
+//                    mOrderCost = menu.getPrice() + mOrder.getOrderCost();
+//                } else {
+//                    mOrderCost = mOrder.getOrderCost() - menu.getPrice();
+//                }
+//                break;
+//            }
+//        }
+//        if (mOrderCost < 0.1)
+//            mOrderCost = 0.0;
+//        mOrder.setOrderCost(mOrderCost);
+//        mCartValue.setText(Util.formatCurrency(mOrder.getOrderCost()));
+//    }
 
     private void setupCartValues() {
         if (mOrder.getOrderCost() != null && mOrder.getOrderCost() > 0) {

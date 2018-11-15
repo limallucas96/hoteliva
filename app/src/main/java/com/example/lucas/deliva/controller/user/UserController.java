@@ -9,7 +9,7 @@ import com.example.lucas.deliva.business.BusinessException;
 import com.example.lucas.deliva.business.user.UserBO;
 import com.example.lucas.deliva.controller.BaseAsyncTask;
 import com.example.lucas.deliva.controller.ControllerListener;
-import com.example.lucas.deliva.data.model.UserReturn;
+import com.example.lucas.deliva.data.model.User;
 
 public class UserController {
 
@@ -23,7 +23,7 @@ public class UserController {
 
     public void login(@NonNull final String email,
                       @NonNull final String password,
-                      @NonNull final ControllerListener<UserReturn> callback) {
+                      @NonNull final ControllerListener<User> callback) {
         Log.d(TAG, "Request to authenticate");
 
         try {
@@ -37,7 +37,7 @@ public class UserController {
 
     }
 
-    private class LoginControllerAsyncTask extends BaseAsyncTask<Object, Object, UserReturn> {
+    private class LoginControllerAsyncTask extends BaseAsyncTask<Object, Object, User> {
 
         private String mEmail;
         private String mPassword;
@@ -51,7 +51,7 @@ public class UserController {
         }
 
         @Override
-        protected UserReturn onBackground() {
+        protected User onBackground() {
             return mUserBO.login(mEmail, mPassword);
         }
     }

@@ -9,7 +9,6 @@ import com.example.lucas.deliva.business.session.SessionBO;
 import com.example.lucas.deliva.controller.ControllerListener;
 import com.example.lucas.deliva.controller.user.UserController;
 import com.example.lucas.deliva.data.model.User;
-import com.example.lucas.deliva.data.model.UserReturn;
 import com.example.lucas.deliva.data.model.type.CountryType;
 import com.example.lucas.deliva.mechanism.connection.locale.LocaleManager;
 import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
@@ -27,12 +26,12 @@ public class LoginPresenter extends BasePresenter {
         mSessionBO = new SessionBO();
     }
 
-    public UserReturn login(@NonNull final String email,
-                            @NonNull final String password) {
+    public User login(@NonNull final String email,
+                      @NonNull final String password) {
         mView.showProgress();
-        mUserController.login(email, password, new ControllerListener<UserReturn>() {
+        mUserController.login(email, password, new ControllerListener<User>() {
             @Override
-            public void onSuccess(@NonNull UserReturn result) {
+            public void onSuccess(@NonNull User result) {
                 mView.dismissProgressDialog();
                 mView.showLoginSuccess(result);
             }
@@ -46,7 +45,7 @@ public class LoginPresenter extends BasePresenter {
         return null;
     }
 
-    public void setUser(UserReturn user) {
+    public void setUser(User user) {
         mSessionBO.setUser(user);
     }
 

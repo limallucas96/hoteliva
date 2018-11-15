@@ -33,13 +33,14 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
             tools:listitem="@layout/view_item_order_menu" />
 
         <ImageView
             android:id="@+id/fab_new_evaluation"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="bottom|end"
             android:layout_margin="10dp"
             android:background="@drawable/selector_circle_button_yellow"
             android:padding="9dp"

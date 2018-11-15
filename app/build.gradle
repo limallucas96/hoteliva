@@ -45,6 +45,7 @@ dependencies {
 
     // Component to make api calls
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
     implementation('com.squareup.retrofit2:retrofit:2.1.0') {
         // exclude Retrofit’s OkHttp peer-dependency module and define your own module import
         exclude module: 'okhttp'
@@ -64,4 +65,9 @@ dependencies {
 
     //Rating starts
     implementation 'me.zhanghai.android.materialratingbar:library:1.3.1'
+
+    // Stetho
+    def stethoVersion = "1.5.0"
+    implementation "com.facebook.stetho:stetho:${stethoVersion}"
+    implementation "com.facebook.stetho:stetho-okhttp3:${stethoVersion}"
 }

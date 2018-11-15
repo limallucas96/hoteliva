@@ -6,14 +6,22 @@ import java.util.List;
 public class OrderStatus implements Serializable {
 
     private Integer orderId;
-    private List<Menu> orderList;
+//    private List<Menu> orderList;
     private String image;
     private Integer currentStatus;
     private String roomNumber;
 
-    public OrderStatus(Integer orderId, List<Menu> orderList, String image, Integer currentStatus, String roomNumber) {
+//    public OrderStatus(Integer orderId, List<Menu> orderList, String image, Integer currentStatus, String roomNumber) {
+//        this.orderId = orderId;
+//        this.orderList = orderList;
+//        this.image = image;
+//        this.currentStatus = currentStatus;
+//        this.roomNumber = roomNumber;
+//    }
+
+
+    public OrderStatus(Integer orderId, String image, Integer currentStatus, String roomNumber) {
         this.orderId = orderId;
-        this.orderList = orderList;
         this.image = image;
         this.currentStatus = currentStatus;
         this.roomNumber = roomNumber;
@@ -27,13 +35,13 @@ public class OrderStatus implements Serializable {
         this.orderId = orderId;
     }
 
-    public List<Menu> getOrderList() {
-        return orderList;
-    }
+//    public List<Menu> getOrderList() {
+//        return orderList;
+//    }
 
-    public void setOrderList(List<Menu> orderList) {
-        this.orderList = orderList;
-    }
+//    public void setOrderList(List<Menu> orderList) {
+//        this.orderList = orderList;
+//    }
 
     public String getImage() {
         return image;

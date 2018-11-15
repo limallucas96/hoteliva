@@ -6,6 +6,7 @@ import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
 import com.example.lucas.deliva.mechanism.connection.locale.LocaleManager;
+import com.facebook.stetho.Stetho;
 
 import java.lang.ref.WeakReference;
 
@@ -26,6 +27,11 @@ public class AppApplication extends MultiDexApplication {
 //        setupFabric();
 //        setupRemoteConfig();
 //        setupRealm();
+        setupStetho();
+    }
+
+    private void setupStetho() {
+        Stetho.initializeWithDefaults(this);
     }
 
     @Override

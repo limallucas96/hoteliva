@@ -10,8 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lucas.deliva.R;
-import com.example.lucas.deliva.data.model.mock.Menu;
-import com.example.lucas.deliva.data.model.mock.Order;
+import com.example.lucas.deliva.data.model.Menu;
 import com.example.lucas.deliva.mechanism.connection.view.Util;
 import com.example.lucas.deliva.presentation.base.view.adapter.BaseRecyclerAdapter;
 import com.squareup.picasso.Picasso;
@@ -61,54 +60,52 @@ public class CartRecyleAdapter extends BaseRecyclerAdapter<Menu, CartRecyleAdapt
         }
 
         public void bind(@NonNull final Menu menu, final int position) {
-
-            if (menu != null) {
-                if (menu.getTitle() != null && !menu.getTitle().isEmpty()) {
-                    mTitle.setText(menu.getTitle());
-                }
-
-                if (menu.getPrice() != null) {
-                    mPrice.setText(Util.formatCurrency(menu.getPrice()));
-                }
-
-                if (menu.getImageUrl() != null && !menu.getImageUrl().isEmpty()) {
-                    Picasso.with(itemView.getContext()).
-                            load(menu.getImageUrl()).
-                            resize(50, 50).centerCrop().into(mImage);
-                }
-
-                if (menu.getAmout() != null && menu.getAmout() >= 0) {
-                    mValue.setText(String.valueOf(menu.getAmout()));
-                }
-
-                mIncrease.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        amount = menu.getAmout() + 1;
-                        menu.setAmout(amount);
-                        mValue.setText(String.valueOf(menu.getAmout()));
-                        if (mListener != null) {
-                            mListener.onInscreaseClickListener(menu);
-                        }
-                    }
-                });
-
-                mDecrease.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (menu.getAmout() > 0) {
-                            amount = menu.getAmout() - 1;
-                            menu.setAmout(amount);
-                            mValue.setText(String.valueOf(menu.getAmout()));
-                            if (mListener != null) {
-                                mListener.onDecreaseClickListener(menu);
-                            }
-                        }
-                    }
-                });
-            }
+//
+//            if (menu != null) {
+//                if (menu.getTitle() != null && !menu.getTitle().isEmpty()) {
+//                    mTitle.setText(menu.getTitle());
+//                }
+//
+//                if (menu.getPrice() != null) {
+//                    mPrice.setText(Util.formatCurrency(menu.getPrice()));
+//                }
+//
+//                if (menu.getImageUrl() != null && !menu.getImageUrl().isEmpty()) {
+//                    Picasso.with(itemView.getContext()).
+//                            load(menu.getImageUrl()).
+//                            resize(50, 50).centerCrop().into(mImage);
+//                }
+//
+//                if (menu.getAmout() != null && menu.getAmout() >= 0) {
+//                    mValue.setText(String.valueOf(menu.getAmout()));
+//                }
+//
+//                mIncrease.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        amount = menu.getAmout() + 1;
+//                        menu.setAmout(amount);
+//                        mValue.setText(String.valueOf(menu.getAmout()));
+//                        if (mListener != null) {
+//                            mListener.onInscreaseClickListener(menu);
+//                        }
+//                    }
+//                });
+//
+//                mDecrease.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        if (menu.getAmout() > 0) {
+//                            amount = menu.getAmout() - 1;
+//                            menu.setAmout(amount);
+//                            mValue.setText(String.valueOf(menu.getAmout()));
+//                            if (mListener != null) {
+//                                mListener.onDecreaseClickListener(menu);
+//                            }
+//                        }
+//                    }
+//                });
         }
-
     }
 
     public interface OnItemClickListener {
@@ -116,4 +113,8 @@ public class CartRecyleAdapter extends BaseRecyclerAdapter<Menu, CartRecyleAdapt
 
         void onDecreaseClickListener(@NonNull final Menu menuItem);
     }
+
 }
+
+
+

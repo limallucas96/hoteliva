@@ -12,13 +12,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.lucas.deliva.R;
-import com.example.lucas.deliva.data.model.mock.Menu;
+import com.example.lucas.deliva.data.model.Menu;
 import com.example.lucas.deliva.data.model.mock.Order;
 import com.example.lucas.deliva.presentation.base.view.BaseFragment;
-import com.example.lucas.deliva.presentation.base.view.adapter.BaseRecyclerAdapter;
 import com.example.lucas.deliva.presentation.cart.view.CartActivity;
 import com.example.lucas.deliva.presentation.order.adapter.OrderMenuRecycleAdapter;
 import com.example.lucas.deliva.presentation.order.presenter.OrderMenuFragmentPresenter;
@@ -61,11 +59,9 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
 
     private OrderMenuRecycleAdapter mMenuAdapter;
 
-    //TODO - Mock. Remove later
-    private List<Menu> mMenuList = new ArrayList<>();
-    private Menu mMenu;
     private Order mOrder;
-    private List<com.example.lucas.deliva.data.model.Menu> mMenu2;
+    private List<Menu> mMenuList;
+    private Menu mMenu;
 
     @NonNull
     @Override
@@ -79,7 +75,7 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
         mSwipeRefreshLayout.setOnRefreshListener(this);
         setupRecycle();
         showEmptyState();
-//        mPresenter.getMenuList2();
+        mPresenter.getMenuList();
     }
 
     @Override
@@ -150,10 +146,11 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
                     else
                         mOrder.getMenuList().add(0, mMenu);
                 }
-                mPresenter.saveOrder(mOrder);
-            }
+            mPresenter.saveOrder(mOrder);
         }
     }
+
+}
 
     @Override
     public void onRefresh() {
@@ -164,6 +161,7 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
 
     @Override
     public void onSuccessGetMenuList(List<Menu> result) {
+        mMenuList = result;
         hideContainers();
         mMenuList = result;
         mMenuAdapter.setData(mMenuList);
@@ -175,16 +173,6 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
     public void onErrorGetMenuList() {
         hideContainers();
         showEmptyState();
-    }
-
-    @Override
-    public void onSuccessGetMenuList2(List<com.example.lucas.deliva.data.model.Menu> result) {
-        mMenu2 = result;
-    }
-
-    @Override
-    public void onErrorGetMenuList2() {
-
     }
 }
 

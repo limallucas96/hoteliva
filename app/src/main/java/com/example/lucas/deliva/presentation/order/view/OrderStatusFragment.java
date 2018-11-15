@@ -130,6 +130,6 @@ public class OrderStatusFragment extends BaseFragment<OrderStatusFragmentPresent
     public void onRefresh() {
         mOrderStatus = null;
         showLoading();
-        mPresenter.getOrderStatusList();
+//        mPresenter.getOrderStatusList();
     }
 }

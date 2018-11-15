@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 
-import com.example.lucas.deliva.data.model.UserReturn;
+import com.example.lucas.deliva.data.model.User;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
 
 import com.example.lucas.deliva.presentation.country.view.LanguageSelectorActivity;
@@ -49,7 +49,7 @@ public class SplashActivity extends BaseActivity<SplashPresenter> implements Spl
     }
 
     private Boolean isUserLogged() {
-        UserReturn user = mPresenter.getUser();
+        User user = mPresenter.getUser();
         if (user != null) {
             if (user.getLogged())
                 return true;
