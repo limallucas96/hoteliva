@@ -114,7 +114,7 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
     @OnClick(R.id.save)
     protected void save() {
         Intent intent = new Intent();
-//        intent.putExtra(MENU, mMenu);
+        intent.putExtra(MENU, mMenu);
         setResult(RESULT_OK, intent);
         finish();
     }

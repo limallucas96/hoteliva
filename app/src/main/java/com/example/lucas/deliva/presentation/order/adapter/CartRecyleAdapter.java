@@ -60,51 +60,52 @@ public class CartRecyleAdapter extends BaseRecyclerAdapter<Menu, CartRecyleAdapt
         }
 
         public void bind(@NonNull final Menu menu, final int position) {
-//
-//            if (menu != null) {
-//                if (menu.getTitle() != null && !menu.getTitle().isEmpty()) {
-//                    mTitle.setText(menu.getTitle());
-//                }
-//
-//                if (menu.getPrice() != null) {
-//                    mPrice.setText(Util.formatCurrency(menu.getPrice()));
-//                }
-//
-//                if (menu.getImageUrl() != null && !menu.getImageUrl().isEmpty()) {
-//                    Picasso.with(itemView.getContext()).
-//                            load(menu.getImageUrl()).
-//                            resize(50, 50).centerCrop().into(mImage);
-//                }
-//
-//                if (menu.getAmout() != null && menu.getAmout() >= 0) {
-//                    mValue.setText(String.valueOf(menu.getAmout()));
-//                }
-//
-//                mIncrease.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        amount = menu.getAmout() + 1;
-//                        menu.setAmout(amount);
-//                        mValue.setText(String.valueOf(menu.getAmout()));
-//                        if (mListener != null) {
-//                            mListener.onInscreaseClickListener(menu);
-//                        }
-//                    }
-//                });
-//
-//                mDecrease.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        if (menu.getAmout() > 0) {
-//                            amount = menu.getAmout() - 1;
-//                            menu.setAmout(amount);
-//                            mValue.setText(String.valueOf(menu.getAmout()));
-//                            if (mListener != null) {
-//                                mListener.onDecreaseClickListener(menu);
-//                            }
-//                        }
-//                    }
-//                });
+
+            if (menu != null) {
+                if (menu.getName() != null && !menu.getName().isEmpty()) {
+                    mTitle.setText(menu.getName());
+                }
+
+                if (menu.getValue() != null) {
+                    mPrice.setText(Util.formatCurrency(menu.getValue()));
+                }
+
+                if (menu.getImg() != null && !menu.getImg().isEmpty()) {
+                    Picasso.with(itemView.getContext()).
+                            load(menu.getImg()).
+                            resize(50, 50).centerCrop().into(mImage);
+                }
+
+                if (menu.getAmout() != null && menu.getAmout() >= 0) {
+                    mValue.setText(String.valueOf(menu.getAmout()));
+                }
+
+                mIncrease.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        amount = menu.getAmout() + 1;
+                        menu.setAmout(amount);
+                        mValue.setText(String.valueOf(menu.getAmout()));
+                        if (mListener != null) {
+                            mListener.onInscreaseClickListener(menu);
+                        }
+                    }
+                });
+
+                mDecrease.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (menu.getAmout() > 0) {
+                            amount = menu.getAmout() - 1;
+                            menu.setAmout(amount);
+                            mValue.setText(String.valueOf(menu.getAmout()));
+                            if (mListener != null) {
+                                mListener.onDecreaseClickListener(menu);
+                            }
+                        }
+                    }
+                });
+            }
         }
     }
 

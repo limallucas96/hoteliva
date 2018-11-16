@@ -7,9 +7,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.lucas.deliva.R;
+import com.example.lucas.deliva.data.model.Menu;
 import com.example.lucas.deliva.data.model.mock.Order;
 import com.example.lucas.deliva.mechanism.connection.view.Util;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
@@ -86,40 +89,40 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
 
         mRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecycleView.setAdapter(mCartAdapter);
-//        if (mOrder != null) {
-//            if (mOrder.getMenuList() != null && !mOrder.getMenuList().isEmpty())
-//                mCartAdapter.setData(mOrder.getMenuList());
-//        }
-//
-//        mCartAdapter.setOnItemClickListener(new CartRecyleAdapter.OnItemClickListener() {
-//            @Override
-//            public void onInscreaseClickListener(@NonNull Menu menuItem) {
-//                updateCartValue(mOrder.getMenuList(), menuItem, true);
-//            }
-//
-//            @Override
-//            public void onDecreaseClickListener(@NonNull Menu menuItem) {
-//                updateCartValue(mOrder.getMenuList(), menuItem, false);
-//            }
-//        });
+        if (mOrder != null) {
+            if (mOrder.getMenuList() != null && !mOrder.getMenuList().isEmpty())
+                mCartAdapter.setData(mOrder.getMenuList());
+        }
+
+        mCartAdapter.setOnItemClickListener(new CartRecyleAdapter.OnItemClickListener() {
+            @Override
+            public void onInscreaseClickListener(@NonNull Menu menuItem) {
+                updateCartValue(mOrder.getMenuList(), menuItem, true);
+            }
+
+            @Override
+            public void onDecreaseClickListener(@NonNull Menu menuItem) {
+                updateCartValue(mOrder.getMenuList(), menuItem, false);
+            }
+        });
     }
 
-//    private void updateCartValue(List<Menu> menuList, Menu menu, boolean isInscrease) {
-//        if (menuList != null && !menuList.isEmpty()) {
-//            for (Menu itemMenu : menuList) {
-//                if (menu.getMenuId() != null && isInscrease) {
-//                    mOrderCost = menu.getPrice() + mOrder.getOrderCost();
-//                } else {
-//                    mOrderCost = mOrder.getOrderCost() - menu.getPrice();
-//                }
-//                break;
-//            }
-//        }
-//        if (mOrderCost < 0.1)
-//            mOrderCost = 0.0;
-//        mOrder.setOrderCost(mOrderCost);
-//        mCartValue.setText(Util.formatCurrency(mOrder.getOrderCost()));
-//    }
+    private void updateCartValue(List<Menu> menuList, Menu menu, boolean isInscrease) {
+        if (menuList != null && !menuList.isEmpty()) {
+            for (Menu itemMenu : menuList) {
+                if (menu.getId() != null && isInscrease) {
+                    mOrderCost = menu.getValue() + mOrder.getOrderCost();
+                } else {
+                    mOrderCost = mOrder.getOrderCost() - menu.getValue();
+                }
+                break;
+            }
+        }
+        if (mOrderCost < 0.1)
+            mOrderCost = 0.0;
+        mOrder.setOrderCost(mOrderCost);
+        mCartValue.setText(Util.formatCurrency(mOrder.getOrderCost()));
+    }
 
     private void setupCartValues() {
         if (mOrder.getOrderCost() != null && mOrder.getOrderCost() > 0) {
@@ -143,6 +146,18 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
         mPresenter.saveOrder(mOrder); //Todo - mock only, remove later
         dismissProgressDialog();
         finish();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.delete_notes:
+                mNoteViewModel.deleteAllNotes();
+                Toast.makeText(this, "All notes deleted", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 }

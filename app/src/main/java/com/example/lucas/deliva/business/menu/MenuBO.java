@@ -42,7 +42,8 @@ public class MenuBO {
                             menuReturn.getValue().getName(),
                             menuReturn.getValue().getDescription(),
                             menuReturn.getValue().getValue(),
-                            menuReturn.getValue().getImg()));
+                            menuReturn.getValue().getImg(),
+                            0));
                 }
                 return menu;
             } else {

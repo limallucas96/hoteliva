@@ -10,7 +10,7 @@
     <string name="login_empty_password">O campo senha não pode ser vazio</string>
     <string name="login_empty_username">O campo usuário não pode ser vazio</string>
     <string name="login_error">usuário ou senha inválidos</string>
-    <string name="exit">Exit</string>
+    <string name="exit">Sair</string>
     <string name="forgot_password">Esqueceu sua senha? Clique aqui</string>
     <string name="login">Entrar</string>
 

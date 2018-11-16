@@ -14,12 +14,15 @@ public class Menu implements Serializable {
 
     private String img;
 
-    public Menu(String id, String name, String description, Double value, String img) {
+    private Integer amout;
+
+    public Menu(String id, String name, String description, Double value, String img, Integer amout) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.value = value;
         this.img = img;
+        this.amout = amout;
     }
 
     public String getId() {
@@ -60,5 +63,13 @@ public class Menu implements Serializable {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public Integer getAmout() {
+        return amout;
+    }
+
+    public void setAmout(Integer amout) {
+        this.amout = amout;
     }
 }
