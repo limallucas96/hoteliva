@@ -9,12 +9,15 @@ import android.widget.TextView;
 
 import com.example.lucas.deliva.AppApplication;
 import com.example.lucas.deliva.R;
-import com.example.lucas.deliva.data.model.mock.Purchase;
-import com.example.lucas.deliva.data.model.type.PaymentStatusType;
+import com.example.lucas.deliva.data.model.Balance;
+import com.example.lucas.deliva.data.model.type.OrderStatusType;
 import com.example.lucas.deliva.mechanism.connection.view.Util;
 import com.example.lucas.deliva.presentation.base.view.adapter.BaseRecyclerAdapter;
 
-public class ProfilePurchaseRecycleAdapter extends BaseRecyclerAdapter<Purchase, ProfilePurchaseRecycleAdapter.ViewHolder> {
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
+public class ProfilePurchaseRecycleAdapter extends BaseRecyclerAdapter<Balance, ProfilePurchaseRecycleAdapter.ViewHolder> {
     @Override
     public ProfilePurchaseRecycleAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         return new ProfilePurchaseRecycleAdapter.ViewHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.view_item_profile_cart, viewGroup, false));
@@ -45,34 +48,28 @@ public class ProfilePurchaseRecycleAdapter extends BaseRecyclerAdapter<Purchase,
             mStatus = itemView.findViewById(R.id.status);
         }
 
-        public void bind(@NonNull final Purchase purchase, final int position) {
+        public void bind(@NonNull final Balance balance, final int position) {
 
-            if (purchase.getPurchaseId() != null) {
+            if (balance.getIdService() != null) {
                 mOrderId.setText(
                         AppApplication.getAppContext().getString(
-                                R.string.purchase_id, purchase.getPurchaseId()));
+                                R.string.purchase_id, balance.getIdService()));
             }
 
-            if (purchase.getDate() != null) {
-                mDate.setText(purchase.getDate().toString());
+            if (balance.getDate() != null) {
+                mDate.setText(balance.getDate().substring(5, 16));
             }
 
-            if (purchase.getCost() != null) {
-                mPrice.setText(Util.formatCurrency(purchase.getCost()));
+            if (balance.getTotalValue() != null) {
+                mPrice.setText(Util.formatCurrency(balance.getTotalValue()));
             }
 
-            if (purchase.getStatus() != null) {
-                PaymentStatusType paymentStatusType = PaymentStatusType.fromInt(purchase.getStatus());
+            if (balance.getStatus() != null && !balance.getStatus().isEmpty()) {
+                OrderStatusType orderStatusType = OrderStatusType.fromInt(Integer.valueOf(balance.getStatus()));
 
-                switch (paymentStatusType) {
-                    case PAID:
-                        mStatus.setText(R.string.purchase_status_paid);
-                        break;
+                switch (orderStatusType) {
                     case PENDENT:
                         mStatus.setText(R.string.purchase_status_pending);
-                        break;
-                    case INVALID:
-                        mStatus.setText("");
                         break;
                 }
             }

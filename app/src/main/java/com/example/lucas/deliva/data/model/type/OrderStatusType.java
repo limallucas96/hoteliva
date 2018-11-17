@@ -9,7 +9,9 @@ public enum OrderStatusType {
 
     APPROVED(1, AppApplication.getAppContext().getString(R.string.order_status_id_2)),
 
-    DONE(2, AppApplication.getAppContext().getString(R.string.order_status_id_3));
+    DONE(2, AppApplication.getAppContext().getString(R.string.order_status_id_3)),
+
+    PENDENT(3, AppApplication.getAppContext().getString(R.string.orders_fragment_title));
 
 
     private final int value;

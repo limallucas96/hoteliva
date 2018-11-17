@@ -3,98 +3,109 @@ package com.example.lucas.deliva.data.model;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Balance implements Serializable {
 
-    @SerializedName("id_resident")
-    private Integer residentId;
+    private String orderId;
 
+    @SerializedName("date")
+    private String date;
 
-    public class BalanceMenu implements Serializable{
+    @SerializedName("description")
+    private String description;
 
-        @SerializedName("name")
-        private String name;
+    @SerializedName("id_service")
+    private Integer idService;
 
-        @SerializedName("description")
-        private String description;
+    @SerializedName("name")
+    private String name;
 
-        @SerializedName("value")
-        private Double value;
+    @SerializedName("qtde")
+    private Integer amount;
 
-        @SerializedName("date")
-        private String date;
+    @SerializedName("status")
+    private String status;
 
-        @SerializedName("status")
-        private Integer status;
+    @SerializedName("total_value")
+    private Double totalValue;
 
-        @SerializedName("amount")
-        private Integer amount;
+    @SerializedName("value")
+    private Double value;
 
-        @SerializedName("Id_service")
-        private Integer serviceId;
-
-        @SerializedName("item.id_order")
-        private Integer orderId;
-
-        @SerializedName("total_value")
-        private Double totalValue;
-
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public void setDescription(String description) {
-            this.description = description;
-        }
-
-        public Double getValue() {
-            return value;
-        }
-
-        public void setValue(Double value) {
-            this.value = value;
-        }
-
-        public String getDate() {
-            return date;
-        }
-
-        public void setDate(String date) {
-            this.date = date;
-        }
-
-        public Integer getStatus() {
-            return status;
-        }
-
-        public void setStatus(Integer status) {
-            this.status = status;
-        }
-
-        public Integer getAmount() {
-            return amount;
-        }
-
-        public void setAmount(Integer amount) {
-            this.amount = amount;
-        }
-
-        public Integer getServiceId() {
-            return serviceId;
-        }
-
-        public void setServiceId(Integer serviceId) {
-            this.serviceId = serviceId;
-        }
+    public Balance(String orderId, String date, String description, Integer idService, String name, Integer amount, String status, Double totalValue, Double value) {
+        this.orderId = orderId;
+        this.date = date;
+        this.description = description;
+        this.idService = idService;
+        this.name = name;
+        this.amount = amount;
+        this.status = status;
+        this.totalValue = totalValue;
+        this.value = value;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Integer getIdService() {
+        return idService;
+    }
+
+    public void setIdService(Integer idService) {
+        this.idService = idService;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Double getTotalValue() {
+        return totalValue;
+    }
+
+    public void setTotalValue(Double totalValue) {
+        this.totalValue = totalValue;
+    }
+
+    public Double getValue() {
+        return value;
+    }
+
+    public void setValue(Double value) {
+        this.value = value;
+    }
 }

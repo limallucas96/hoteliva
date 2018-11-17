@@ -32,6 +32,7 @@
     <string name="total_cart">Cart</string>
     <string name="service_cost">Room service</string>
     <string name="cart_total">Total</string>
+    <string name="clear_cart">Clear cart</string>
 
     <!--VIEW ITEM ORDER STATUS-->
     <string name="order_status_title">Order #ID: %s</string>

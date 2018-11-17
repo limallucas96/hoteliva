@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lucas.deliva.R;
+import com.example.lucas.deliva.data.model.Balance;
 import com.example.lucas.deliva.data.model.mock.Purchase;
 import com.example.lucas.deliva.mechanism.connection.view.Util;
 import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
@@ -60,7 +61,7 @@ public class OrderProfileFragment extends BaseFragment<OrderProfileFragmentPrese
     protected ImageView mSwipeRight;
 
     private ProfilePurchaseRecycleAdapter mAdapter;
-    private List<Purchase> mPurchaseList;
+    private List<Balance> mBalanceList;
 
 
     @NonNull
@@ -78,7 +79,7 @@ public class OrderProfileFragment extends BaseFragment<OrderProfileFragmentPrese
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setupRecycle();
-        setMockProfileValues();
+
         showEmptyState();
         mSwipeRefreshLayout.setOnRefreshListener(this);
     }
@@ -114,16 +115,17 @@ public class OrderProfileFragment extends BaseFragment<OrderProfileFragmentPrese
 
     @Override
     public void onRefresh() {
-        mPurchaseList = null;
+        mBalanceList = null;
         showLoading();
-        mPresenter.getUserWallet();
+        mPresenter.getUserBalance("1");
+
     }
 
     @Override
     public void onSuccessGetUserWallet(@NonNull List<Purchase> purchaseList) {
         hideContainers();
-        mPurchaseList = purchaseList;
-        mAdapter.setData(mPurchaseList);
+//        mPurchaseList = purchaseList;
+//        mAdapter.setData(mPurchaseList);
         mContainer.setVisibility(View.VISIBLE);
         mRecyclerView.setVisibility(View.VISIBLE);
     }
@@ -134,9 +136,32 @@ public class OrderProfileFragment extends BaseFragment<OrderProfileFragmentPrese
         showEmptyState();
     }
 
-    private void setMockProfileValues() {
+    @Override
+    public void onSuccessGetUserBalance(@NonNull List<Balance> result) {
+        hideContainers();
+        mBalanceList = result;
+        mAdapter.setData(mBalanceList);
+        mContainer.setVisibility(View.VISIBLE);
+        mRecyclerView.setVisibility(View.VISIBLE);
+        setupBalanceCard();
+    }
+
+    @Override
+    public void onErrorGetUserBalance() {
+
+    }
+
+    private void setupBalanceCard() {
+        Double accomodationTotalValue = 0.0;
+        if (mBalanceList != null) {
+            for (Balance balance : mBalanceList) {
+                if (balance.getTotalValue() != null) {
+                    accomodationTotalValue += balance.getTotalValue();
+                }
+            }
+        }
         mAccomodation.setText("15/10/2018 - 20/10/2018");
-        mTotal.setText(Util.formatCurrency(180.00));
+        mTotal.setText(Util.formatCurrency(accomodationTotalValue));
 
     }
 }

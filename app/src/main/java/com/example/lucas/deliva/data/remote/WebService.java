@@ -1,5 +1,6 @@
 package com.example.lucas.deliva.data.remote;
 
+import com.example.lucas.deliva.data.model.Balance;
 import com.example.lucas.deliva.data.model.MenuReturn;
 import com.example.lucas.deliva.data.model.User;
 
@@ -18,5 +19,9 @@ public interface WebService {
 
     @POST("api_service")
     Call<HashMap<String, MenuReturn>> getMenuList();
+
+    @FormUrlEncoded
+    @POST("outstanding_balance")
+    Call<HashMap<String, Balance>> getUserBalance(@Field("id_resident") String idResident);
 
 }

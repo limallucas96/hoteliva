@@ -50,7 +50,7 @@ public class MenuBO {
                 throw new BusinessException(BusinessErrorCode.GENERIC_ERROR);
             }
         } catch (Exception exception) {
-            String errorMessage = "Generic login error " + exception.getMessage();
+            String errorMessage = "Generic menu error " + exception.getMessage();
             Log.e(TAG, errorMessage);
             throw new BusinessException(errorMessage, BusinessErrorCode.GENERIC_ERROR);
         }

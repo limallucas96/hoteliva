@@ -7,7 +7,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +22,7 @@ import com.example.lucas.deliva.presentation.base.view.BaseActivity;
 import com.example.lucas.deliva.presentation.cart.presenter.CartActivityPresenter;
 import com.example.lucas.deliva.presentation.order.adapter.CartRecyleAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -35,19 +39,22 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
     protected Toolbar mToolbar;
 
     @BindView(R.id.cart_label)
-    TextView mCartLabel;
+    protected TextView mCartLabel;
     @BindView(R.id.cart_value)
-    TextView mCartValue;
+    protected TextView mCartValue;
 
     @BindView(R.id.service_label)
-    TextView mServiceLabel;
+    protected TextView mServiceLabel;
     @BindView(R.id.service_value)
-    TextView mServiceValue;
+    protected TextView mServiceValue;
 
     @BindView(R.id.total_label)
-    TextView mTotalLabel;
+    protected TextView mTotalLabel;
     @BindView(R.id.total_value)
-    TextView mTotalValue;
+    protected TextView mTotalValue;
+
+    protected Button mCartButton;
+    private Boolean mShowOptions = true;
 
     private Order mOrder;
     private Double mOrderCost = 0.0;
@@ -76,6 +83,7 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
             setupRecycle();
             setupCartValues();
         }
+        checkCartStatus();
     }
 
     private void setupToolbar() {
@@ -149,15 +157,35 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
     }
 
     @Override
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.main_menu, menu);
+        return mShowOptions;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.delete_notes:
-                mNoteViewModel.deleteAllNotes();
-                Toast.makeText(this, "All notes deleted", Toast.LENGTH_SHORT).show();
+            case R.id.clear_cart_menu:
+                clearCart();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void checkCartStatus() {
+        if (mOrder == null || mOrder.getMenuList().isEmpty()) {
+            mCartButton.setEnabled(false);
+            mShowOptions = false;
+        }
+    }
+
+    private void clearCart() {
+        mOrder = null;
+        mCartAdapter.setData(new ArrayList<Menu>());
+        mRecycleView.removeAllViewsInLayout();
+        checkCartStatus();
     }
 
 }

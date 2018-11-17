@@ -34,6 +34,7 @@
     <string name="total_cart">Carrinho</string>
     <string name="service_cost">Serviço de quarto</string>
     <string name="cart_total">Total</string>
+    <string name="clear_cart">Limpar carrinho</string>
 
     <!--VIEW ITEM ORDER STATUS-->
     <string name="order_status_title">Pedido #ID: %s</string>

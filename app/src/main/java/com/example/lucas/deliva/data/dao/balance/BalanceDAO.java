@@ -1,7 +1,9 @@
-package com.example.lucas.deliva.data.dao.menu;
+package com.example.lucas.deliva.data.dao.balance;
+
+import android.support.annotation.NonNull;
 
 import com.example.lucas.deliva.data.dao.PersistenceException;
-import com.example.lucas.deliva.data.model.MenuReturn;
+import com.example.lucas.deliva.data.model.Balance;
 import com.example.lucas.deliva.data.remote.WebService;
 import com.example.lucas.deliva.data.remote.WebServiceClient;
 
@@ -11,20 +13,21 @@ import java.util.HashMap;
 import retrofit2.Call;
 import retrofit2.Response;
 
-public class MenuDAO {
-    private static final String TAG = MenuDAO.class.getName();
+public class BalanceDAO {
+
+    private static final String TAG = BalanceDAO.class.getName();
 
     private final WebService mWebService;
 
-    public MenuDAO() {
+    public BalanceDAO() {
         mWebService = new WebServiceClient().getService();
     }
 
-    public HashMap<String, MenuReturn> getMenuList() throws PersistenceException {
+    public HashMap<String, Balance> getUserBalance(@NonNull String idResident) throws PersistenceException {
         try {
             WebService webService = new WebServiceClient().getService();
-            Call<HashMap<String, MenuReturn>> wsCall = webService.getMenuList();
-            Response<HashMap<String, MenuReturn>> response = wsCall.execute();
+            Call<HashMap<String, Balance>> wsCall = webService.getUserBalance(idResident);
+            Response<HashMap<String, Balance>> response = wsCall.execute();
 
             if (response.isSuccessful()) {
                 return response.body();
@@ -34,8 +37,9 @@ public class MenuDAO {
             }
 
         } catch (IOException e) {
-            String errorMessage = "IOException could not get menu list " + e.getMessage();
+            String errorMessage = "IOException could not login " + e.getMessage();
             throw new PersistenceException(errorMessage);
         }
     }
+
 }

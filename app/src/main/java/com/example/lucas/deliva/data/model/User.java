@@ -27,6 +27,9 @@ public class User implements Serializable {
     @SerializedName("room_description")
     private String roomDescription;
 
+    @SerializedName("user_id")
+    private Integer userId;
+
     @SerializedName("room_floor")
     private Integer roomFloor;
 
@@ -102,6 +105,14 @@ public class User implements Serializable {
 
     public void setLogged(Boolean logged) {
         isLogged = logged;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 }
 
