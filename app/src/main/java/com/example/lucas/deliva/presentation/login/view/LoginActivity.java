@@ -15,11 +15,14 @@ import com.example.lucas.deliva.data.model.User;
 import com.example.lucas.deliva.data.model.type.CountryType;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
 import com.example.lucas.deliva.presentation.login.dialog.CountrySelectorDialog;
+import com.example.lucas.deliva.presentation.login.dialog.HostSettingsDialog;
 import com.example.lucas.deliva.presentation.login.presenter.LoginPresenter;
 import com.example.lucas.deliva.presentation.order.view.OrderActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+
+import static com.example.lucas.deliva.data.remote.WebServiceClient.BASE_URL;
 
 public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginView {
 
@@ -37,6 +40,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @BindView(R.id.country_flag)
     protected ImageView mCountryFlag;
+
+    private HostSettingsDialog mHostDialog;
+    private String mHost;
 
     private CountrySelectorDialog mCountryDialog;
 
@@ -122,6 +128,23 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @Override
     public void restartActivity() {
         recreate();
+    }
+
+    @OnClick(R.id.container_ip)
+    protected void onClickContainerIp() {
+        showHostDialog();
+    }
+
+    private void showHostDialog() {
+        mHostDialog = new HostSettingsDialog(getContext(), new HostSettingsDialog.DialogListener() {
+            @Override
+            public void onConfirmClickListener(String host) {
+                mHost = host;
+                BASE_URL = "http://" + mHost + ":5000";
+                mHostDialog.dismiss();
+            }
+        });
+        mHostDialog.show();
     }
 
 

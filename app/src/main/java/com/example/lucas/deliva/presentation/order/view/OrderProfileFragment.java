@@ -62,6 +62,7 @@ public class OrderProfileFragment extends BaseFragment<OrderProfileFragmentPrese
 
     private ProfilePurchaseRecycleAdapter mAdapter;
     private List<Balance> mBalanceList;
+    private Integer mUserId;
 
 
     @NonNull
@@ -79,9 +80,13 @@ public class OrderProfileFragment extends BaseFragment<OrderProfileFragmentPrese
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setupRecycle();
-
         showEmptyState();
         mSwipeRefreshLayout.setOnRefreshListener(this);
+        mUserId = mPresenter.getUserId();
+        if(mUserId != null){
+            mPresenter.getUserBalance(String.valueOf(mUserId));
+        }
+
     }
 
     private void setupRecycle() {
@@ -117,23 +122,9 @@ public class OrderProfileFragment extends BaseFragment<OrderProfileFragmentPrese
     public void onRefresh() {
         mBalanceList = null;
         showLoading();
-        mPresenter.getUserBalance("1");
-
-    }
-
-    @Override
-    public void onSuccessGetUserWallet(@NonNull List<Purchase> purchaseList) {
-        hideContainers();
-//        mPurchaseList = purchaseList;
-//        mAdapter.setData(mPurchaseList);
-        mContainer.setVisibility(View.VISIBLE);
-        mRecyclerView.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void onErrorGetUserWallet() {
-        hideContainers();
-        showEmptyState();
+        if(mUserId != null){
+            mPresenter.getUserBalance(String.valueOf(mUserId));
+        }
     }
 
     @Override
@@ -148,7 +139,8 @@ public class OrderProfileFragment extends BaseFragment<OrderProfileFragmentPrese
 
     @Override
     public void onErrorGetUserBalance() {
-
+        hideContainers();
+        showEmptyState();
     }
 
     private void setupBalanceCard() {

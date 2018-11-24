@@ -3,8 +3,10 @@ package com.example.lucas.deliva.presentation.order.presenter;
 import android.support.annotation.NonNull;
 
 import com.example.lucas.deliva.business.BusinessException;
+import com.example.lucas.deliva.business.session.SessionBO;
 import com.example.lucas.deliva.controller.ControllerListener;
 import com.example.lucas.deliva.controller.balance.BalanceController;
+import com.example.lucas.deliva.controller.user.UserController;
 import com.example.lucas.deliva.data.model.Balance;
 import com.example.lucas.deliva.data.model.mock.Purchase;
 import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
@@ -17,10 +19,12 @@ public class OrderProfileFragmentPresenter extends BasePresenter {
 
     private OrderProfileFragment mView;
     private final BalanceController mController;
+    private final SessionBO mSessionBO;
 
     public OrderProfileFragmentPresenter(OrderProfileFragment view) {
         this.mView = view;
         mController = new BalanceController();
+        mSessionBO = new SessionBO();
     }
 
 
@@ -41,26 +45,12 @@ public class OrderProfileFragmentPresenter extends BasePresenter {
         });
     }
 
-    public void getUserWallet() {
-
-        List<Purchase> mPurchaseList = new ArrayList<>();
-        mPurchaseList.add(new Purchase(123, "12/10/2018", 0, 120.00));
-        mPurchaseList.add(new Purchase(454, "12/10/2018", 1, 80.00));
-        mPurchaseList.add(new Purchase(543, "02/10/2018", 1, 90.00));
-        mPurchaseList.add(new Purchase(454, "28/08/2018", 0, 113.00));
-        mPurchaseList.add(new Purchase(847, "15/09/2018", 1, 105.00));
-        mPurchaseList.add(new Purchase(847, "15/09/2018", 0, 105.00));
-        mPurchaseList.add(new Purchase(847, "15/09/2018", 0, 105.00));
-        mPurchaseList.add(new Purchase(847, "15/09/2018", 1, 105.00));
-        mPurchaseList.add(new Purchase(847, "15/09/2018", 0, 105.00));
-        mPurchaseList.add(new Purchase(847, "15/09/2018", 0, 105.00));
-        mPurchaseList.add(new Purchase(847, "15/09/2018", 0, 105.00));
-
-        if (mPurchaseList != null) {
-            mView.onSuccessGetUserWallet(mPurchaseList);
+    public Integer getUserId() {
+        if (mSessionBO.getUser() != null && mSessionBO.getUser().getUserId() != null) {
+            return mSessionBO.getUser().getUserId();
         } else {
-            mView.onErrorGetUserWallet();
+            return null;
         }
-
     }
+
 }

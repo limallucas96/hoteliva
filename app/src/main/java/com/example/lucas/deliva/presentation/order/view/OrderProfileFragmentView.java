@@ -10,10 +10,6 @@ import java.util.List;
 
 public interface OrderProfileFragmentView extends BaseView {
 
-    void onSuccessGetUserWallet(@NonNull List<Purchase> purchaseList);
-
-    void onErrorGetUserWallet();
-
     void onSuccessGetUserBalance(@NonNull List<Balance> result);
 
     void onErrorGetUserBalance();
