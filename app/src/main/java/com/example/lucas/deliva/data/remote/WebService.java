@@ -24,4 +24,9 @@ public interface WebService {
     @POST("outstanding_balance")
     Call<HashMap<String, Balance>> getUserBalance(@Field("id_resident") String idResident);
 
+    @FormUrlEncoded
+    @POST("service_status")
+    Call<HashMap<String, Balance>> getOrderStatus(@Field("id_resident") String idResident,
+                                                  @Field("id_room") String idRoom);
+
 }

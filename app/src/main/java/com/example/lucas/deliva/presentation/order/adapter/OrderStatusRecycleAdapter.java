@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.lucas.deliva.AppApplication;
 import com.example.lucas.deliva.R;
+import com.example.lucas.deliva.data.model.Balance;
 import com.example.lucas.deliva.data.model.mock.OrderStatus;
 import com.example.lucas.deliva.data.model.type.OrderStatusType;
 import com.example.lucas.deliva.mechanism.connection.view.StepIndicator;
@@ -21,7 +22,7 @@ import com.squareup.picasso.Picasso;
 import static android.provider.Settings.System.getString;
 import static com.example.lucas.deliva.data.model.type.OrderStatusType.REQUESTED;
 
-public class OrderStatusRecycleAdapter extends BaseRecyclerAdapter<OrderStatus, OrderStatusRecycleAdapter.ViewHolder> {
+public class OrderStatusRecycleAdapter extends BaseRecyclerAdapter<Balance, OrderStatusRecycleAdapter.ViewHolder> {
 
     private OnItemClickListener mListener;
 
@@ -54,7 +55,7 @@ public class OrderStatusRecycleAdapter extends BaseRecyclerAdapter<OrderStatus, 
         private StepIndicator mStepIndicator;
         private Button mConfirm;
 
-        private void setButtonListener(@NonNull final OrderStatus status) {
+        private void setButtonListener(@NonNull final Balance status) {
             mConfirm.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -78,16 +79,17 @@ public class OrderStatusRecycleAdapter extends BaseRecyclerAdapter<OrderStatus, 
 
         }
 
-        public void bind(@NonNull final OrderStatus status, final int position) {
+        public void bind(@NonNull final Balance status, final int position) {
 
-            if (status.getOrderId() != null) {
+            if (status.getIdService() != null) {
                 mId.setText(AppApplication.getAppContext().getString(R.string.order_status_title));
             }
 
 
-            if (status.getCurrentStatus() != null && status.getRoomNumber() != null) {
+            if (status.getStatus() != null) { //status.getRoomNumber() != null
 
-                OrderStatusType orderStatusType = OrderStatusType.fromInt(status.getCurrentStatus());
+                OrderStatusType orderStatusType = OrderStatusType
+                        .fromInt(Integer.valueOf(status.getStatus()));
 
                 switch (orderStatusType) {
                     case REQUESTED:
@@ -123,6 +125,6 @@ public class OrderStatusRecycleAdapter extends BaseRecyclerAdapter<OrderStatus, 
     }
 
     public interface OnItemClickListener {
-        void onConfirmButtonClickLister(@NonNull OrderStatus status);
+        void onConfirmButtonClickLister(@NonNull Balance status);
     }
 }

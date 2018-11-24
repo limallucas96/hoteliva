@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lucas.deliva.R;
+import com.example.lucas.deliva.data.model.Balance;
+import com.example.lucas.deliva.data.model.User;
 import com.example.lucas.deliva.data.model.mock.OrderStatus;
 import com.example.lucas.deliva.presentation.base.view.BaseFragment;
 import com.example.lucas.deliva.presentation.order.adapter.OrderStatusRecycleAdapter;
@@ -46,7 +48,8 @@ public class OrderStatusFragment extends BaseFragment<OrderStatusFragmentPresent
     protected ImageView mSwipeLeft;
 
     private OrderStatusRecycleAdapter mAdapter;
-    private List<OrderStatus> mOrderStatus;
+    private List<Balance> mOrderStatus;
+    private User mUser;
 
     @NonNull
     @Override
@@ -63,7 +66,11 @@ public class OrderStatusFragment extends BaseFragment<OrderStatusFragmentPresent
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        showEmptyState();
+        mUser = mPresenter.getUser();
+        if (mUser.getUserId() != null && mUser.getRoomId() != null) {
+            mPresenter.getOrderStatus(String.valueOf(mUser.getUserId()),
+                    String.valueOf(mUser.getRoomId()));
+        }
         setupRecycle();
         mSwipeRefreshLayout.setOnRefreshListener(this);
     }
@@ -75,10 +82,10 @@ public class OrderStatusFragment extends BaseFragment<OrderStatusFragmentPresent
 
         mAdapter.onItemClickListener(new OrderStatusRecycleAdapter.OnItemClickListener() {
             @Override
-            public void onConfirmButtonClickLister(@NonNull OrderStatus status) {
-                for (OrderStatus orderStatus : mOrderStatus) {
-                    if (orderStatus.getOrderId() == status.getOrderId()) {
-                        mOrderStatus.remove(status);
+            public void onConfirmButtonClickLister(@NonNull Balance item) {
+                for (Balance orderStatus : mOrderStatus) {
+                    if (orderStatus.getIdService() == item.getIdService()) {
+                        mOrderStatus.remove(item);
                         break;
                     }
                 }
@@ -113,7 +120,7 @@ public class OrderStatusFragment extends BaseFragment<OrderStatusFragmentPresent
 
 
     @Override
-    public void onSuccessGetOrderStatusList(@NonNull List<OrderStatus> result) {
+    public void onSuccessGetOrderStatusList(@NonNull List<Balance> result) {
         hideContainers();
         mOrderStatus = result;
         mAdapter.setData(mOrderStatus);
