@@ -37,13 +37,13 @@
     <string name="clear_cart">Limpar carrinho</string>
 
     <!--VIEW ITEM ORDER STATUS-->
-    <string name="order_status_title">Pedido #ID: %s</string>
+    <string name="order_status_title">Pedido #ID</string>
     <string name="order_status_ordered">Pedido</string>
     <string name="order_status_on_going">Em andamento</string>
     <string name="order_status_done">Finalizado</string>
     <string name="order_status_id_1">Seu pedido está sendo confirmando pelo restaurante</string>
     <string name="order_status_id_2">Seu pedido foi aprovado e está sendo preparado</string>
-    <string name="order_status_id_3">Seu pedido será entregue no quarto %s</string>
+    <string name="order_status_id_3">Seu pedido será entregue no quarto</string>
     <string name="button_order_confirm">Confirmar entrega do pedido</string>
 
     <!-- PROFILE FRAGMENT -->

@@ -9,7 +9,7 @@ import com.example.lucas.deliva.business.BusinessException;
 import com.example.lucas.deliva.business.order.OrderBO;
 import com.example.lucas.deliva.controller.BaseAsyncTask;
 import com.example.lucas.deliva.controller.ControllerListener;
-import com.example.lucas.deliva.data.model.mock.Order;
+import com.example.lucas.deliva.data.model.Order;
 
 public class OrderController {
 

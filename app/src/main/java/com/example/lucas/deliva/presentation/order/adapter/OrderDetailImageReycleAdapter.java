@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lucas.deliva.R;
-import com.example.lucas.deliva.data.model.mock.OrderDetailImage;
+import com.example.lucas.deliva.data.model.OrderDetailImage;
 import com.example.lucas.deliva.presentation.base.view.adapter.BaseRecyclerAdapter;
 import com.squareup.picasso.Picasso;
 

@@ -7,7 +7,7 @@ import com.example.lucas.deliva.business.BusinessErrorCode;
 import com.example.lucas.deliva.business.BusinessException;
 import com.example.lucas.deliva.business.connection.ConnectionBO;
 import com.example.lucas.deliva.data.dao.order.OrderDAO;
-import com.example.lucas.deliva.data.model.mock.Order;
+import com.example.lucas.deliva.data.model.Order;
 
 public class OrderBO {
 

@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 
 import com.example.lucas.deliva.AppApplication;
 import com.example.lucas.deliva.data.model.User;
-import com.example.lucas.deliva.data.model.mock.Order;
+import com.example.lucas.deliva.data.model.Order;
 import com.google.gson.Gson;
 
 public class SessionDAO {

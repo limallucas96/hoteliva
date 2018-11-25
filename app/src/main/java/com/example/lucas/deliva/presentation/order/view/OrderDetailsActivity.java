@@ -6,16 +6,13 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.PagerSnapHelper;
-import android.support.v7.widget.SnapHelper;
 import android.support.v7.widget.Toolbar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.Menu;
-import com.example.lucas.deliva.data.model.mock.Order;
+import com.example.lucas.deliva.data.model.Order;
 import com.example.lucas.deliva.mechanism.connection.view.Util;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
 import com.example.lucas.deliva.presentation.base.view.adapter.ImageViewPagerAdapter;

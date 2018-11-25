@@ -48,6 +48,7 @@ public class StatusController {
                                        @NonNull ControllerListener callback) {
             super(callback);
             this.mIdResident = idResident;
+            this.mIdRoom = idRoom;
         }
 
         @Override

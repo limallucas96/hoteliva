@@ -1,4 +1,4 @@
-package com.example.lucas.deliva.data.model.mock;
+package com.example.lucas.deliva.data.model;
 
 import java.io.Serializable;
 

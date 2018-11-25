@@ -3,7 +3,7 @@ package com.example.lucas.deliva.data.remote;
 import com.example.lucas.deliva.data.model.Balance;
 import com.example.lucas.deliva.data.model.MenuReturn;
 import com.example.lucas.deliva.data.model.User;
-import com.example.lucas.deliva.data.model.mock.Order;
+import com.example.lucas.deliva.data.model.Order;
 
 import java.util.HashMap;
 

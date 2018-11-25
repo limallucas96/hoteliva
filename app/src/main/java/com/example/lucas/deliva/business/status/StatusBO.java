@@ -6,6 +6,7 @@ import android.util.Log;
 import com.example.lucas.deliva.business.BusinessErrorCode;
 import com.example.lucas.deliva.business.BusinessException;
 import com.example.lucas.deliva.business.connection.ConnectionBO;
+import com.example.lucas.deliva.business.session.SessionBO;
 import com.example.lucas.deliva.data.dao.status.StatusDAO;
 import com.example.lucas.deliva.data.model.Balance;
 
@@ -20,10 +21,12 @@ public class StatusBO {
 
     private final StatusDAO mStatusDAO;
     private final ConnectionBO mConnectionBO;
+    private final SessionBO mSessionBO;
 
     public StatusBO() {
         mStatusDAO = new StatusDAO();
         mConnectionBO = new ConnectionBO();
+        mSessionBO = new SessionBO();
     }
 
     public List<Balance> getOrderStatus(@NonNull String idResident,
@@ -44,7 +47,8 @@ public class StatusBO {
                             balanceReturn.getValue().getAmount(),
                             balanceReturn.getValue().getStatus(),
                             balanceReturn.getValue().getTotalValue(),
-                            balanceReturn.getValue().getValue()));
+                            balanceReturn.getValue().getValue(),
+                            mSessionBO.getUser().getRoomNumber()));
                 }
                 return balance;
             } else {

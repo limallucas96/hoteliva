@@ -7,12 +7,10 @@ import com.example.lucas.deliva.business.session.SessionBO;
 import com.example.lucas.deliva.controller.ControllerListener;
 import com.example.lucas.deliva.controller.menu.MenuController;
 import com.example.lucas.deliva.data.model.Menu;
-import com.example.lucas.deliva.data.model.mock.Order;
+import com.example.lucas.deliva.data.model.Order;
 import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
 import com.example.lucas.deliva.presentation.order.view.OrderMenuFragment;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class OrderMenuFragmentPresenter extends BasePresenter {

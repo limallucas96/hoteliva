@@ -35,13 +35,13 @@
     <string name="clear_cart">Clear cart</string>
 
     <!--VIEW ITEM ORDER STATUS-->
-    <string name="order_status_title">Order #ID: %s</string>
+    <string name="order_status_title">Order #ID</string>
     <string name="order_status_ordered">Order</string>
     <string name="order_status_on_going">On going</string>
     <string name="order_status_done">Done</string>
     <string name="order_status_id_1">Your order is on waiting list by the restaurant</string>
     <string name="order_status_id_2">Your order is approved and on going</string>
-    <string name="order_status_id_3">Your order will be delivered at room %s</string>
+    <string name="order_status_id_3">Your order will be delivered at room</string>
     <string name="button_order_confirm">Confirm delivered order</string>
 
     <!-- PROFILE FRAGMENT -->

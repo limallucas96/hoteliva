@@ -15,12 +15,10 @@ import android.widget.TextView;
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.Balance;
 import com.example.lucas.deliva.data.model.User;
-import com.example.lucas.deliva.data.model.mock.OrderStatus;
 import com.example.lucas.deliva.presentation.base.view.BaseFragment;
 import com.example.lucas.deliva.presentation.order.adapter.OrderStatusRecycleAdapter;
 import com.example.lucas.deliva.presentation.order.presenter.OrderStatusFragmentPresenter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;

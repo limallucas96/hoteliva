@@ -7,20 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lucas.deliva.AppApplication;
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.Balance;
-import com.example.lucas.deliva.data.model.mock.OrderStatus;
 import com.example.lucas.deliva.data.model.type.OrderStatusType;
 import com.example.lucas.deliva.mechanism.connection.view.StepIndicator;
 import com.example.lucas.deliva.presentation.base.view.adapter.BaseRecyclerAdapter;
-import com.squareup.picasso.Picasso;
-
-import static android.provider.Settings.System.getString;
-import static com.example.lucas.deliva.data.model.type.OrderStatusType.REQUESTED;
 
 public class OrderStatusRecycleAdapter extends BaseRecyclerAdapter<Balance, OrderStatusRecycleAdapter.ViewHolder> {
 
@@ -82,11 +76,14 @@ public class OrderStatusRecycleAdapter extends BaseRecyclerAdapter<Balance, Orde
         public void bind(@NonNull final Balance status, final int position) {
 
             if (status.getIdService() != null) {
-                mId.setText(AppApplication.getAppContext().getString(R.string.order_status_title));
+                String orderId = String.format("%s: %s",
+                        itemView.getContext().getString(R.string.order_status_title),
+                        status.getIdService());
+                mId.setText(orderId);
             }
 
 
-            if (status.getStatus() != null) { //status.getRoomNumber() != null
+            if (status.getStatus() != null) {
 
                 OrderStatusType orderStatusType = OrderStatusType
                         .fromInt(Integer.valueOf(status.getStatus()));
@@ -94,6 +91,8 @@ public class OrderStatusRecycleAdapter extends BaseRecyclerAdapter<Balance, Orde
                 switch (orderStatusType) {
                     case REQUESTED:
                         mOrdered.setTypeface(null, Typeface.BOLD);
+                        mOnGoing.setTypeface(null, Typeface.NORMAL);
+                        mDone.setTypeface(null, Typeface.NORMAL);
                         mStatus.setText(R.string.order_status_id_1);
                         mStepIndicator.setCurrentStepPosition(0);
                         break;
@@ -101,6 +100,7 @@ public class OrderStatusRecycleAdapter extends BaseRecyclerAdapter<Balance, Orde
                     case APPROVED:
                         mOrdered.setTypeface(null, Typeface.NORMAL);
                         mOnGoing.setTypeface(null, Typeface.BOLD);
+                        mDone.setTypeface(null, Typeface.NORMAL);
                         mStatus.setText(R.string.order_status_id_2);
                         mStepIndicator.setCurrentStepPosition(1);
                         break;
@@ -109,15 +109,19 @@ public class OrderStatusRecycleAdapter extends BaseRecyclerAdapter<Balance, Orde
                         mOrdered.setTypeface(null, Typeface.NORMAL);
                         mOnGoing.setTypeface(null, Typeface.NORMAL);
                         mDone.setTypeface(null, Typeface.BOLD);
-                        mConfirm.setVisibility(View.VISIBLE);
-                        setButtonListener(status);
-                        mStatus.setText(R.string.order_status_id_3);
+                        String text = String.format("%s: %s",
+                                itemView.getContext().getString(R.string.order_status_id_3),
+                                String.valueOf(status.getRoomNumber()));
+                        mStatus.setText(text);
                         mStepIndicator.setCurrentStepPosition(2);
                         break;
 
                     default:
                         mOrdered.setTypeface(null, Typeface.BOLD);
-                        mStepIndicator.setCurrentStepPosition(1);
+                        mOnGoing.setTypeface(null, Typeface.NORMAL);
+                        mDone.setTypeface(null, Typeface.NORMAL);
+                        mStatus.setText(R.string.order_status_id_1);
+                        mStepIndicator.setCurrentStepPosition(0);
                         break;
                 }
             }

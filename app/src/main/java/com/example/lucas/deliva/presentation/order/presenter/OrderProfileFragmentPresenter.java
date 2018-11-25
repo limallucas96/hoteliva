@@ -6,13 +6,10 @@ import com.example.lucas.deliva.business.BusinessException;
 import com.example.lucas.deliva.business.session.SessionBO;
 import com.example.lucas.deliva.controller.ControllerListener;
 import com.example.lucas.deliva.controller.balance.BalanceController;
-import com.example.lucas.deliva.controller.user.UserController;
 import com.example.lucas.deliva.data.model.Balance;
-import com.example.lucas.deliva.data.model.mock.Purchase;
 import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
 import com.example.lucas.deliva.presentation.order.view.OrderProfileFragment;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class OrderProfileFragmentPresenter extends BasePresenter {
@@ -29,7 +26,6 @@ public class OrderProfileFragmentPresenter extends BasePresenter {
 
 
     public void getUserBalance(@NonNull String idResident) {
-
         mController.getUserBalance(idResident, new ControllerListener<List<Balance>>() {
             @Override
             public void onSuccess(@NonNull List<Balance> result) {
@@ -40,7 +36,7 @@ public class OrderProfileFragmentPresenter extends BasePresenter {
 
             @Override
             public void onError(@NonNull BusinessException errorCode) {
-
+                mView.onErrorGetUserBalance();
             }
         });
     }

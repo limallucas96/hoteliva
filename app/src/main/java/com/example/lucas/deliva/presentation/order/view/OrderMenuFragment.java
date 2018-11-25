@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.Menu;
-import com.example.lucas.deliva.data.model.mock.Order;
+import com.example.lucas.deliva.data.model.Order;
 import com.example.lucas.deliva.presentation.base.view.BaseFragment;
 import com.example.lucas.deliva.presentation.cart.view.CartActivity;
 import com.example.lucas.deliva.presentation.order.adapter.OrderMenuRecycleAdapter;

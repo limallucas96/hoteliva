@@ -3,9 +3,6 @@ package com.example.lucas.deliva.presentation.order.view;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,18 +13,11 @@ import android.widget.TextView;
 
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.Balance;
-import com.example.lucas.deliva.data.model.mock.Purchase;
 import com.example.lucas.deliva.mechanism.connection.view.Util;
-import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
 import com.example.lucas.deliva.presentation.base.view.BaseFragment;
-import com.example.lucas.deliva.presentation.base.view.adapter.OrderTabsViewPagerAdapter;
-import com.example.lucas.deliva.presentation.base.view.AdapterAwareFragment;
-import com.example.lucas.deliva.presentation.order.adapter.OrderStatusRecycleAdapter;
 import com.example.lucas.deliva.presentation.order.adapter.ProfilePurchaseRecycleAdapter;
 import com.example.lucas.deliva.presentation.order.presenter.OrderProfileFragmentPresenter;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;

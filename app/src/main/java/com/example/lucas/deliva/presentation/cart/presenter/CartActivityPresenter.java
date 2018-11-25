@@ -3,12 +3,11 @@ package com.example.lucas.deliva.presentation.cart.presenter;
 import android.support.annotation.NonNull;
 
 import com.example.lucas.deliva.business.BusinessException;
-import com.example.lucas.deliva.business.order.OrderBO;
 import com.example.lucas.deliva.business.session.SessionBO;
 import com.example.lucas.deliva.controller.ControllerListener;
 import com.example.lucas.deliva.controller.order.OrderController;
 import com.example.lucas.deliva.data.model.User;
-import com.example.lucas.deliva.data.model.mock.Order;
+import com.example.lucas.deliva.data.model.Order;
 import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
 import com.example.lucas.deliva.presentation.cart.view.CartActivity;
 
@@ -38,7 +37,11 @@ public class CartActivityPresenter extends BasePresenter {
             @Override
             public void onSuccess(@NonNull Boolean result) {
                 mView.dismissProgressDialog();
-                mView.onSuccessCreateOrder();
+                if (result) {
+                    mView.onSuccessCreateOrder();
+                } else {
+                    mView.onErrorCreateOrder();
+                }
             }
 
             @Override

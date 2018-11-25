@@ -33,6 +33,8 @@ public class Balance implements Serializable {
     @SerializedName("value")
     private Double value;
 
+    private Integer roomNumber;
+
     public Balance(String orderId, String date, String description, Integer idService, String name, Integer amount, String status, Double totalValue, Double value) {
         this.orderId = orderId;
         this.date = date;
@@ -43,6 +45,19 @@ public class Balance implements Serializable {
         this.status = status;
         this.totalValue = totalValue;
         this.value = value;
+    }
+
+    public Balance(String orderId, String date, String description, Integer idService, String name, Integer amount, String status, Double totalValue, Double value, Integer roomNumber) {
+        this.orderId = orderId;
+        this.date = date;
+        this.description = description;
+        this.idService = idService;
+        this.name = name;
+        this.amount = amount;
+        this.status = status;
+        this.totalValue = totalValue;
+        this.value = value;
+        this.roomNumber = roomNumber;
     }
 
     public String getDate() {
@@ -107,5 +122,21 @@ public class Balance implements Serializable {
 
     public void setValue(Double value) {
         this.value = value;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+    public Integer getRoomNumber() {
+        return roomNumber;
+    }
+
+    public void setRoomNumber(Integer roomNumber) {
+        this.roomNumber = roomNumber;
     }
 }

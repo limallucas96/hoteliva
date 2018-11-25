@@ -1,7 +1,7 @@
 package com.example.lucas.deliva.presentation.order.presenter;
 
 import com.example.lucas.deliva.business.session.SessionBO;
-import com.example.lucas.deliva.data.model.mock.Order;
+import com.example.lucas.deliva.data.model.Order;
 import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
 import com.example.lucas.deliva.presentation.order.view.OrderDetailsActivity;
 

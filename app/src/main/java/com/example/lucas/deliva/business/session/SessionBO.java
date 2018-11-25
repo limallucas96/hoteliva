@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.example.lucas.deliva.data.dao.session.SessionDAO;
 import com.example.lucas.deliva.data.model.User;
-import com.example.lucas.deliva.data.model.mock.Order;
+import com.example.lucas.deliva.data.model.Order;
 
 public class SessionBO {
 

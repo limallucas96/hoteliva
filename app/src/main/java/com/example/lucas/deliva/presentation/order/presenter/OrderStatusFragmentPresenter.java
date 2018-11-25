@@ -4,18 +4,13 @@ import android.support.annotation.NonNull;
 
 import com.example.lucas.deliva.business.BusinessException;
 import com.example.lucas.deliva.business.session.SessionBO;
-import com.example.lucas.deliva.business.user.UserBO;
 import com.example.lucas.deliva.controller.ControllerListener;
-import com.example.lucas.deliva.controller.balance.BalanceController;
 import com.example.lucas.deliva.controller.status.StatusController;
-import com.example.lucas.deliva.controller.user.UserController;
 import com.example.lucas.deliva.data.model.Balance;
 import com.example.lucas.deliva.data.model.User;
-import com.example.lucas.deliva.data.model.mock.OrderStatus;
 import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
 import com.example.lucas.deliva.presentation.order.view.OrderStatusFragment;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class OrderStatusFragmentPresenter extends BasePresenter {
