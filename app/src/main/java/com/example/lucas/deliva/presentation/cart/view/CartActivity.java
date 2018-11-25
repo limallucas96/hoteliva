@@ -104,7 +104,7 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
 
         mCartAdapter.setOnItemClickListener(new CartRecyleAdapter.OnItemClickListener() {
             @Override
-            public void onInscreaseClickListener(@NonNull Menu menuItem) {
+            public void onIncreaseClickListener(@NonNull Menu menuItem) {
                 updateCartValue(mOrder.getMenuList(), menuItem, true);
             }
 
@@ -150,10 +150,13 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
 
     @OnClick(R.id.cart)
     protected void checkout() {
-        showProgressDialog("Criando pedido, aguarde...");
-        mPresenter.saveOrder(mOrder); //Todo - mock only, remove later
-        dismissProgressDialog();
-        finish();
+        Integer userId = mPresenter.getUser().getUserId();
+        Integer roomId = mPresenter.getUser().getRoomId();
+        if (userId != null && roomId != null) {
+            mOrder.setUserId(userId);
+            mOrder.setRoomId(roomId);
+            mPresenter.createOrder(mOrder);
+        }
     }
 
     @Override
@@ -188,4 +191,14 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
         checkCartStatus();
     }
 
+    @Override
+    public void onSuccessCreateOrder() {
+        Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+    @Override
+    public void onErrorCreateOrder() {
+        Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+    }
 }

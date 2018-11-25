@@ -1,14 +1,20 @@
 package com.example.lucas.deliva.data.model.mock;
 
 import com.example.lucas.deliva.data.model.Menu;
+import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.util.List;
 
 public class Order implements Serializable {
 
+    @SerializedName("id_resident")
     private Integer userId;
+
+    @SerializedName("id_room")
     private Integer roomId;
+
+    @SerializedName("service")
     private List<Menu> menuList;
     private Double orderCost = 0.0;
 
@@ -43,4 +49,5 @@ public class Order implements Serializable {
     public void setOrderCost(Double orderCost) {
         this.orderCost = orderCost;
     }
+
 }

@@ -1,19 +1,24 @@
 package com.example.lucas.deliva.data.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class Menu implements Serializable {
 
+    @SerializedName("id_service")
     private String id;
 
     private String name;
 
     private String description;
 
+    @SerializedName("unit_value")
     private Double value;
 
     private String img;
 
+    @SerializedName("qtde")
     private Integer amout;
 
     public Menu(String id, String name, String description, Double value, String img, Integer amout) {

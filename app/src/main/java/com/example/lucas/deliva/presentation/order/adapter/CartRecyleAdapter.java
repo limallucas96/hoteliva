@@ -87,7 +87,7 @@ public class CartRecyleAdapter extends BaseRecyclerAdapter<Menu, CartRecyleAdapt
                         menu.setAmout(amount);
                         mValue.setText(String.valueOf(menu.getAmout()));
                         if (mListener != null) {
-                            mListener.onInscreaseClickListener(menu);
+                            mListener.onIncreaseClickListener(menu);
                         }
                     }
                 });
@@ -110,7 +110,7 @@ public class CartRecyleAdapter extends BaseRecyclerAdapter<Menu, CartRecyleAdapt
     }
 
     public interface OnItemClickListener {
-        void onInscreaseClickListener(@NonNull final Menu menuItem);
+        void onIncreaseClickListener(@NonNull final Menu menuItem);
 
         void onDecreaseClickListener(@NonNull final Menu menuItem);
     }

@@ -137,6 +137,9 @@ public class OrderStatusFragment extends BaseFragment<OrderStatusFragmentPresent
     public void onRefresh() {
         mOrderStatus = null;
         showLoading();
-//        mPresenter.getOrderStatusList();
+        if (mUser.getUserId() != null && mUser.getRoomId() != null) {
+            mPresenter.getOrderStatus(String.valueOf(mUser.getUserId()),
+                    String.valueOf(mUser.getRoomId()));
+        }
     }
 }

@@ -22,7 +22,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class WebServiceClient {
 
     private WebService mService;
-    public static String BASE_URL = "http://192.168.0.4:5000";
+    public static String BASE_URL = "http://192.168.0.6:5000";
     private static final String CONTENT_TYPE_HEADER_NAME = "Content-Type";
 
 
