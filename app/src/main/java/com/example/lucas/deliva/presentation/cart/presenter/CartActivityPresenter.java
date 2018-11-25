@@ -6,6 +6,7 @@ import com.example.lucas.deliva.business.BusinessException;
 import com.example.lucas.deliva.business.session.SessionBO;
 import com.example.lucas.deliva.controller.ControllerListener;
 import com.example.lucas.deliva.controller.order.OrderController;
+import com.example.lucas.deliva.data.model.CartReturn;
 import com.example.lucas.deliva.data.model.User;
 import com.example.lucas.deliva.data.model.Order;
 import com.example.lucas.deliva.presentation.base.presenter.BasePresenter;
@@ -33,11 +34,11 @@ public class CartActivityPresenter extends BasePresenter {
 
     public void createOrder(@NonNull Order order) {
         mView.showProgress();
-        mOrderController.createOrder(order, new ControllerListener<Boolean>() {
+        mOrderController.createOrder(order, new ControllerListener<CartReturn>() {
             @Override
-            public void onSuccess(@NonNull Boolean result) {
+            public void onSuccess(@NonNull CartReturn result) {
                 mView.dismissProgressDialog();
-                if (result) {
+                if (result.getStatus()) {
                     mView.onSuccessCreateOrder();
                 } else {
                     mView.onErrorCreateOrder();

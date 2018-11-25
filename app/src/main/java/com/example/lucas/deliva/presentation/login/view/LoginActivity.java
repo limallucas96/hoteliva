@@ -140,7 +140,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
             @Override
             public void onConfirmClickListener(String host) {
                 mHost = host;
-                BASE_URL = "http://" + mHost + ":5000";
+                mPresenter.setHost("http://" + mHost + ":5000");
+//                BASE_URL = "http://" + mHost + ":5000";
                 mHostDialog.dismiss();
             }
         });

@@ -7,6 +7,7 @@ import com.example.lucas.deliva.business.BusinessErrorCode;
 import com.example.lucas.deliva.business.BusinessException;
 import com.example.lucas.deliva.business.connection.ConnectionBO;
 import com.example.lucas.deliva.data.dao.order.OrderDAO;
+import com.example.lucas.deliva.data.model.CartReturn;
 import com.example.lucas.deliva.data.model.Order;
 
 public class OrderBO {
@@ -21,10 +22,10 @@ public class OrderBO {
         mConnectionBO = new ConnectionBO();
     }
 
-    public Boolean createOrder(@NonNull Order order) throws BusinessException {
+    public CartReturn createOrder(@NonNull Order order) throws BusinessException {
         mConnectionBO.assertInternetConnection();
         try {
-            Boolean gson = mOrderDAO.createOrder(order);
+            CartReturn gson = mOrderDAO.createOrder(order);
             if (gson != null) {
                 return gson;
             } else {

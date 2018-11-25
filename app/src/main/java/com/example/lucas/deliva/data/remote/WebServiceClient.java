@@ -3,6 +3,7 @@ package com.example.lucas.deliva.data.remote;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.example.lucas.deliva.business.session.SessionBO;
 import com.facebook.stetho.okhttp3.BuildConfig;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.gson.Gson;
@@ -24,10 +25,13 @@ public class WebServiceClient {
     private WebService mService;
     public static String BASE_URL = "http://192.168.0.6:5000";
     private static final String CONTENT_TYPE_HEADER_NAME = "Content-Type";
+    private final SessionBO mSessionBO;
 
 
     public WebServiceClient() {
-        String uri = BASE_URL;
+        mSessionBO = new SessionBO();
+        String uri = mSessionBO.getHost();
+//        String uri = BASE_URL;
         Gson gson = new GsonBuilder().setLenient().create();
         mService = WebServiceClient.createWebService(uri, gson);
     }

@@ -88,5 +88,8 @@ public class LoginPresenter extends BasePresenter {
         mView.restartActivity();
     }
 
+    public void setHost(String host) {
+        mSessionBO.setHost(host);
+    }
 
 }

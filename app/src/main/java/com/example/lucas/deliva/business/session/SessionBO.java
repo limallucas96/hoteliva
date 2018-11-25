@@ -32,11 +32,11 @@ public class SessionBO {
         mSessionDAO.setUser(user);
     }
 
-    public User getUser(){
-       return mSessionDAO.getUser();
+    public User getUser() {
+        return mSessionDAO.getUser();
     }
 
-    public void logoutUser(){
+    public void logoutUser() {
         mSessionDAO.logoutUser();
     }
 
@@ -54,5 +54,13 @@ public class SessionBO {
 
     public String getLocale() {
         return mSessionDAO.getLocale();
+    }
+
+    public String getHost() {
+        return mSessionDAO.getHost();
+    }
+
+    public void setHost(String host) {
+        mSessionDAO.setHost(host);
     }
 }

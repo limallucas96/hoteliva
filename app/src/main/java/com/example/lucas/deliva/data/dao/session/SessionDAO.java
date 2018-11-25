@@ -21,6 +21,7 @@ public class SessionDAO {
     private final static String KEY_USER_LOGGED_IN = "KEY_USER_LOGGED_IN";
     private static final String KEY_LANGUAGE = "KEY_LANGUAGE";
     private static final String KEY_LOCALE = "KEY_LOCALE";
+    private static final String KEY_HOST = "KEY_HOST";
 
     private final SharedPreferences mSharedPreferences;
     private final Gson mGson;
@@ -122,4 +123,16 @@ public class SessionDAO {
     }
     //END LOCALE
 
+    //BEGIN HOST
+    public String getHost() {
+        return mSharedPreferences.getString(KEY_HOST, "http://127.168.0.1:5000");
+    }
+
+    public void setHost(String host) {
+        final SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putString(KEY_HOST, host);
+        editor.apply();
+    }
+
+    //END HOST
 }

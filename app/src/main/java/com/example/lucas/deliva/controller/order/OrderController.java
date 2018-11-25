@@ -9,6 +9,7 @@ import com.example.lucas.deliva.business.BusinessException;
 import com.example.lucas.deliva.business.order.OrderBO;
 import com.example.lucas.deliva.controller.BaseAsyncTask;
 import com.example.lucas.deliva.controller.ControllerListener;
+import com.example.lucas.deliva.data.model.CartReturn;
 import com.example.lucas.deliva.data.model.Order;
 
 public class OrderController {
@@ -21,7 +22,7 @@ public class OrderController {
         mOrderBO = new OrderBO();
     }
 
-    public void createOrder(@NonNull Order order, @NonNull final ControllerListener<Boolean> callback) {
+    public void createOrder(@NonNull Order order, @NonNull final ControllerListener<CartReturn> callback) {
         Log.d(TAG, "Request to create order");
 
         try {
@@ -34,7 +35,7 @@ public class OrderController {
         }
     }
 
-    private class CreateOrderAsyncTask extends BaseAsyncTask<Object, Object, Boolean> {
+    private class CreateOrderAsyncTask extends BaseAsyncTask<Object, Object, CartReturn> {
 
         private Order mOrder;
 
@@ -44,7 +45,7 @@ public class OrderController {
         }
 
         @Override
-        protected Boolean onBackground() {
+        protected CartReturn onBackground() {
             return mOrderBO.createOrder(mOrder);
         }
     }

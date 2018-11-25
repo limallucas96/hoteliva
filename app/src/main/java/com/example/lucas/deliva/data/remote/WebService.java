@@ -1,6 +1,7 @@
 package com.example.lucas.deliva.data.remote;
 
 import com.example.lucas.deliva.data.model.Balance;
+import com.example.lucas.deliva.data.model.CartReturn;
 import com.example.lucas.deliva.data.model.MenuReturn;
 import com.example.lucas.deliva.data.model.User;
 import com.example.lucas.deliva.data.model.Order;
@@ -32,6 +33,6 @@ public interface WebService {
                                                   @Field("id_room") String idRoom);
 
     @POST("/insert_order")
-    Call<Boolean> createOrder(@Body Order order);
+    Call<CartReturn> createOrder(@Body Order order);
 
 }

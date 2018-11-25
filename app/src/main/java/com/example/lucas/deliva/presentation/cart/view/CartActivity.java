@@ -178,7 +178,7 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
 
     private void checkCartStatus() {
         if (mOrder == null || mOrder.getMenuList().isEmpty()) {
-            mCartButton.setEnabled(false);
+//            mCartButton.setEnabled(false);
             mShowOptions = false;
         }
     }
