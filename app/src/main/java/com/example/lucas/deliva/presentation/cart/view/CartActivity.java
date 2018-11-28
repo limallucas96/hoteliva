@@ -18,6 +18,7 @@ import com.example.lucas.deliva.data.model.Menu;
 import com.example.lucas.deliva.data.model.Order;
 import com.example.lucas.deliva.mechanism.connection.view.Util;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
+import com.example.lucas.deliva.presentation.cart.dialog.CartDialog;
 import com.example.lucas.deliva.presentation.cart.presenter.CartActivityPresenter;
 import com.example.lucas.deliva.presentation.order.adapter.CartRecyleAdapter;
 
@@ -58,6 +59,7 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
     private Order mOrder;
     private Double mOrderCost = 0.0;
     private CartRecyleAdapter mCartAdapter;
+    private CartDialog mCartDialog;
 
 
     @NonNull
@@ -169,7 +171,7 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.clear_cart_menu:
-                clearCart();
+                showCartDialog();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -199,5 +201,20 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
     @Override
     public void onErrorCreateOrder() {
         Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+    }
+
+    private void showCartDialog() {
+        mCartDialog = new CartDialog(this, new CartDialog.DialogListener() {
+            @Override
+            public void onConfirmClickListener() {
+                clearCart();
+            }
+
+            @Override
+            public void onCancelClickListener() {
+                mCartDialog.dismiss();
+            }
+        });
+        mCartDialog.show();
     }
 }

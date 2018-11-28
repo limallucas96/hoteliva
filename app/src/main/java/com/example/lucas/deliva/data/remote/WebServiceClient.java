@@ -43,19 +43,12 @@ public class WebServiceClient {
 
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
 
-        // Can be Level.BASIC, Level.HEADERS, or Level.BODY
-        // See http://square.github.io/okhttp/3.x/logging-interceptor/ to see the options.
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         builder.networkInterceptors().add(httpLoggingInterceptor);
         builder.addNetworkInterceptor(new StethoInterceptor());
         builder.build();
 
         OkHttpClient client = builder.build();
-
-//        OkHttpClient okClient = new OkHttpClient.Builder()
-//                .addNetworkInterceptor(new StethoInterceptor())
-//                .build();
-
 
         // Create retrofit access
         Retrofit retrofit = new Retrofit.Builder()
