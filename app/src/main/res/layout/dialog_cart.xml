@@ -17,36 +17,35 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="Você tem certeza que deseja limpar seu carrinho?"
-            android:textAllCaps="true"/>
+            android:text="@string/dialog_clear_cart"
+            android:textAllCaps="true" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/confirm"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="45dp"
-                android:layout_marginTop="25dp"
+                android:layout_weight="1"
                 android:backgroundTint="@color/colorAccent"
                 android:maxLines="1"
-                android:text="Limpar"
+                android:text="@string/clean"
                 android:textAllCaps="true"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
 
             <Button
                 android:id="@+id/cancel"
-                android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="45dp"
-                android:layout_marginTop="25dp"
+                android:layout_weight="1"
                 android:backgroundTint="@color/colorAccent"
                 android:maxLines="1"
-                android:text="Cancelar"
+                android:text="@string/cancel"
                 android:textAllCaps="true"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />

@@ -35,6 +35,8 @@
     <string name="service_cost">Serviço de quarto</string>
     <string name="cart_total">Total</string>
     <string name="clear_cart">Limpar carrinho</string>
+    <string name="order_success">Pedido realizado!</string>
+    <string name="order_error">Erro ao realizar seu pedido</string>
 
     <!--VIEW ITEM ORDER STATUS-->
     <string name="order_status_title">Pedido #ID</string>
@@ -51,6 +53,7 @@
     <string name="purchase_status_paid">Pago</string>
     <string name="purchase_status_pending">Pendente</string>
     <string name="purchase_balance">Balanço da estádia</string>
+    <string name="daily_value_warning">Valor da diária não incluso*</string>
 
     <!--EMPTY STATE -->
     <string name="empty_state_no_purchase">Ops… Parece que você não comprou nada ainda</string>
@@ -74,12 +77,16 @@
     <string name="change_country">Trocar idioma</string>
 
     <string name="add_to_cart">Adicionar ao carrinho</string>
-
-
     <string name="alert_loading">Carregando, aguarde…</string>
 
     <!-- ORDER ACTIVITY -->
     <string name="guest_name">Hóspede</string>
     <string name="room">Quarto</string>
+    <string name="daily_value">Diária</string>
+
+    <!--CART DIALOG-->
+    <string name="dialog_clear_cart">Você tem certeza que deseja limpar seu carrinho?</string>
+    <string name="clean">Limpar</string>
+    <string name="cancel">Cancelar</string>
 
 </resources>

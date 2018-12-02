@@ -26,8 +26,6 @@ public class OrderProfileFragment extends BaseFragment<OrderProfileFragmentPrese
 
     @BindView(R.id.total)
     protected TextView mTotal;
-    @BindView(R.id.accommodation)
-    protected TextView mAccomodation;
     @BindView(R.id.recycler_view)
     protected RecyclerView mRecyclerView;
     @BindView(R.id.container)
@@ -134,16 +132,14 @@ public class OrderProfileFragment extends BaseFragment<OrderProfileFragmentPrese
     }
 
     private void setupBalanceCard() {
-        Double accomodationTotalValue = 0.0;
+        Double accommodationTotalValue = 0.0;
         if (mBalanceList != null) {
             for (Balance balance : mBalanceList) {
                 if (balance.getTotalValue() != null) {
-                    accomodationTotalValue += balance.getTotalValue();
+                    accommodationTotalValue += balance.getTotalValue();
                 }
             }
         }
-        mAccomodation.setText("15/10/2018 - 20/10/2018");
-        mTotal.setText(Util.formatCurrency(accomodationTotalValue));
-
+        mTotal.setText(Util.formatCurrency(accommodationTotalValue));
     }
 }

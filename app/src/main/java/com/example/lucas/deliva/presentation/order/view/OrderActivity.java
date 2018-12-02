@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.example.lucas.deliva.R;
 import com.example.lucas.deliva.data.model.User;
+import com.example.lucas.deliva.mechanism.connection.view.Util;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
 import com.example.lucas.deliva.presentation.login.view.LoginActivity;
 import com.example.lucas.deliva.presentation.order.presenter.OrderActivityPresenter;
@@ -50,6 +51,7 @@ public class OrderActivity extends BaseActivity<OrderActivityPresenter> implemen
     // Navigation Menu Header
     protected TextView mMenuName;
     protected TextView mMenuCompany;
+    protected TextView mDailyValue;
 
     private User mUser;
 
@@ -125,6 +127,7 @@ public class OrderActivity extends BaseActivity<OrderActivityPresenter> implemen
             View header = mNavigationView.getHeaderView(0);
             mMenuName = header.findViewById(R.id.drawer_header_name);
             mMenuCompany = header.findViewById(R.id.drawer_header_room);
+            mDailyValue = header.findViewById(R.id.drawer_header_daily_value);
             header.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -137,8 +140,12 @@ public class OrderActivity extends BaseActivity<OrderActivityPresenter> implemen
                 mMenuName.setText(Html.fromHtml(name));
             }
             if (mUser.getRoomNumber() != null) {
-                String room = String.format("<b>%s</b>: %s", getContext().getString(R.string.room),String.valueOf(mUser.getRoomNumber()));
+                String room = String.format("<b>%s</b>: %s", getContext().getString(R.string.room), String.valueOf(mUser.getRoomNumber()));
                 mMenuCompany.setText(Html.fromHtml(room));
+            }
+            if (mUser.getRoomValue() != null) {
+                String roomValue = String.format("<b>%s</b>: %s", getContext().getString(R.string.daily_value), Util.formatCurrency(mUser.getRoomValue()));
+                mDailyValue.setText(Html.fromHtml(roomValue));
             }
         }
     }

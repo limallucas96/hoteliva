@@ -50,5 +50,14 @@
             android:textColor="@android:color/white"
             android:textSize="14sp"
             tools:text="Quarto: 10" />
+
+        <TextView
+            android:id="@+id/drawer_header_daily_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            tools:text="Diária: R$ 89.90" />
+
     </LinearLayout>
 </RelativeLayout>

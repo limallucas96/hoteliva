@@ -134,6 +134,7 @@ public class OrderMenuFragment extends BaseFragment<OrderMenuFragmentPresenter> 
         if (requestCode == REQUEST_CODE_CONCLUDED) {
             if (resultCode == RESULT_OK) {
                 mMenu = (Menu) data.getSerializableExtra(OrderDetailsActivity.MENU);
+                mOrder = mPresenter.getOrder();
                 if (mOrder == null) {
                     mOrder = new Order();
                 }

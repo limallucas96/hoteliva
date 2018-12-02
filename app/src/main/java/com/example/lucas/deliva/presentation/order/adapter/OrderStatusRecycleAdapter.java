@@ -75,10 +75,10 @@ public class OrderStatusRecycleAdapter extends BaseRecyclerAdapter<Balance, Orde
 
         public void bind(@NonNull final Balance status, final int position) {
 
-            if (status.getIdService() != null) {
+            if (status.getOrderId() != null) {
                 String orderId = String.format("%s: %s",
                         itemView.getContext().getString(R.string.order_status_title),
-                        status.getIdService());
+                        status.getOrderId());
                 mId.setText(orderId);
             }
 

@@ -10,6 +10,8 @@ import com.example.lucas.deliva.business.connection.ConnectionBO;
 import com.example.lucas.deliva.data.dao.menu.MenuDAO;
 import com.example.lucas.deliva.data.model.Menu;
 import com.example.lucas.deliva.data.model.MenuReturn;
+import com.example.lucas.deliva.data.model.OrderDetailImage;
+import com.example.lucas.deliva.mechanism.connection.utils.OrderDetailMock;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,7 +45,8 @@ public class MenuBO {
                             menuReturn.getValue().getDescription(),
                             menuReturn.getValue().getValue(),
                             menuReturn.getValue().getImg(),
-                            0));
+                            0,
+                            filterOderDetail(id)));
                 }
                 return menu;
             } else {
@@ -54,6 +57,16 @@ public class MenuBO {
             Log.e(TAG, errorMessage);
             throw new BusinessException(errorMessage, BusinessErrorCode.GENERIC_ERROR);
         }
+    }
+
+    public OrderDetailImage filterOderDetail(String id) {
+        List<OrderDetailImage> orderDetail = OrderDetailMock.createOrderDetail();
+        for (OrderDetailImage order : orderDetail) {
+            if (order.getId().equals(id)) {
+                return order;
+            }
+        }
+        return null;
     }
 
 

@@ -21,13 +21,16 @@ public class Menu implements Serializable {
     @SerializedName("qtde")
     private Integer amout;
 
-    public Menu(String id, String name, String description, Double value, String img, Integer amout) {
+    private OrderDetailImage orderDetailImage;
+
+    public Menu(String id, String name, String description, Double value, String img, Integer amout, OrderDetailImage orderDetailImage) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.value = value;
         this.img = img;
         this.amout = amout;
+        this.orderDetailImage = orderDetailImage;
     }
 
     public String getId() {
@@ -76,5 +79,13 @@ public class Menu implements Serializable {
 
     public void setAmout(Integer amout) {
         this.amout = amout;
+    }
+
+    public OrderDetailImage getOrderDetailImage() {
+        return orderDetailImage;
+    }
+
+    public void setOrderDetailImage(OrderDetailImage orderDetailImage) {
+        this.orderDetailImage = orderDetailImage;
     }
 }

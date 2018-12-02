@@ -33,6 +33,8 @@
     <string name="service_cost">Room service</string>
     <string name="cart_total">Total</string>
     <string name="clear_cart">Clear cart</string>
+    <string name="order_success">Order created!</string>
+    <string name="order_error">Error while trying to create your order.</string>
 
     <!--VIEW ITEM ORDER STATUS-->
     <string name="order_status_title">Order #ID</string>
@@ -49,6 +51,7 @@
     <string name="purchase_status_paid">Paid</string>
     <string name="purchase_status_pending">Pendent</string>
     <string name="purchase_balance">Your stay balance</string>
+    <string name="daily_value_warning">Daily value not included*</string>
 
     <!--EMPTY STATE -->
     <string name="empty_state_no_purchase">Ops… Looks like you didn\'t buy anything yet</string>
@@ -76,7 +79,12 @@
 
     <!-- ORDER ACTIVITY -->
     <string name="guest_name">Guest</string>
-    <string name="room">Quarto</string>
+    <string name="room">Room</string>
+    <string name="daily_value">Daily</string>
 
+    <!--CART DIALOG-->
+    <string name="dialog_clear_cart">Are you sure you want to clean your cart?</string>
+    <string name="clean">Clean</string>
+    <string name="cancel">Cancel</string>
 
 </resources>

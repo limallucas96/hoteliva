@@ -16,7 +16,6 @@ import com.example.lucas.deliva.data.model.Order;
 import com.example.lucas.deliva.mechanism.connection.view.Util;
 import com.example.lucas.deliva.presentation.base.view.BaseActivity;
 import com.example.lucas.deliva.presentation.base.view.adapter.ImageViewPagerAdapter;
-import com.example.lucas.deliva.presentation.order.adapter.OrderDetailImageReycleAdapter;
 import com.example.lucas.deliva.presentation.order.presenter.OrderDetailsActivityPresenter;
 
 import java.util.ArrayList;
@@ -50,15 +49,11 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
     @BindView(R.id.suits)
     protected TextView mSuits;
     @BindView(R.id.rating)
-    protected RatingBar mRaiting;
+    protected TextView mRaiting;
     @BindView(R.id.description)
     protected TextView mDescription;
     @BindView(R.id.price)
     protected TextView mPrice;
-
-
-    private OrderDetailImageReycleAdapter mImageAdapter;
-
     private Menu mMenu;
     private Order mOrder;
 
@@ -83,7 +78,7 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
         if (getIntent().getSerializableExtra(KEY_EXTRA_MENU) != null) {
             mMenu = (Menu) getIntent().getSerializableExtra(KEY_EXTRA_MENU);
         }
-        setRecycleMockData();
+        setViewPagerPictures();
         setupViewPager();
         setToolbar();
         setupView();
@@ -97,14 +92,12 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
         }
     }
 
-    private void setRecycleMockData() {
-        mImageList.add("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg");
-        mImageList.add("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg");
-        mImageList.add("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg");
-        mImageList.add("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg");
-        mImageList.add("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg");
-        mImageList.add("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg");
-        mImageList.add("https://static.tumblr.com/90b30b74c5d4c98ab35024137993f1b0/mty6lgy/CDZn599q2/tumblr_static_tumblr_static_705cmutimq880c4gkwssckkc8_640.jpg");
+    private void setViewPagerPictures() {
+        if (mMenu.getOrderDetailImage() != null && mMenu.getOrderDetailImage().getImage() != null) {
+            mImageList = mMenu.getOrderDetailImage().getImage();
+        } else {
+            mImageList.add("http://energiaautomacao.com.br/wp-content/uploads/2018/04/sem-imagem-7.jpg");
+        }
     }
 
 
@@ -127,10 +120,20 @@ public class OrderDetailsActivity extends BaseActivity<OrderDetailsActivityPrese
             if (mMenu.getValue() != null) {
                 mPrice.setText(Util.formatCurrency(mMenu.getValue()));
             }
-            mAvarageTime.setText("45 min");
-            mSuits.setText("2 Pessoas");
-            mRaiting.setNumStars(3);
 
+            if (mMenu.getOrderDetailImage() != null) {
+                if (mMenu.getOrderDetailImage().getAvarageTime() != null) {
+                    mAvarageTime.setText(mMenu.getOrderDetailImage().getAvarageTime());
+                }
+
+                if (mMenu.getOrderDetailImage().getSuits() != null) {
+                    mSuits.setText(mMenu.getOrderDetailImage().getSuits());
+                }
+
+                if (mMenu.getOrderDetailImage().getRating() != null) {
+                    mRaiting.setText(String.valueOf(mMenu.getOrderDetailImage().getRating()));
+                }
+            }
         }
     }
 

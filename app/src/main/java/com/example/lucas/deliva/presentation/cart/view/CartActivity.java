@@ -38,22 +38,8 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
     @BindView(R.id.toolbar)
     protected Toolbar mToolbar;
 
-    @BindView(R.id.cart_label)
-    protected TextView mCartLabel;
     @BindView(R.id.cart_value)
     protected TextView mCartValue;
-
-    @BindView(R.id.service_label)
-    protected TextView mServiceLabel;
-    @BindView(R.id.service_value)
-    protected TextView mServiceValue;
-
-    @BindView(R.id.total_label)
-    protected TextView mTotalLabel;
-    @BindView(R.id.total_value)
-    protected TextView mTotalValue;
-
-    protected Button mCartButton;
     private Boolean mShowOptions = true;
 
     private Order mOrder;
@@ -78,6 +64,7 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupToolbar();
+        mCartValue.setText(Util.formatCurrency(0.0));
         if (getIntent().getSerializableExtra(KEY_EXTRA_CART) != null) {
             mOrder = (Order) getIntent().getSerializableExtra(KEY_EXTRA_CART);
             mOrderCost = mOrder.getOrderCost();
@@ -113,6 +100,11 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
             public void onDecreaseClickListener(@NonNull Menu menuItem) {
                 updateCartValue(mOrder.getMenuList(), menuItem, false);
             }
+
+            @Override
+            public void onItemClickListener(@NonNull Menu menuItem) {
+//                mPresenter.removeSingleOrder(menuItem, mOrder, mCartAdapter, mRecycleView);
+            }
         });
     }
 
@@ -137,10 +129,8 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
         if (mOrder.getOrderCost() != null && mOrder.getOrderCost() > 0) {
             mCartValue.setText(Util.formatCurrency(mOrder.getOrderCost()));
         } else {
-            mTotalValue.setText(Util.formatCurrency(0.0));
             mCartValue.setText(Util.formatCurrency(0.0));
         }
-        mServiceValue.setText("7%");
     }
 
     @Override
@@ -180,7 +170,6 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
 
     private void checkCartStatus() {
         if (mOrder == null || mOrder.getMenuList().isEmpty()) {
-//            mCartButton.setEnabled(false);
             mShowOptions = false;
         }
     }
@@ -189,18 +178,20 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
         mOrder = null;
         mCartAdapter.setData(new ArrayList<Menu>());
         mRecycleView.removeAllViewsInLayout();
-        checkCartStatus();
+        mCartValue.setText(Util.formatCurrency(0.0));
+        mPresenter.setOrderOnGoing(new Order());
     }
 
     @Override
     public void onSuccessCreateOrder() {
-        Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.order_success, Toast.LENGTH_SHORT).show();
+        mPresenter.setOrderOnGoing(new Order());
         finish();
     }
 
     @Override
     public void onErrorCreateOrder() {
-        Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.order_error, Toast.LENGTH_SHORT).show();
     }
 
     private void showCartDialog() {
@@ -208,6 +199,7 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
             @Override
             public void onConfirmClickListener() {
                 clearCart();
+                mCartDialog.dismiss();
             }
 
             @Override
@@ -217,4 +209,6 @@ public class CartActivity extends BaseActivity<CartActivityPresenter> implements
         });
         mCartDialog.show();
     }
+
+
 }

@@ -94,10 +94,10 @@ public class ImageViewPagerAdapter extends FragmentStatePagerAdapter {
             if (image != null && !image.isEmpty()) {
                 Picasso.with(view.getContext())
                         .load(image)
-                        .placeholder(R.drawable.app_icon)
+                        .placeholder(R.drawable.no_image)
                         .into(view);
             } else {
-                view.setImageResource(R.drawable.app_icon);
+                view.setImageResource(R.drawable.no_image);
             }
 
             return rootView;

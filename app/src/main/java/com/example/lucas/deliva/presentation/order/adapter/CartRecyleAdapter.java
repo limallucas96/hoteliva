@@ -15,6 +15,8 @@ import com.example.lucas.deliva.mechanism.connection.view.Util;
 import com.example.lucas.deliva.presentation.base.view.adapter.BaseRecyclerAdapter;
 import com.squareup.picasso.Picasso;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class CartRecyleAdapter extends BaseRecyclerAdapter<Menu, CartRecyleAdapter.ViewHolder> {
 
     private OnItemClickListener mListener;
@@ -46,7 +48,8 @@ public class CartRecyleAdapter extends BaseRecyclerAdapter<Menu, CartRecyleAdapt
         private Button mIncrease;
         private Button mDecrease;
         private Button mValue;
-        private Integer amount = 0;
+        private Integer amount = 1;
+        private View mItemContainer;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -57,6 +60,7 @@ public class CartRecyleAdapter extends BaseRecyclerAdapter<Menu, CartRecyleAdapt
             mIncrease = itemView.findViewById(R.id.increase);
             mDecrease = itemView.findViewById(R.id.decrease);
             mValue = itemView.findViewById(R.id.value);
+            mItemContainer = itemView.findViewById(R.id.item_container);
         }
 
         public void bind(@NonNull final Menu menu, final int position) {
@@ -105,6 +109,15 @@ public class CartRecyleAdapter extends BaseRecyclerAdapter<Menu, CartRecyleAdapt
                         }
                     }
                 });
+
+                mItemContainer.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (mListener != null) {
+                            mListener.onItemClickListener(menu);
+                        }
+                    }
+                });
             }
         }
     }
@@ -113,6 +126,8 @@ public class CartRecyleAdapter extends BaseRecyclerAdapter<Menu, CartRecyleAdapt
         void onIncreaseClickListener(@NonNull final Menu menuItem);
 
         void onDecreaseClickListener(@NonNull final Menu menuItem);
+
+        void onItemClickListener(@NonNull final Menu menuItem);
     }
 
 }

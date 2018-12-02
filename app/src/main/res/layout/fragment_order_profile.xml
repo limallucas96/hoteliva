@@ -71,15 +71,18 @@
                             tools:text="R$ 180,00" />
 
                         <TextView
-                            android:id="@+id/accommodation"
+                            android:id="@+id/daily_value"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginTop="15dp"
-                            android:gravity="center"
+                            android:gravity="end"
                             android:paddingBottom="10dp"
-                            android:textSize="20sp"
-                            tools:text="15/10/2018 - 20/10/2018" />
+                            android:paddingEnd="10dp"
+                            android:paddingStart="10dp"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:text="@string/daily_value_warning"
+                            tools:text="Valor da diária não incluso*" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -90,7 +93,6 @@
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/toolbar"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal"
                 tools:listitem="@layout/view_item_profile_cart" />

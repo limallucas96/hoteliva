@@ -5,7 +5,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.lucas.deliva.R;
 
@@ -14,18 +14,18 @@ import butterknife.ButterKnife;
 
 public class CartDialog extends Dialog {
 
-    private DialogListener mListener;
-
     @BindView(R.id.confirm)
-    protected Button mConfirm;
+    protected TextView mConfirm;
     @BindView(R.id.cancel)
-    protected Button mCancel;
+    protected TextView mCancel;
+
+    private DialogListener mListener;
 
 
     public CartDialog(@NonNull final Context context, @NonNull final DialogListener listener) {
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.dialog_country_selector);
+        setContentView(R.layout.dialog_cart);
         ButterKnife.bind(this);
 
         mListener = listener;

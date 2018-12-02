@@ -44,7 +44,7 @@
                 android:layout_gravity="center"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:text="adsadadsadsads" />
+                android:text="test" />
         </FrameLayout>
 
     </LinearLayout>

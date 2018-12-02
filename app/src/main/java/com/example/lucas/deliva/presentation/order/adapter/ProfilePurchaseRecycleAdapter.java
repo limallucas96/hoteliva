@@ -50,10 +50,10 @@ public class ProfilePurchaseRecycleAdapter extends BaseRecyclerAdapter<Balance, 
 
         public void bind(@NonNull final Balance balance, final int position) {
 
-            if (balance.getIdService() != null) {
+            if (balance.getOrderId() != null) {
                 mOrderId.setText(
                         AppApplication.getAppContext().getString(
-                                R.string.purchase_id, balance.getIdService()));
+                                R.string.purchase_id, Integer.valueOf(balance.getOrderId())));
             }
 
             if (balance.getDate() != null) {
